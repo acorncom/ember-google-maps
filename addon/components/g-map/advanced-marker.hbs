@@ -1,2 +1,9 @@
-{{yield (hash
-  infoWindow=(component "g-map/info-window" getContext=@getContext target=this.mapComponent))}}
+{{#if (has-block)}}
+  <div {{this.initContent}} ...attributes>
+    {{yield (hash
+      infoWindow=(component "g-map/info-window" getContext=@getContext target=this.mapComponent))}}
+  </div>
+{{else}}
+  {{yield (hash
+    infoWindow=(component "g-map/info-window" getContext=@getContext target=this.mapComponent))}}
+{{/if}}

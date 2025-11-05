@@ -1,7 +1,14 @@
 import TypicalMapComponent from './typical-map-component';
 import { toLatLng } from '../../utils/helpers';
+import { modifier } from 'ember-modifier';
 
 export default class AdvancedMarker extends TypicalMapComponent {
+  domElement = undefined;
+
+  initContent = modifier((element) => {
+    this.domElement = element;
+  });
+
   get name() {
     return 'advancedMarkers';
   }
@@ -11,7 +18,12 @@ export default class AdvancedMarker extends TypicalMapComponent {
       this.options.position = toLatLng(this.args.lat, this.args.lng);
     }
 
-    return this.options;
+    return {
+      ...this.options,
+      ...{
+        content: this.domElement,
+      },
+    };
   }
 
   update(mapComponent) {
@@ -20,6 +32,11 @@ export default class AdvancedMarker extends TypicalMapComponent {
   }
 
   newMapComponent(options = {}) {
-    return new google.maps.marker.AdvancedMarkerElement(options);
+    return new google.maps.marker.AdvancedMarkerElement({
+      ...options,
+      ...{
+        content: this.domElement,
+      },
+    });
   }
 }
