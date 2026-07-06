@@ -1,6 +1,6 @@
 {
   "name": "ember-google-maps",
-  "version": "7.3.0",
+  "version": "7.3.1",
   "description": "A friendly Ember addon for working with Google Maps.",
   "keywords": [
     "ember-addon",
@@ -13,10 +13,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/sandydoo/ember-google-maps.git"
+    "url": "https://github.com/acorncom/ember-google-maps.git"
   },
   "license": "MIT",
-  "author": "Sander Melnikov <hey@sandydoo.me>",
+  "contributors": [
+    "David Baker <acorncom+hey@gmail.com>",
+    "Sander Melnikov <hey@sandydoo.me>"
+  ],
   "directories": {
     "doc": "docs",
     "test": "tests"
@@ -24,7 +27,7 @@
   "homepage": "https://ember-google-maps.sandydoo.me",
   "funding": {
     "type": "individual",
-    "url": "https://ko-fi.com/sandydoo"
+    "url": "https://github.com/acorncom"
   },
   "scripts": {
     "build": "ember build --environment=production",

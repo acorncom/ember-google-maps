@@ -14,14 +14,14 @@ A friendly [Ember][ember-url] addon for working with [Google Maps][google-maps-u
 
 > #### Thanks for using the addon!
 >
-> ember-google-maps is over 3 years old now. In that time, I’ve completely rewritten it multiple times over to support changes in both Ember and Google Maps. I’d love to keep working on this addon in my free time, but could use your support.
+> ember-google-maps has been around for quite a while now, with a lot of labor and love poured into it by [sandydoo](https://github.com/sandydoo). He has since moved on but we're still interested in supporting this. I’d love to keep working on this addon in my free time, but could use your support.
 >
 > If you use ember-google-maps in your commercial work or find it valuable, consider leaving a donation to support on-going maintenance and API costs.
 >
-> [![Support me on Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/sandydoo)
+> [💜 Sponsor @acorncom on GitHub](https://github.com/acorncom)
 >
 > Thank you! 🙌🙌🙌\
-> — @sandydoo
+> — @acorncom
 
 <br>
 
@@ -133,13 +133,13 @@ This lets you do all sorts of fancy things, like adding CSS animations and bindi
 🛒 Extra addons
 --------------------------------------------------------------------------------
 
-- [MarkerClustererPlus](https://github.com/sandydoo/ember-google-maps-markerclustererplus) — Add marker clustering to your maps with [@googlemaps/markerclustererplus](https://github.com/googlemaps/js-markerclustererplus).
+- [MarkerClustererPlus](https://github.com/acorncom/ember-google-maps-markerclustererplus) — Add marker clustering to your maps with [@googlemaps/markerclustererplus](https://github.com/googlemaps/js-markerclustererplus).
 
 
 😇 Maintainers
 --------------------------------------------------------------------------------
 
-This addon is maintained by **[Sander Melnikov][maintainer-url]**.
+This addon is maintained by **[David Baker][maintainer-url]**.
 
 
 Contributing
@@ -151,7 +151,8 @@ See the [Contributing](CONTRIBUTING.md) guide for details.
 License
 --------------------------------------------------------------------------------
 
-[MIT][license-url] © [Sander Melnikov][maintainer-url].
+[MIT][license-url] ©2017-2024 [Sander Melnikov][old-maintainer-url].
+[MIT][license-url] ©2024-present [David Baker][maintainer-url].
 
 
 Disclaimer
@@ -166,8 +167,8 @@ This software is not endorsed, maintained, or supported by Google LLC.
 [npm-downloads-badge]: https://img.shields.io/npm/dt/ember-google-maps
 [npm-url]: https://www.npmjs.org/package/ember-google-maps
 
-[ci-badge]: https://github.com/sandydoo/ember-google-maps/workflows/CI/badge.svg?branch=main
-[ci-url]: https://github.com/sandydoo/ember-google-maps/actions?query=workflow%3ACI
+[ci-badge]: https://github.com/acorncom/ember-google-maps/workflows/CI/badge.svg?branch=main
+[ci-url]: https://github.com/acorncom/ember-google-maps/actions?query=workflow%3ACI
 
 [ember-observer-badge]: https://emberobserver.com/badges/ember-google-maps.svg
 [ember-observer-url]: https://emberobserver.com/addons/ember-google-maps
@@ -176,5 +177,6 @@ This software is not endorsed, maintained, or supported by Google LLC.
 [google-maps-url]: https://developers.google.com/maps/documentation/javascript/overview
 
 [docs-url]: https://ember-google-maps.sandydoo.me/docs/getting-started
-[maintainer-url]: https://github.com/sandydoo
-[license-url]: https://github.com/sandydoo/ember-google-maps/blob/main/LICENSE
+[old-maintainer-url]: https://github.com/sandydoo
+[maintainer-url]: https://github.com/acorncom
+[license-url]: https://github.com/acorncom/ember-google-maps/blob/main/LICENSE

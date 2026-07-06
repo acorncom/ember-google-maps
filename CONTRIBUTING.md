@@ -2,7 +2,7 @@
 
 ## Installation
 
-* `git clone https://github.com/sandydoo/ember-google-maps`
+* `git clone https://github.com/acorncom/ember-google-maps`
 * `cd ember-google-maps`
 * `pnpm install`
 

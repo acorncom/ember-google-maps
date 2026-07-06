@@ -5,10 +5,13 @@
   "description": "Documentation for ember-google-maps.",
   "repository": {
     "type": "git",
-    "url": "git://github.com/sandydoo/ember-google-maps"
+    "url": "git://github.com/acorncom/ember-google-maps"
   },
   "license": "MIT",
-  "author": "Sander Melnikov <hey@sandydoo.me>",
+  "contributors": [
+    "David Baker <acorncom+hey@gmail.com>",
+    "Sander Melnikov <hey@sandydoo.me>"
+  ],
   "directories": {
     "test": "tests"
   },
