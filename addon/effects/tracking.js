@@ -1,14 +1,31 @@
 import { createCache, getValue } from '@glimmer/tracking/primitives/cache';
-import { _backburner } from '@ember/runloop';
+
 import { registerDestructor } from '@ember/destroyable';
+import {
+  dependencySatisfies,
+  importSync,
+  macroCondition,
+} from '@embroider/macros';
+import { _backburner } from '@ember/runloop';
 
 // TODO Revisit when Glimmer gets effects
-let untrack = (fn) => fn();
-
-import Ember from 'ember';
-if (Object.keys(Ember.__loader.registry).includes('@glimmer/validator')) {
-  ({ untrack } = Ember.__loader.require('@glimmer/validator'));
-}
+const untrack = (function () {
+  if (macroCondition(dependencySatisfies('ember-source', '> 3.27.0-beta.1'))) {
+    // ember-source@3.27 shipped "real modules" by default, so we can just use
+    // importSync to get @glimmer/validator directly
+    return importSync('@glimmer/validator').untrack;
+  } else if (
+    macroCondition(dependencySatisfies('ember-source', '>= 3.22.0-alpha.1'))
+  ) {
+    // we can access `window.Ember` here because it wasn't deprecated until at least 3.27
+    // eslint-disable-next-line no-undef
+    return Ember.__loader.require('@glimmer/validator').untrack;
+  } else {
+    throw new Error(
+      'ember-google-maps unexpected untrack usage found: please file a bug (or ideally send in a PR) helping solve this',
+    );
+  }
+})();
 
 /**
  * It’s been clear since launch that Octane’s design doesn’t account for a few
