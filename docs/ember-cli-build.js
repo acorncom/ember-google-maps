@@ -46,7 +46,6 @@ module.exports = function (defaults) {
         '/docs/polylines',
         '/docs/info-windows',
         '/docs/controls',
-        '/docs/directions',
         '/docs/transit-layers',
         '/docs/overlays',
         '/docs/complex-ui',

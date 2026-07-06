@@ -31,7 +31,6 @@ Router.map(function () {
     this.route('polylines');
     this.route('info-windows');
     this.route('controls');
-    this.route('directions');
     this.route('overlays');
     this.route('complex-ui');
     this.route('testing');

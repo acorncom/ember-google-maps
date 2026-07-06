@@ -80,11 +80,6 @@ export default class DocsController extends ApplicationController {
       path: 'docs.controls',
       text: 'Next, let’s look at how we can modify the default map UI.',
     },
-    {
-      title: 'Directions',
-      path: 'docs.directions',
-      text: 'Let’s look at how to query and display routing information.',
-    },
     { title: 'Transit layers', path: 'docs.transit-layers', text: '' },
     {
       title: 'Custom overlays',
