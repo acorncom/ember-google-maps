@@ -13,7 +13,7 @@ Please read the documentation before opening an issue. Most problems can be solv
 
 * I've searched the relevant section of the [Google Maps API reference](https://developers.google.com/maps/documentation/javascript/reference/3.exp/).
 
-* I've [searched the closed issues](https://github.com/sandydoo/ember-google-maps/issues?q=is%3Aissue+is%3Aclosed) for similar problems.
+* I've [searched the closed issues](https://github.com/acorncom/ember-google-maps/issues?q=is%3Aissue+is%3Aclosed) for similar problems.
 -->
 
 ### Describe the bug

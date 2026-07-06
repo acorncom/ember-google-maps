@@ -16,7 +16,7 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone https://github.com/sandydoo/ember-google-maps/` this repository
+* `git clone https://github.com/acorncom/ember-google-maps/` this repository
 * `cd ember-google-maps-docs/docs`
 * `pnpm install`
 
