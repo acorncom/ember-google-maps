@@ -99,10 +99,11 @@ jobs:
           - ember-lts-4.8
           - ember-lts-4.12
           - ember-lts-5.12
+          - ember-6.0
           - ember-classic
         allow-failure: [false]
         include:
-          - try-scenario: ember-6.0
+          - try-scenario: ember-6.4
             allow-failure: true
           - try-scenario: ember-release
             allow-failure: true
