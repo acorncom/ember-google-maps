@@ -77,8 +77,10 @@ jobs:
       - name: Install template app dependencies
         working-directory: ./build-tests/app-template
         # --ignore-workspace so pnpm installs here instead of resolving up to
-        # the root pnpm-workspace.yaml (which would leave this app with no deps)
-        run: pnpm install --ignore-workspace
+        # the root pnpm-workspace.yaml (which would leave this app with no deps).
+        # --ignore-scripts skips core-js's build script, which pnpm 11 would
+        # otherwise error on (ERR_PNPM_IGNORED_BUILDS) outside a workspace.
+        run: pnpm install --ignore-workspace --ignore-scripts
       - name: Run Tests
         run: pnpm test:build
 
