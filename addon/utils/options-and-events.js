@@ -207,7 +207,9 @@ export function addEventListener(
     target.addEventListener(eventName, callback, { once: isOnce });
   };
   let addListener =
-    isDom && (target?.nodeName !== 'GMP-INTERNAL-AM' && target?.nodeName !== 'GMP-ADVANCED-MARKER')
+    isDom &&
+    target?.nodeName !== 'GMP-INTERNAL-AM' &&
+    target?.nodeName !== 'GMP-ADVANCED-MARKER'
       ? nativeListener
       : google.maps.event[`addListener${isOnce ? 'Once' : ''}`];
 
