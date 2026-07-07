@@ -1,6 +1,7 @@
 name: CI
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - 'main'
@@ -19,7 +20,7 @@ on:
     - cron: '0 3 * * 1' # Mondays at 3am
 
 env:
-  node-version: '18'
+  node-version: '22'
   CI: true
   GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
 
@@ -75,7 +76,11 @@ jobs:
           node-version: ${{ env.node-version }}
       - name: Install template app dependencies
         working-directory: ./build-tests/app-template
-        run: pnpm install
+        # --ignore-workspace so pnpm installs here instead of resolving up to
+        # the root pnpm-workspace.yaml (which would leave this app with no deps).
+        # --ignore-scripts skips core-js's build script, which pnpm 11 would
+        # otherwise error on (ERR_PNPM_IGNORED_BUILDS) outside a workspace.
+        run: pnpm install --ignore-workspace --ignore-scripts
       - name: Run Tests
         run: pnpm test:build
 
