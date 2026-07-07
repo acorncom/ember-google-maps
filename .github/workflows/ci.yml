@@ -76,7 +76,9 @@ jobs:
           node-version: ${{ env.node-version }}
       - name: Install template app dependencies
         working-directory: ./build-tests/app-template
-        run: pnpm install
+        # --ignore-workspace so pnpm installs here instead of resolving up to
+        # the root pnpm-workspace.yaml (which would leave this app with no deps)
+        run: pnpm install --ignore-workspace
       - name: Run Tests
         run: pnpm test:build
 

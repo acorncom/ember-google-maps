@@ -1,5 +1,7 @@
-// You need to run `pnpm install` in the template app directory before running
-// tests. This will be fixed when ember-google-maps is converted to a v2 addon.
+// You need to run `pnpm install --ignore-workspace` in the template app
+// directory before running tests (--ignore-workspace so pnpm installs the app's
+// own deps rather than resolving up to the root pnpm-workspace.yaml). This will
+// be fixed when ember-google-maps is converted to a v2 addon.
 const { PreparedApp, Project } = require('scenario-tester');
 const path = require('path');
 const fs = require('fs');
