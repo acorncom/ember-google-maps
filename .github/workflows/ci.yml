@@ -98,11 +98,17 @@ jobs:
           - ember-lts-4.4
           - ember-lts-4.8
           - ember-lts-4.12
-          - ember-release
-          - ember-beta
+          - ember-lts-5.12
+          - ember-6.0
           - ember-classic
         allow-failure: [false]
         include:
+          - try-scenario: ember-6.4
+            allow-failure: true
+          - try-scenario: ember-release
+            allow-failure: true
+          - try-scenario: ember-beta
+            allow-failure: true
           - try-scenario: ember-canary
             allow-failure: true
           - try-scenario: embroider-safe
