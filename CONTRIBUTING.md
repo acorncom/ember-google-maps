@@ -1,0 +1,1 @@
+ember-google-maps/CONTRIBUTING.md
