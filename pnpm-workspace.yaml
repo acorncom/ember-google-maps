@@ -1,4 +1,21 @@
 packages:
   - ember-google-maps
+  - ember-google-maps-directions
   - test-app-*
   - test-addon-*
+
+# v2-addon isolation (from the addon blueprint's own workspace defaults):
+autoInstallPeers: false
+resolvePeersFromWorkspaceRoot: false
+allowBuilds:
+  core-js: false
+  esbuild: false
+
+# NOTE: ember-source is deliberately NOT pinned workspace-wide here — no
+# `catalog:` and no `overrides:`. Each member declares its own ember-source at
+# the package level so an ember-try matrix can rewrite + reinstall them per
+# scenario. A catalog/override would force a single version across the workspace
+# and fight ember-try's per-package version sweeping.
+# OPEN ITEM: keeping the addon and each test-app on the SAME ember-source per
+# matrix scenario (mismatched versions -> duplicate Glimmer runtimes -> context
+# silently breaks) still needs a wiring decision.

@@ -6,7 +6,7 @@ import { render, settled } from '@ember/test-helpers';
 import { GMap } from 'ember-google-maps';
 import { MarkerClusterer, ClusterMarker } from 'test-addon-clusterer';
 
-// Phase 3 #2: proves the extensibility surface end-to-end. `test-addon-clusterer`
+// Proves the extensibility surface end-to-end. `test-addon-clusterer`
 // is a SEPARATE workspace addon that only imports ember-google-maps' public base
 // classes (MapComponent) — no context/registry code — yet its custom container
 // component (MarkerClusterer) and leaf component (ClusterMarker) plug into <GMap>,
