@@ -1,2 +1,2 @@
-allowBuilds:
-  core-js: false
+packages:
+  - ember-google-maps
