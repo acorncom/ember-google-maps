@@ -1,2 +1,3 @@
 packages:
   - ember-google-maps
+  - test-app-*

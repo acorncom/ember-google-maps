@@ -1,0 +1,9 @@
+/* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+
+/* The map container needs a non-zero size for Google Maps to render tiles and
+ * fire its 'idle' event — otherwise <GMap>'s pauseTestForIdle (@waitFor) never
+ * resolves and hangs the test suite. */
+.ember-google-map {
+  width: 300px;
+  height: 300px;
+}
