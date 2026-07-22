@@ -4,6 +4,7 @@
 
 # dependencies
 /node_modules/
+/legacy/node_modules/
 
 # misc
 /.env*
