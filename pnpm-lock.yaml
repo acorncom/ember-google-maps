@@ -27,17 +27,17 @@ importers:
         version: link:../ember-google-maps-directions
       ember-provide-consume-context:
         specifier: 0.10.0
-        version: 0.10.0(@babel/core@8.0.1)(@ember/test-helpers@5.4.3(@babel/core@8.0.1))(@glimmer/component@2.1.1)(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5))
+        version: 0.10.0(@babel/core@8.0.1)(@ember/test-helpers@5.4.3(@babel/core@8.0.1))(@glimmer/component@2.1.1)(@glint/template@1.9.0)(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5))
       ember-source:
         specifier: ~6.12.0
         version: 6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5)
     devDependencies:
       vite-plugin-ember:
         specifier: ^0.8.1
-        version: 0.8.1(@babel/core@8.0.1)(@glimmer/component@2.1.1)(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5))(vite@8.1.3(esbuild@0.28.1)(terser@5.36.0)(yaml@2.9.0))(vitepress@1.6.4(@algolia/client-search@5.57.0)(fuse.js@7.1.0)(lightningcss@1.32.0)(postcss@8.5.26)(terser@5.36.0))(vue@3.5.42)
+        version: 0.8.1(@babel/core@8.0.1)(@glimmer/component@2.1.1)(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5))(vite@8.1.3(esbuild@0.28.1)(terser@5.36.0)(yaml@2.9.0))(vitepress@1.6.4(@algolia/client-search@5.57.0)(fuse.js@7.1.0)(lightningcss@1.32.0)(postcss@8.5.26)(terser@5.36.0)(typescript@5.9.3))(vue@3.5.42(typescript@5.9.3))
       vitepress:
         specifier: ^1.5.0
-        version: 1.6.4(@algolia/client-search@5.57.0)(fuse.js@7.1.0)(lightningcss@1.32.0)(postcss@8.5.26)(terser@5.36.0)
+        version: 1.6.4(@algolia/client-search@5.57.0)(fuse.js@7.1.0)(lightningcss@1.32.0)(postcss@8.5.26)(terser@5.36.0)(typescript@5.9.3)
 
   ember-google-maps:
     dependencies:
@@ -948,10 +948,6 @@ packages:
   '@babel/helper-validator-identifier@8.0.4':
     resolution: {integrity: sha512-4wFaiLd0bVo4cIoTXI3zKI038NIWE/cr3jvBjejOVYVxV/m8Ltav1USiGzG1fmS5J2RhgEOgXNNK46cRPnRsrg==}
     engines: {node: ^22.18.0 || >=24.11.0}
-
-  '@babel/helper-validator-option@7.25.9':
-    resolution: {integrity: sha512-e/zv1co8pp55dNdEcCynfj9X7nyUKUXoUEwfXqaZt0omVOmDe9oOTdKStH4GmAw6zxMFs50ZayuMfHDKlO7Tfw==}
-    engines: {node: '>=6.9.0'}
 
   '@babel/helper-validator-option@7.29.7':
     resolution: {integrity: sha512-N9ZErrD+yW5geCDtBqnOoxmR8+tNKiGuxKlDpuJxfsqpa2dFcexaziGAE/qoHLiDDreVNMupxGmSoNlyvsA3gw==}
@@ -2868,6 +2864,9 @@ packages:
   '@types/geojson@7946.0.16':
     resolution: {integrity: sha512-6C8nqWur3j98U6+lXDfTUWIfgvZU+EumvpHKcYjujKH7woYyLj2sUmff0tRhrqM7BohUw7Pz3ZB1jj2gW9Fvmg==}
 
+  '@types/google.maps@3.66.1':
+    resolution: {integrity: sha512-UtnC1f4l6jSfw1WZD8nwP2XTLm5GKsL95Yk1a3etzFpKxJL4ZzO53k96IRipedIJGRLhV1z4lGlTTrP6FMyGww==}
+
   '@types/hast@3.0.5':
     resolution: {integrity: sha512-rp/ezSWaD1m44dPKICGhiskI13nVr7qTloFwDa/IYkhhf5nzwP+zIQcIJh3WIFSBOy/H1PzB40jPjMDksN4F+g==}
 
@@ -2910,11 +2909,70 @@ packages:
   '@types/web-bluetooth@0.0.21':
     resolution: {integrity: sha512-oIQLCGWtcFZy2JW77j9k8nHzAOpqMHLQejDA48XXMWH6tjCQHz5RCFz1bzsmROyL6PUm+LLnUiI4BCn221inxA==}
 
+  '@typescript-eslint/eslint-plugin@8.69.0':
+    resolution: {integrity: sha512-t5jQTKPIgVW1PE6dR6H6Qz5gm8zjMlX5/2gRaOGd9eO6V7J+tQc6iWKukEe7dY8u9HyYasQ0yfF0/FSSTEO2gA==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      '@typescript-eslint/parser': ^8.69.0
+      eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
+      typescript: '>=4.8.4 <6.1.0'
+
+  '@typescript-eslint/parser@8.69.0':
+    resolution: {integrity: sha512-l4b0DhWioGg6Gt2ebGlvfkFMOjRsauxtsnDRwUSRX1qHq3HdTfQHV8wW9zEXeciai6HfeaKOedQn2Zoofx3WBw==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
+      typescript: '>=4.8.4 <6.1.0'
+
+  '@typescript-eslint/project-service@8.69.0':
+    resolution: {integrity: sha512-yi4obFrHMmnsesWehHbkg9zMA7Jt8cXT+mKM08G999pH1yT6nqgsHx7MYm0uY1wAj8CqiBXYRJ7WAT0QdQHQXg==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      typescript: '>=4.8.4 <6.1.0'
+
+  '@typescript-eslint/scope-manager@8.69.0':
+    resolution: {integrity: sha512-ewfspqWvSxKSOaplqAUNbaSFO0eB6w1EtQ+esfYFRm3614Ty4uNtExkcbgd6nWsXphbqKyf9ZYdbZdv2xEoWEQ==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
   '@typescript-eslint/tsconfig-utils@8.63.0':
     resolution: {integrity: sha512-sUAbkulqBAsncKnbRP3+7CtQFRKicexnj7ZwNC6ddCR7EmrXvjvdCYMJbUIqMd6lwoEriZjwLo08aS5tSjVMHg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       typescript: '>=4.8.4 <6.1.0'
+
+  '@typescript-eslint/tsconfig-utils@8.69.0':
+    resolution: {integrity: sha512-xNqK7YTDZsLniQMV/4rpFR8Z5JlqeRvVjuG1YgF/mdPVH84HSD19L8CczMA0qg2RfwEV231GHH3VnToJDo4MfQ==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      typescript: '>=4.8.4 <6.1.0'
+
+  '@typescript-eslint/type-utils@8.69.0':
+    resolution: {integrity: sha512-ZfoJAVg3JZndQEpEl9petVlxau3lRuElc4HRMuAlLCf8to04/iHz692RUSNmXKDjEuJmIL+KZ2/BsOcBc16dsA==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
+      typescript: '>=4.8.4 <6.1.0'
+
+  '@typescript-eslint/types@8.69.0':
+    resolution: {integrity: sha512-K3VrubUPhlo9VDBS6QdI8YB5j7ClpqLRdefcz6PFrhnwicehBweqQ9Evhl4l+FYz0HdDmMqIiSX0aldGRYtDCA==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@typescript-eslint/typescript-estree@8.69.0':
+    resolution: {integrity: sha512-AdFkgqck3Vudb/kWnxlyafU/4aBhHrbQ9locP2N4psXTy5mOBg0SHJumnLvx7r6g1gV4DKvUFwV2nJZBoqOD8w==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      typescript: '>=4.8.4 <6.1.0'
+
+  '@typescript-eslint/utils@8.69.0':
+    resolution: {integrity: sha512-tUbx60BBqQa31kXF5MCsOOLL5E/WzUuxIn7YpAvq+eaUlqvk8/NXnXMBNAdLCr0icjkzem7iUA5QqWHe/hJ1aw==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
+      typescript: '>=4.8.4 <6.1.0'
+
+  '@typescript-eslint/visitor-keys@8.69.0':
+    resolution: {integrity: sha512-+rmdgPA+EXkNgKYvHvFfhrs35utXbwaC5PGpDquSXcoXQDKUA5UjV0LmTucG/4JXkM31BTu4TilHtrN8IVBe8w==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@ungap/structured-clone@1.4.0':
     resolution: {integrity: sha512-1mEZtMKPM09vDmQt5y7YvmN2+DFTP7Tg0EWXdic8/C6VRnpb33e4ghisCIE3WZjsE2N8mf+QV1Zqh7ZFYLWInQ==}
@@ -2925,6 +2983,32 @@ packages:
     peerDependencies:
       vite: ^5.0.0 || ^6.0.0
       vue: ^3.2.25
+
+  '@volar/kit@2.4.28':
+    resolution: {integrity: sha512-cKX4vK9dtZvDRaAzeoUdaAJEew6IdxHNCRrdp5Kvcl6zZOqb6jTOfk3kXkIkG3T7oTFXguEMt5+9ptyqYR84Pg==}
+    peerDependencies:
+      typescript: '*'
+
+  '@volar/language-core@2.4.28':
+    resolution: {integrity: sha512-w4qhIJ8ZSitgLAkVay6AbcnC7gP3glYM3fYwKV3srj8m494E3xtrCv6E+bWviiK/8hs6e6t1ij1s2Endql7vzQ==}
+
+  '@volar/language-server@2.4.28':
+    resolution: {integrity: sha512-NqcLnE5gERKuS4PUFwlhMxf6vqYo7hXtbMFbViXcbVkbZ905AIVWhnSo0ZNBC2V127H1/2zP7RvVOVnyITFfBw==}
+
+  '@volar/language-service@2.4.28':
+    resolution: {integrity: sha512-Rh/wYCZJrI5vCwMk9xyw/Z+MsWxlJY1rmMZPsxUoJKfzIRjS/NF1NmnuEcrMbEVGja00aVpCsInJfixQTMdvLw==}
+
+  '@volar/source-map@2.4.28':
+    resolution: {integrity: sha512-yX2BDBqJkRXfKw8my8VarTyjv48QwxdJtvRgUpNE5erCsgEUdI2DsLbpa+rOQVAJYshY99szEcRDmyHbF10ggQ==}
+
+  '@volar/test-utils@2.4.28':
+    resolution: {integrity: sha512-N7RNiHHDPtqK5B21x4W462XMQj7Z75ynN3isLP+3Rb44hbJjhxxDxzs+QqWB0sjM57EtTJga+SDd9WWy3OjMzA==}
+
+  '@volar/typescript@2.4.28':
+    resolution: {integrity: sha512-Ja6yvWrbis2QtN4ClAKreeUZPVYMARDYZl9LMEv1iQ1QdepB6wn0jTRxA9MftYmYa4DQ4k/DaSZpFPUfxl8giw==}
+
+  '@vscode/l10n@0.0.18':
+    resolution: {integrity: sha512-KYSIHVmslkaCDyw013pphY+d7x1qV8IZupYfeIfzNA+nsaWHbn5uPuQRvdRFsa9zFzGeudPuoGoZ1Op4jrJXIQ==}
 
   '@vue/compiler-core@3.5.42':
     resolution: {integrity: sha512-2Ye1ilMtKXxl8qZUrQ5j0CdgenFp/HFQmta6rfRyfEsTG69L6Wk+tWuNoHYHMx9E8tF2Slvdg1FuwDvAXdy1LQ==}
@@ -4471,6 +4555,9 @@ packages:
     peerDependenciesMeta:
       '@typescript-eslint/parser':
         optional: true
+
+  ember-estree@0.8.0:
+    resolution: {integrity: sha512-FvH2jGEkcIMPDPgQLHFVSTyF5p7HscVIiJ36v6ce1C9q/6KXCcE0EB2idaGcDWlhB42I3PmLg+vLbUp2GIznBQ==}
 
   ember-live-compiler@0.2.4:
     resolution: {integrity: sha512-jaDr4sNDGVQK9im0ctiRW/qn7nRm0+PmsO1C0mLkT6eyEi98efjxcs5neWoY41T7HXucbGvmMgyxeA+ziwTUVg==}
@@ -7691,6 +7778,12 @@ packages:
   trim-lines@3.0.1:
     resolution: {integrity: sha512-kRj8B+YHZCc9kQYdWfJB2/oUl9rA99qbowYYBtr4ui4mZyAQ2JpvVBd/6U2YloATfqBhBTSMhTpgBHtU0Mf3Rg==}
 
+  ts-api-utils@2.5.0:
+    resolution: {integrity: sha512-OJ/ibxhPlqrMM0UiNHJ/0CKQkoKF243/AEmplt3qpRgkW8VG7IfOS41h7V8TjITqdByHzrjcS/2si+y4lIh8NA==}
+    engines: {node: '>=18.12'}
+    peerDependencies:
+      typescript: '>=4.8.4'
+
   ts-declaration-location@1.0.7:
     resolution: {integrity: sha512-EDyGAwH1gO0Ausm9gV6T2nUvBgXT5kGoCMJPllOaooZ+4VvJiKBdZE7wK18N1deEowhcUptS+5GXZK8U/fvpwA==}
     peerDependencies:
@@ -8034,6 +8127,58 @@ packages:
         optional: true
       postcss:
         optional: true
+
+  volar-service-html@0.0.71:
+    resolution: {integrity: sha512-e8tHPhgQ7ooLfudAEIku+kgd9pWkq3SSz8RbnQDI1+Eb8wbenkLGHqoirLqz5ORLV6wIMr2Iv08RWBG5eOcgpw==}
+    peerDependencies:
+      '@volar/language-service': ~2.4.0
+    peerDependenciesMeta:
+      '@volar/language-service':
+        optional: true
+
+  volar-service-typescript@0.0.71:
+    resolution: {integrity: sha512-yTtM/BVT6hoyEYnDtaCyAtNhdNeS/mhTTABlBOdw3NNiRBUin3IznFJpgfjer4c6RYopiPjjQjc9VFhxVl1mLw==}
+    peerDependencies:
+      '@volar/language-service': ~2.4.0
+    peerDependenciesMeta:
+      '@volar/language-service':
+        optional: true
+
+  vscode-html-languageservice@5.6.2:
+    resolution: {integrity: sha512-ulCrSnFnfQ16YzvwnYUgEbUEl/ZG7u2eV27YhvLObSHKkb8fw1Z9cgsnUwjTEeDIdJDoTDTDpxuhQwoenoLNMg==}
+
+  vscode-jsonrpc@8.2.0:
+    resolution: {integrity: sha512-C+r0eKJUIfiDIfwJhria30+TYWPtuHJXHtI7J0YlOmKAo7ogxP20T0zxB7HZQIFhIyvoBPwWskjxrvAtfjyZfA==}
+    engines: {node: '>=14.0.0'}
+
+  vscode-jsonrpc@9.0.2:
+    resolution: {integrity: sha512-SbQSV9yRemARxeXw6LU5sS6Zq0e9/DgCCX5yelH263ZQWukbTk8EF8fjTrr1dziasf4GwlJbvTwFnTrnQFWZXQ==}
+    engines: {node: '>=14.0.0'}
+
+  vscode-languageserver-protocol@3.17.5:
+    resolution: {integrity: sha512-mb1bvRJN8SVznADSGWM9u/b07H7Ecg0I3OgXDuLdn307rl/J3A9YD6/eYOssqhecL27hK1IPZAsaqh00i/Jljg==}
+
+  vscode-languageserver-protocol@3.18.3:
+    resolution: {integrity: sha512-DF49+WeV5py4zO5hhobp60jjsDSK0lAqA0OuKBLBvp423HPWQcCbhZz3JgyfIewsEz2f8U+X75xNIFHdiXZm2w==}
+
+  vscode-languageserver-textdocument@1.0.14:
+    resolution: {integrity: sha512-EQyqJMi552E4ZTf46izQ4Fj6XquqxCySR3J5ZSD1SisMf6RfpeOWHxGBE8Gr6V0/3GHIGdAzDn8F8+1nTGCnoQ==}
+
+  vscode-languageserver-types@3.17.5:
+    resolution: {integrity: sha512-Ld1VelNuX9pdF39h2Hgaeb5hEZM2Z3jUrrMgWQAu82jMtZp7p3vJT3BzToKtZI7NgQssZje5o0zryOrhQvzQAg==}
+
+  vscode-languageserver-types@3.18.3:
+    resolution: {integrity: sha512-XIlzJ7Qp/jzSI1ds7/FwPAWrPeTZA7pAtlW4hdJ1J6xXWJL6dR9QYnDhJOdLzdKhUQ5Mm6mvUMw+3DcOQQasPw==}
+
+  vscode-languageserver@9.0.1:
+    resolution: {integrity: sha512-woByF3PDpkHFUreUa7Hos7+pUWdeWMXRd26+ZX2A8cFx6v/JPTtd4/uN0/jB6XQHYaOlHbio03NTHCqrgG5n7g==}
+    hasBin: true
+
+  vscode-nls@5.2.0:
+    resolution: {integrity: sha512-RAaHx7B14ZU04EU31pT+rKz2/zSl7xMsfIZuo8pd+KZO6PXtQmpevpq3vxvWNcrGbdmhM/rr5Uw5Mz+NBfhVng==}
+
+  vscode-uri@3.2.0:
+    resolution: {integrity: sha512-m2gXo3bn0G1kT9InzMf07fTbqMbGtyckj3bH5ktLO+1Ssv+yiATZ4dhwaQv9UZWxJh6E9IFGnQyjgWVDWVBDrg==}
 
   vue@3.5.42:
     resolution: {integrity: sha512-4RyHQTbQvOPs3MfvUO1Sg0YRrKNnA0mAVtvpd12Tg1fKDN7OHBUl1IqSn8zGJjK9nI3NkNp8cgTpVrSZC5TTcA==}
@@ -8517,7 +8662,7 @@ snapshots:
 
   '@babel/helper-annotate-as-pure@7.29.7':
     dependencies:
-      '@babel/types': 7.29.7
+      '@babel/types': 7.29.8
 
   '@babel/helper-annotate-as-pure@8.0.0':
     dependencies:
@@ -8526,14 +8671,14 @@ snapshots:
   '@babel/helper-builder-binary-assignment-operator-visitor@7.25.9':
     dependencies:
       '@babel/traverse': 7.29.7
-      '@babel/types': 7.29.7
+      '@babel/types': 7.29.8
     transitivePeerDependencies:
       - supports-color
 
   '@babel/helper-compilation-targets@7.25.9':
     dependencies:
       '@babel/compat-data': 7.26.2
-      '@babel/helper-validator-option': 7.25.9
+      '@babel/helper-validator-option': 7.29.7
       browserslist: 4.28.5
       lru-cache: 5.1.1
       semver: 6.3.1
@@ -8698,7 +8843,7 @@ snapshots:
   '@babel/helper-member-expression-to-functions@7.29.7':
     dependencies:
       '@babel/traverse': 7.29.7
-      '@babel/types': 7.29.7
+      '@babel/types': 7.29.8
     transitivePeerDependencies:
       - supports-color
 
@@ -8759,7 +8904,7 @@ snapshots:
 
   '@babel/helper-optimise-call-expression@7.29.7':
     dependencies:
-      '@babel/types': 7.29.7
+      '@babel/types': 7.29.8
 
   '@babel/helper-optimise-call-expression@8.0.0':
     dependencies:
@@ -8884,7 +9029,7 @@ snapshots:
   '@babel/helper-simple-access@7.25.9':
     dependencies:
       '@babel/traverse': 7.29.7
-      '@babel/types': 7.29.7
+      '@babel/types': 7.29.8
     transitivePeerDependencies:
       - supports-color
 
@@ -8898,7 +9043,7 @@ snapshots:
   '@babel/helper-skip-transparent-expression-wrappers@7.29.7':
     dependencies:
       '@babel/traverse': 7.29.7
-      '@babel/types': 7.29.7
+      '@babel/types': 7.29.8
     transitivePeerDependencies:
       - supports-color
 
@@ -8919,8 +9064,6 @@ snapshots:
 
   '@babel/helper-validator-identifier@8.0.4': {}
 
-  '@babel/helper-validator-option@7.25.9': {}
-
   '@babel/helper-validator-option@7.29.7': {}
 
   '@babel/helper-validator-option@8.0.0': {}
@@ -8929,7 +9072,7 @@ snapshots:
     dependencies:
       '@babel/template': 7.29.7
       '@babel/traverse': 7.29.7
-      '@babel/types': 7.29.7
+      '@babel/types': 7.29.8
     transitivePeerDependencies:
       - supports-color
 
@@ -9040,7 +9183,7 @@ snapshots:
     dependencies:
       '@babel/core': 8.0.1
       '@babel/helper-plugin-utils': 7.29.7
-      '@babel/helper-skip-transparent-expression-wrappers': 7.25.9
+      '@babel/helper-skip-transparent-expression-wrappers': 7.29.7
       '@babel/plugin-transform-optional-chaining': 7.25.9(@babel/core@8.0.1)
     transitivePeerDependencies:
       - supports-color
@@ -9203,6 +9346,11 @@ snapshots:
       '@babel/core': 8.0.1
       '@babel/helper-plugin-utils': 7.29.7
 
+  '@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.26.0)':
+    dependencies:
+      '@babel/core': 7.26.0
+      '@babel/helper-plugin-utils': 7.29.7
+
   '@babel/plugin-syntax-typescript@7.25.9(@babel/core@7.26.0)':
     dependencies:
       '@babel/core': 7.26.0
@@ -9216,6 +9364,11 @@ snapshots:
   '@babel/plugin-syntax-typescript@7.25.9(@babel/core@8.0.1)':
     dependencies:
       '@babel/core': 8.0.1
+      '@babel/helper-plugin-utils': 7.29.7
+
+  '@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.26.0)':
+    dependencies:
+      '@babel/core': 7.26.0
       '@babel/helper-plugin-utils': 7.29.7
 
   '@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7)':
@@ -9420,7 +9573,7 @@ snapshots:
   '@babel/plugin-transform-classes@7.25.9(@babel/core@8.0.1)':
     dependencies:
       '@babel/core': 8.0.1
-      '@babel/helper-annotate-as-pure': 7.25.9
+      '@babel/helper-annotate-as-pure': 7.29.7
       '@babel/helper-compilation-targets': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
       '@babel/helper-replace-supers': 7.25.9(@babel/core@8.0.1)
@@ -9587,7 +9740,7 @@ snapshots:
     dependencies:
       '@babel/core': 8.0.1
       '@babel/helper-plugin-utils': 7.29.7
-      '@babel/helper-skip-transparent-expression-wrappers': 7.25.9
+      '@babel/helper-skip-transparent-expression-wrappers': 7.29.7
     transitivePeerDependencies:
       - supports-color
 
@@ -9726,6 +9879,14 @@ snapshots:
       '@babel/helper-module-transforms': 7.29.7(@babel/core@8.0.1)
       '@babel/helper-plugin-utils': 7.29.7
       '@babel/helper-simple-access': 7.25.9
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-modules-commonjs@7.29.7(@babel/core@7.26.0)':
+    dependencies:
+      '@babel/core': 7.26.0
+      '@babel/helper-module-transforms': 7.29.7(@babel/core@7.26.0)
+      '@babel/helper-plugin-utils': 7.29.7
     transitivePeerDependencies:
       - supports-color
 
@@ -9926,7 +10087,7 @@ snapshots:
     dependencies:
       '@babel/core': 8.0.1
       '@babel/helper-plugin-utils': 7.29.7
-      '@babel/helper-skip-transparent-expression-wrappers': 7.25.9
+      '@babel/helper-skip-transparent-expression-wrappers': 7.29.7
     transitivePeerDependencies:
       - supports-color
 
@@ -10145,7 +10306,7 @@ snapshots:
     dependencies:
       '@babel/core': 8.0.1
       '@babel/helper-plugin-utils': 7.29.7
-      '@babel/helper-skip-transparent-expression-wrappers': 7.25.9
+      '@babel/helper-skip-transparent-expression-wrappers': 7.29.7
     transitivePeerDependencies:
       - supports-color
 
@@ -10224,6 +10385,17 @@ snapshots:
       '@babel/helper-plugin-utils': 7.29.7
       '@babel/helper-skip-transparent-expression-wrappers': 7.25.9
       '@babel/plugin-syntax-typescript': 7.25.9(@babel/core@8.0.1)
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/plugin-transform-typescript@7.29.7(@babel/core@7.26.0)':
+    dependencies:
+      '@babel/core': 7.26.0
+      '@babel/helper-annotate-as-pure': 7.29.7
+      '@babel/helper-create-class-features-plugin': 7.29.7(@babel/core@7.26.0)
+      '@babel/helper-plugin-utils': 7.29.7
+      '@babel/helper-skip-transparent-expression-wrappers': 7.29.7
+      '@babel/plugin-syntax-typescript': 7.29.7(@babel/core@7.26.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -10472,7 +10644,7 @@ snapshots:
       '@babel/core': 8.0.1
       '@babel/helper-compilation-targets': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
-      '@babel/helper-validator-option': 7.25.9
+      '@babel/helper-validator-option': 7.29.7
       '@babel/plugin-bugfix-firefox-class-in-computed-class-key': 7.25.9(@babel/core@8.0.1)
       '@babel/plugin-bugfix-safari-class-field-initializer-scope': 7.25.9(@babel/core@8.0.1)
       '@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression': 7.25.9(@babel/core@8.0.1)
@@ -10561,6 +10733,17 @@ snapshots:
       '@babel/helper-plugin-utils': 7.29.7
       '@babel/types': 7.29.7
       esutils: 2.0.3
+
+  '@babel/preset-typescript@7.29.7(@babel/core@7.26.0)':
+    dependencies:
+      '@babel/core': 7.26.0
+      '@babel/helper-plugin-utils': 7.29.7
+      '@babel/helper-validator-option': 7.29.7
+      '@babel/plugin-syntax-jsx': 7.29.7(@babel/core@7.26.0)
+      '@babel/plugin-transform-modules-commonjs': 7.29.7(@babel/core@7.26.0)
+      '@babel/plugin-transform-typescript': 7.29.7(@babel/core@7.26.0)
+    transitivePeerDependencies:
+      - supports-color
 
   '@babel/runtime@7.12.18':
     dependencies:
@@ -11015,7 +11198,7 @@ snapshots:
       - '@babel/core'
       - supports-color
 
-  '@embroider/macros@1.20.5(@babel/core@8.0.1)':
+  '@embroider/macros@1.20.5(@babel/core@8.0.1)(@glint/template@1.9.0)':
     dependencies:
       '@embroider/shared-internals': 3.1.1
       assert-never: 1.3.0
@@ -11025,6 +11208,8 @@ snapshots:
       lodash: 4.18.1
       resolve: 1.22.12
       semver: 7.8.5
+    optionalDependencies:
+      '@glint/template': 1.9.0
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
@@ -11969,6 +12154,8 @@ snapshots:
 
   '@types/geojson@7946.0.16': {}
 
+  '@types/google.maps@3.66.1': {}
+
   '@types/hast@3.0.5':
     dependencies:
       '@types/unist': 3.0.3
@@ -12008,14 +12195,156 @@ snapshots:
 
   '@types/web-bluetooth@0.0.21': {}
 
-  '@typescript-eslint/tsconfig-utils@8.63.0': {}
+  '@typescript-eslint/eslint-plugin@8.69.0(@typescript-eslint/parser@8.69.0(eslint@9.39.4)(typescript@5.9.3))(eslint@9.39.4)(typescript@5.9.3)':
+    dependencies:
+      '@eslint-community/regexpp': 4.12.2
+      '@typescript-eslint/parser': 8.69.0(eslint@9.39.4)(typescript@5.9.3)
+      '@typescript-eslint/scope-manager': 8.69.0
+      '@typescript-eslint/type-utils': 8.69.0(eslint@9.39.4)(typescript@5.9.3)
+      '@typescript-eslint/utils': 8.69.0(eslint@9.39.4)(typescript@5.9.3)
+      '@typescript-eslint/visitor-keys': 8.69.0
+      eslint: 9.39.4
+      ignore: 7.0.5
+      natural-compare: 1.4.0
+      ts-api-utils: 2.5.0(typescript@5.9.3)
+      typescript: 5.9.3
+    transitivePeerDependencies:
+      - supports-color
+
+  '@typescript-eslint/parser@8.69.0(eslint@9.39.4)(typescript@5.9.3)':
+    dependencies:
+      '@typescript-eslint/scope-manager': 8.69.0
+      '@typescript-eslint/types': 8.69.0
+      '@typescript-eslint/typescript-estree': 8.69.0(typescript@5.9.3)
+      '@typescript-eslint/visitor-keys': 8.69.0
+      debug: 4.4.3
+      eslint: 9.39.4
+      typescript: 5.9.3
+    transitivePeerDependencies:
+      - supports-color
+
+  '@typescript-eslint/project-service@8.69.0(typescript@5.9.3)':
+    dependencies:
+      '@typescript-eslint/tsconfig-utils': 8.69.0(typescript@5.9.3)
+      '@typescript-eslint/types': 8.69.0
+      debug: 4.4.3
+      typescript: 5.9.3
+    transitivePeerDependencies:
+      - supports-color
+
+  '@typescript-eslint/scope-manager@8.69.0':
+    dependencies:
+      '@typescript-eslint/types': 8.69.0
+      '@typescript-eslint/visitor-keys': 8.69.0
+
+  '@typescript-eslint/tsconfig-utils@8.63.0(typescript@5.9.3)':
+    dependencies:
+      typescript: 5.9.3
+
+  '@typescript-eslint/tsconfig-utils@8.69.0(typescript@5.9.3)':
+    dependencies:
+      typescript: 5.9.3
+
+  '@typescript-eslint/type-utils@8.69.0(eslint@9.39.4)(typescript@5.9.3)':
+    dependencies:
+      '@typescript-eslint/types': 8.69.0
+      '@typescript-eslint/typescript-estree': 8.69.0(typescript@5.9.3)
+      '@typescript-eslint/utils': 8.69.0(eslint@9.39.4)(typescript@5.9.3)
+      debug: 4.4.3
+      eslint: 9.39.4
+      ts-api-utils: 2.5.0(typescript@5.9.3)
+      typescript: 5.9.3
+    transitivePeerDependencies:
+      - supports-color
+
+  '@typescript-eslint/types@8.69.0': {}
+
+  '@typescript-eslint/typescript-estree@8.69.0(typescript@5.9.3)':
+    dependencies:
+      '@typescript-eslint/project-service': 8.69.0(typescript@5.9.3)
+      '@typescript-eslint/tsconfig-utils': 8.69.0(typescript@5.9.3)
+      '@typescript-eslint/types': 8.69.0
+      '@typescript-eslint/visitor-keys': 8.69.0
+      debug: 4.4.3
+      minimatch: 10.2.5
+      semver: 7.8.5
+      tinyglobby: 0.2.17
+      ts-api-utils: 2.5.0(typescript@5.9.3)
+      typescript: 5.9.3
+    transitivePeerDependencies:
+      - supports-color
+
+  '@typescript-eslint/utils@8.69.0(eslint@9.39.4)(typescript@5.9.3)':
+    dependencies:
+      '@eslint-community/eslint-utils': 4.9.1(eslint@9.39.4)
+      '@typescript-eslint/scope-manager': 8.69.0
+      '@typescript-eslint/types': 8.69.0
+      '@typescript-eslint/typescript-estree': 8.69.0(typescript@5.9.3)
+      eslint: 9.39.4
+      typescript: 5.9.3
+    transitivePeerDependencies:
+      - supports-color
+
+  '@typescript-eslint/visitor-keys@8.69.0':
+    dependencies:
+      '@typescript-eslint/types': 8.69.0
+      eslint-visitor-keys: 5.0.1
 
   '@ungap/structured-clone@1.4.0': {}
 
-  '@vitejs/plugin-vue@5.2.4(vite@5.4.21(lightningcss@1.32.0)(terser@5.36.0))(vue@3.5.42)':
+  '@vitejs/plugin-vue@5.2.4(vite@5.4.21(lightningcss@1.32.0)(terser@5.36.0))(vue@3.5.42(typescript@5.9.3))':
     dependencies:
       vite: 5.4.21(lightningcss@1.32.0)(terser@5.36.0)
-      vue: 3.5.42
+      vue: 3.5.42(typescript@5.9.3)
+
+  '@volar/kit@2.4.28(typescript@5.9.3)':
+    dependencies:
+      '@volar/language-service': 2.4.28
+      '@volar/typescript': 2.4.28
+      typesafe-path: 0.2.2
+      typescript: 5.9.3
+      vscode-languageserver-textdocument: 1.0.14
+      vscode-uri: 3.2.0
+
+  '@volar/language-core@2.4.28':
+    dependencies:
+      '@volar/source-map': 2.4.28
+
+  '@volar/language-server@2.4.28':
+    dependencies:
+      '@volar/language-core': 2.4.28
+      '@volar/language-service': 2.4.28
+      '@volar/typescript': 2.4.28
+      path-browserify: 1.0.1
+      request-light: 0.7.0
+      vscode-languageserver: 9.0.1
+      vscode-languageserver-protocol: 3.18.3
+      vscode-languageserver-textdocument: 1.0.14
+      vscode-uri: 3.2.0
+
+  '@volar/language-service@2.4.28':
+    dependencies:
+      '@volar/language-core': 2.4.28
+      vscode-languageserver-protocol: 3.18.3
+      vscode-languageserver-textdocument: 1.0.14
+      vscode-uri: 3.2.0
+
+  '@volar/source-map@2.4.28': {}
+
+  '@volar/test-utils@2.4.28':
+    dependencies:
+      '@volar/language-core': 2.4.28
+      '@volar/language-server': 2.4.28
+      vscode-languageserver-textdocument: 1.0.14
+      vscode-uri: 3.2.0
+
+  '@volar/typescript@2.4.28':
+    dependencies:
+      '@volar/language-core': 2.4.28
+      path-browserify: 1.0.1
+      vscode-uri: 3.2.0
+
+  '@vscode/l10n@0.0.18': {}
 
   '@vue/compiler-core@3.5.42':
     dependencies:
@@ -12089,20 +12418,20 @@ snapshots:
 
   '@vue/shared@3.5.42': {}
 
-  '@vueuse/core@12.8.2':
+  '@vueuse/core@12.8.2(typescript@5.9.3)':
     dependencies:
       '@types/web-bluetooth': 0.0.21
       '@vueuse/metadata': 12.8.2
-      '@vueuse/shared': 12.8.2
-      vue: 3.5.42
+      '@vueuse/shared': 12.8.2(typescript@5.9.3)
+      vue: 3.5.42(typescript@5.9.3)
     transitivePeerDependencies:
       - typescript
 
-  '@vueuse/integrations@12.8.2(focus-trap@7.8.0)(fuse.js@7.1.0)':
+  '@vueuse/integrations@12.8.2(focus-trap@7.8.0)(fuse.js@7.1.0)(typescript@5.9.3)':
     dependencies:
-      '@vueuse/core': 12.8.2
-      '@vueuse/shared': 12.8.2
-      vue: 3.5.42
+      '@vueuse/core': 12.8.2(typescript@5.9.3)
+      '@vueuse/shared': 12.8.2(typescript@5.9.3)
+      vue: 3.5.42(typescript@5.9.3)
     optionalDependencies:
       focus-trap: 7.8.0
       fuse.js: 7.1.0
@@ -12111,13 +12440,13 @@ snapshots:
 
   '@vueuse/metadata@12.8.2': {}
 
-  '@vueuse/shared@12.8.2':
+  '@vueuse/shared@12.8.2(typescript@5.9.3)':
     dependencies:
-      vue: 3.5.42
+      vue: 3.5.42(typescript@5.9.3)
     transitivePeerDependencies:
       - typescript
 
-  '@warp-drive/build-config@5.8.2(@babel/core@7.29.7)':
+  '@warp-drive/build-config@5.8.2(@babel/core@7.29.7)(@glint/template@1.9.0)':
     dependencies:
       '@embroider/addon-shim': 1.10.3
       '@embroider/macros': 1.20.5(@babel/core@7.29.7)(@glint/template@1.9.0)
@@ -13926,6 +14255,8 @@ snapshots:
       '@babel/types': 7.29.7
       '@embroider/addon-shim': 1.10.3
       decorator-transforms: 2.4.0(@babel/core@7.29.7)
+    optionalDependencies:
+      '@glint/template': 1.9.0
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
@@ -13963,6 +14294,13 @@ snapshots:
     transitivePeerDependencies:
       - eslint
       - typescript
+
+  ember-estree@0.8.0:
+    dependencies:
+      '@glimmer/env': 0.1.7
+      '@glimmer/syntax': 0.95.0
+      content-tag: 4.2.0
+      oxc-parser: 0.130.0
 
   ember-live-compiler@0.2.4(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5)):
     dependencies:
@@ -14013,11 +14351,11 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  ember-provide-consume-context@0.10.0(@babel/core@8.0.1)(@ember/test-helpers@5.4.3(@babel/core@8.0.1))(@glimmer/component@2.1.1)(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5)):
+  ember-provide-consume-context@0.10.0(@babel/core@8.0.1)(@ember/test-helpers@5.4.3(@babel/core@8.0.1))(@glimmer/component@2.1.1)(@glint/template@1.9.0)(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5)):
     dependencies:
       '@ember/test-helpers': 5.4.3(@babel/core@8.0.1)
       '@embroider/addon-shim': 1.10.3
-      '@embroider/macros': 1.20.5(@babel/core@8.0.1)
+      '@embroider/macros': 1.20.5(@babel/core@8.0.1)(@glint/template@1.9.0)
       '@glimmer/component': 2.1.1
       ember-source: 6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5)
     transitivePeerDependencies:
@@ -18049,7 +18387,11 @@ snapshots:
 
   trim-lines@3.0.1: {}
 
-  ts-declaration-location@1.0.7:
+  ts-api-utils@2.5.0(typescript@5.9.3):
+    dependencies:
+      typescript: 5.9.3
+
+  ts-declaration-location@1.0.7(typescript@5.9.3):
     dependencies:
       picomatch: 4.0.5
       typescript: 5.9.3
@@ -18276,14 +18618,14 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite-plugin-ember@0.8.1(@babel/core@8.0.1)(@glimmer/component@2.1.1)(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5))(vite@8.1.3(esbuild@0.28.1)(terser@5.36.0)(yaml@2.9.0))(vitepress@1.6.4(@algolia/client-search@5.57.0)(fuse.js@7.1.0)(lightningcss@1.32.0)(postcss@8.5.26)(terser@5.36.0))(vue@3.5.42):
+  vite-plugin-ember@0.8.1(@babel/core@8.0.1)(@glimmer/component@2.1.1)(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5))(vite@8.1.3(esbuild@0.28.1)(terser@5.36.0)(yaml@2.9.0))(vitepress@1.6.4(@algolia/client-search@5.57.0)(fuse.js@7.1.0)(lightningcss@1.32.0)(postcss@8.5.26)(terser@5.36.0)(typescript@5.9.3))(vue@3.5.42(typescript@5.9.3)):
     dependencies:
       decorator-transforms: 2.4.0(@babel/core@8.0.1)
       ember-live-compiler: 0.2.4(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5))
       ember-source: 6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5)
       vite: 8.1.3(esbuild@0.28.1)(terser@5.36.0)(yaml@2.9.0)
-      vitepress: 1.6.4(@algolia/client-search@5.57.0)(fuse.js@7.1.0)(lightningcss@1.32.0)(postcss@8.5.26)(terser@5.36.0)
-      vue: 3.5.42
+      vitepress: 1.6.4(@algolia/client-search@5.57.0)(fuse.js@7.1.0)(lightningcss@1.32.0)(postcss@8.5.26)(terser@5.36.0)(typescript@5.9.3)
+      vue: 3.5.42(typescript@5.9.3)
     optionalDependencies:
       '@glimmer/component': 2.1.1
     transitivePeerDependencies:
@@ -18327,7 +18669,7 @@ snapshots:
       terser: 5.36.0
       yaml: 2.9.0
 
-  vitepress@1.6.4(@algolia/client-search@5.57.0)(fuse.js@7.1.0)(lightningcss@1.32.0)(postcss@8.5.26)(terser@5.36.0):
+  vitepress@1.6.4(@algolia/client-search@5.57.0)(fuse.js@7.1.0)(lightningcss@1.32.0)(postcss@8.5.26)(terser@5.36.0)(typescript@5.9.3):
     dependencies:
       '@docsearch/css': 3.8.2
       '@docsearch/js': 3.8.2(@algolia/client-search@5.57.0)
@@ -18336,17 +18678,17 @@ snapshots:
       '@shikijs/transformers': 2.5.0
       '@shikijs/types': 2.5.0
       '@types/markdown-it': 14.2.0
-      '@vitejs/plugin-vue': 5.2.4(vite@5.4.21(lightningcss@1.32.0)(terser@5.36.0))(vue@3.5.42)
+      '@vitejs/plugin-vue': 5.2.4(vite@5.4.21(lightningcss@1.32.0)(terser@5.36.0))(vue@3.5.42(typescript@5.9.3))
       '@vue/devtools-api': 7.7.10
       '@vue/shared': 3.5.42
-      '@vueuse/core': 12.8.2
-      '@vueuse/integrations': 12.8.2(focus-trap@7.8.0)(fuse.js@7.1.0)
+      '@vueuse/core': 12.8.2(typescript@5.9.3)
+      '@vueuse/integrations': 12.8.2(focus-trap@7.8.0)(fuse.js@7.1.0)(typescript@5.9.3)
       focus-trap: 7.8.0
       mark.js: 8.11.1
       minisearch: 7.2.0
       shiki: 2.5.0
       vite: 5.4.21(lightningcss@1.32.0)(terser@5.36.0)
-      vue: 3.5.42
+      vue: 3.5.42(typescript@5.9.3)
     optionalDependencies:
       postcss: 8.5.26
     transitivePeerDependencies:
@@ -18377,13 +18719,69 @@ snapshots:
       - typescript
       - universal-cookie
 
-  vue@3.5.42:
+  volar-service-html@0.0.71(@volar/language-service@2.4.28):
+    dependencies:
+      vscode-html-languageservice: 5.6.2
+      vscode-languageserver-textdocument: 1.0.14
+      vscode-uri: 3.2.0
+    optionalDependencies:
+      '@volar/language-service': 2.4.28
+
+  volar-service-typescript@0.0.71(@volar/language-service@2.4.28):
+    dependencies:
+      path-browserify: 1.0.1
+      semver: 7.8.5
+      typescript-auto-import-cache: 0.3.6
+      vscode-languageserver-textdocument: 1.0.14
+      vscode-nls: 5.2.0
+      vscode-uri: 3.2.0
+    optionalDependencies:
+      '@volar/language-service': 2.4.28
+
+  vscode-html-languageservice@5.6.2:
+    dependencies:
+      '@vscode/l10n': 0.0.18
+      vscode-languageserver-textdocument: 1.0.14
+      vscode-languageserver-types: 3.18.3
+      vscode-uri: 3.2.0
+
+  vscode-jsonrpc@8.2.0: {}
+
+  vscode-jsonrpc@9.0.2: {}
+
+  vscode-languageserver-protocol@3.17.5:
+    dependencies:
+      vscode-jsonrpc: 8.2.0
+      vscode-languageserver-types: 3.17.5
+
+  vscode-languageserver-protocol@3.18.3:
+    dependencies:
+      vscode-jsonrpc: 9.0.2
+      vscode-languageserver-types: 3.18.3
+
+  vscode-languageserver-textdocument@1.0.14: {}
+
+  vscode-languageserver-types@3.17.5: {}
+
+  vscode-languageserver-types@3.18.3: {}
+
+  vscode-languageserver@9.0.1:
+    dependencies:
+      vscode-languageserver-protocol: 3.17.5
+
+  vscode-nls@5.2.0: {}
+
+  vscode-uri@3.2.0: {}
+
+  vue@3.5.42(typescript@5.9.3):
     dependencies:
       '@vue/compiler-dom': 3.5.42
       '@vue/compiler-sfc': 3.5.42
       '@vue/runtime-dom': 3.5.42
       '@vue/server-renderer': 3.5.42
       '@vue/shared': 3.5.42
+    optionalDependencies:
+      typescript: 5.9.3
 
   w3c-xmlserializer@5.0.0:
     dependencies:
