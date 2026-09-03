@@ -9,6 +9,11 @@ packages:
 autoInstallPeers: false
 resolvePeersFromWorkspaceRoot: false
 allowBuilds:
+  # @parcel/watcher is Dart Sass's optional native file-watcher dependency
+  # (pulled in by docs-app's sass devDependency) -- legitimate, MIT-licensed,
+  # widely used. We don't use Sass's own --watch mode (Vite handles
+  # watching), but it needs to build cleanly to install without warnings.
+  '@parcel/watcher': true
   core-js: false
   esbuild: false
 

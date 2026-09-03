@@ -56,7 +56,7 @@ importers:
         version: 3.0.6(@embroider/core@4.6.2)
       '@embroider/vite':
         specifier: ^1.7.7
-        version: 1.7.8(@embroider/core@4.6.2)(vite@8.1.3(esbuild@0.28.1)(terser@5.36.0)(yaml@2.9.0))
+        version: 1.7.8(@embroider/core@4.6.2)(vite@8.1.3(esbuild@0.28.1)(sass@1.103.1)(terser@5.36.0)(yaml@2.9.0))
       '@eslint/js':
         specifier: ^9.39.4
         version: 9.39.4
@@ -69,6 +69,9 @@ importers:
       babel-plugin-ember-template-compilation:
         specifier: ^4.0.0
         version: 4.0.0
+      bootstrap:
+        specifier: ^5.3.8
+        version: 5.3.8
       concurrently:
         specifier: ^9.2.3
         version: 9.2.3
@@ -123,6 +126,9 @@ importers:
       prettier-plugin-ember-template-tag:
         specifier: ^2.1.6
         version: 2.1.7(prettier@3.9.4)
+      sass:
+        specifier: ^1.103.1
+        version: 1.103.1
       stylelint:
         specifier: ^17.13.0
         version: 17.14.0
@@ -131,7 +137,7 @@ importers:
         version: 40.0.0(stylelint@17.14.0)
       vite:
         specifier: ^8.1.0
-        version: 8.1.3(esbuild@0.28.1)(terser@5.36.0)(yaml@2.9.0)
+        version: 8.1.3(esbuild@0.28.1)(sass@1.103.1)(terser@5.36.0)(yaml@2.9.0)
 
   ember-google-maps:
     dependencies:
@@ -192,7 +198,7 @@ importers:
         version: 4.6.2
       '@embroider/vite':
         specifier: ^1.1.5
-        version: 1.7.8(@embroider/core@4.6.2)(vite@7.3.6(lightningcss@1.32.0)(terser@5.36.0)(yaml@2.9.0))
+        version: 1.7.8(@embroider/core@4.6.2)(vite@7.3.6(lightningcss@1.32.0)(sass@1.103.1)(terser@5.36.0)(yaml@2.9.0))
       '@eslint/js':
         specifier: ^9.17.0
         version: 9.39.4
@@ -264,7 +270,7 @@ importers:
         version: 3.15.2(ejs@3.1.10)(handlebars@4.7.8)(underscore@1.13.7)
       vite:
         specifier: ^7.1.9
-        version: 7.3.6(lightningcss@1.32.0)(terser@5.36.0)(yaml@2.9.0)
+        version: 7.3.6(lightningcss@1.32.0)(sass@1.103.1)(terser@5.36.0)(yaml@2.9.0)
 
   ember-google-maps-directions:
     dependencies:
@@ -310,7 +316,7 @@ importers:
         version: 4.6.2
       '@embroider/vite':
         specifier: ^1.1.5
-        version: 1.7.8(@embroider/core@4.6.2)(vite@7.3.6(lightningcss@1.32.0)(terser@5.36.0)(yaml@2.9.0))
+        version: 1.7.8(@embroider/core@4.6.2)(vite@7.3.6(lightningcss@1.32.0)(sass@1.103.1)(terser@5.36.0)(yaml@2.9.0))
       '@eslint/js':
         specifier: ^9.17.0
         version: 9.39.4
@@ -385,7 +391,7 @@ importers:
         version: 3.20.1(@babel/core@7.29.7)(ejs@3.1.10)(handlebars@4.7.8)(underscore@1.13.7)
       vite:
         specifier: ^7.1.9
-        version: 7.3.6(lightningcss@1.32.0)(terser@5.36.0)(yaml@2.9.0)
+        version: 7.3.6(lightningcss@1.32.0)(sass@1.103.1)(terser@5.36.0)(yaml@2.9.0)
 
   test-addon-clusterer:
     dependencies:
@@ -434,7 +440,7 @@ importers:
         version: 4.6.2
       '@embroider/vite':
         specifier: ^1.1.5
-        version: 1.7.8(@embroider/core@4.6.2)(vite@7.3.6(lightningcss@1.32.0)(terser@5.36.0)(yaml@2.9.0))
+        version: 1.7.8(@embroider/core@4.6.2)(vite@7.3.6(lightningcss@1.32.0)(sass@1.103.1)(terser@5.36.0)(yaml@2.9.0))
       '@eslint/js':
         specifier: ^9.17.0
         version: 9.39.4
@@ -506,7 +512,7 @@ importers:
         version: 3.20.1(@babel/core@7.29.7)(ejs@3.1.10)(handlebars@4.7.8)(underscore@1.13.7)
       vite:
         specifier: ^7.1.9
-        version: 7.3.6(lightningcss@1.32.0)(terser@5.36.0)(yaml@2.9.0)
+        version: 7.3.6(lightningcss@1.32.0)(sass@1.103.1)(terser@5.36.0)(yaml@2.9.0)
 
   test-app-basic:
     dependencies:
@@ -567,7 +573,7 @@ importers:
         version: 3.0.6(@embroider/core@4.6.2)
       '@embroider/vite':
         specifier: ^1.7.7
-        version: 1.7.8(@embroider/core@4.6.2)(vite@8.1.3(esbuild@0.28.1)(terser@5.36.0)(yaml@2.9.0))
+        version: 1.7.8(@embroider/core@4.6.2)(vite@8.1.3(esbuild@0.28.1)(sass@1.103.1)(terser@5.36.0)(yaml@2.9.0))
       '@eslint/js':
         specifier: ^9.39.4
         version: 9.39.4
@@ -687,7 +693,7 @@ importers:
         version: 3.20.1(@babel/core@7.29.7)(ejs@3.1.10)(handlebars@4.7.8)(underscore@1.13.7)
       vite:
         specifier: ^8.1.0
-        version: 8.1.3(esbuild@0.28.1)(terser@5.36.0)(yaml@2.9.0)
+        version: 8.1.3(esbuild@0.28.1)(sass@1.103.1)(terser@5.36.0)(yaml@2.9.0)
 
 packages:
 
@@ -2174,6 +2180,88 @@ packages:
   '@oxc-project/types@0.138.0':
     resolution: {integrity: sha512-1a7ZKmrRTCoN1XMZ4L0PyyqrMnrNlLyPuOkdSX2MZg7IiIGRUyurNhAm73ptDOraoBcIordsIGKNPKUzy3ZmfA==}
 
+  '@parcel/watcher-android-arm64@2.6.0':
+    resolution: {integrity: sha512-trgpLSCKRC/huFjXX/Smh+0sWe4+YtKfktIToiMl59ghz7z+qkH6kMvNnUbLyRs9N11t8l4svSCs1+5B3rOAhA==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [arm64]
+    os: [android]
+
+  '@parcel/watcher-darwin-arm64@2.6.0':
+    resolution: {integrity: sha512-Y3QV0gl7Q1zbfueunkWIERICbEojQFCgpyG7YqOGNFLsckXyI1xu9mAIUpKY9QBYzBtSkN8dBPwd3yiAO9ovMw==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@parcel/watcher-darwin-x64@2.6.0':
+    resolution: {integrity: sha512-Ohv6OpzhUfKYD7Beb8kDvG0jbIxORCYY1JRdZnaBtnjjkJxgD7ZVL0nw2sCYd0yTMKTvz3nnTnOF3cDifK+kvw==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@parcel/watcher-freebsd-x64@2.6.0':
+    resolution: {integrity: sha512-5HmXvDgs8VK+74jF9y9/2FE3/OnlcKmc56tjmSrEuZjpSZOGL+fvAu+HKJBdPs9uwoP2hE6TlSUpXZ/C5jUFmQ==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [x64]
+    os: [freebsd]
+
+  '@parcel/watcher-linux-arm-glibc@2.6.0':
+    resolution: {integrity: sha512-Ps/hui3A+vMbjdqlqAowK2ZL8+BO8dBjxeWXj6npTBs3jx4wWmbPpaLuqwrQrSqIVMCnpWo238bJ1U37GhQOYg==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [arm]
+    os: [linux]
+    libc: [glibc]
+
+  '@parcel/watcher-linux-arm-musl@2.6.0':
+    resolution: {integrity: sha512-9c6AUHgHoG+IY88MRIHupztQiQnrbqHYQjkM2btA+Bf/wQnQMuiD0Wfk1EVv3TlNT3x41uU71rn6E4xh/+zvkw==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [arm]
+    os: [linux]
+    libc: [musl]
+
+  '@parcel/watcher-linux-arm64-glibc@2.6.0':
+    resolution: {integrity: sha512-yHRqS2owEXe6Hic9z6Mh1ECsCd+ODVOGvZDyciqRd21+v+o+DnXMOrw50DSpIG2sb8GPEaPPmfeCAWKPJdq46g==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+
+  '@parcel/watcher-linux-arm64-musl@2.6.0':
+    resolution: {integrity: sha512-WhB2e/V7rqdHHWZusBSPuy5Ei8S6lSz6FE5TKKQz5h3a0O+C+mhY7vxU9b/stqvMb8beLnPY82ZrFTLKs+SrKA==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
+  '@parcel/watcher-linux-x64-glibc@2.6.0':
+    resolution: {integrity: sha512-ulGE6x6Oz6iAwg75T8YQSoguBWasniIbX+QWpaYPcCnDOpdWX3k+4xbEYPZVLxOuoJI+svJJPD3sEj8G7lrQ3A==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
+  '@parcel/watcher-linux-x64-musl@2.6.0':
+    resolution: {integrity: sha512-tkBYKt7YQrjIJWYDnto2YgO8MRkjlMTSNoRHzsXinBqbLdeOM3L32wPZJvIZxqaLMfSlS/4sUjH/6STVP/XDLw==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+
+  '@parcel/watcher-win32-arm64@2.6.0':
+    resolution: {integrity: sha512-gIZAP23jaHjGWasY/TY6yL7NHFClf0Ga7FN+iINvk+KN94rhm94lYZhFsbYFNcA04/onvGD9kKmiJLJB2HbNwQ==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@parcel/watcher-win32-x64@2.6.0':
+    resolution: {integrity: sha512-cA+/pXV2YkfxlIcXOQ5fSWqAzzPyD78/x5qbK/I0vUkrlYHA8TIz+MXjAbGouguKVSI4bOmkTSJ1/poVSsgt+A==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [x64]
+    os: [win32]
+
+  '@parcel/watcher@2.6.0':
+    resolution: {integrity: sha512-7FNeNl8NCE7aINx7WXiKQrPYZWC/hvrTsmk6zmxbI7LTXE7hVek/n8AfVgpe2y82zl3w0HvCHN0bVKMBoJcC0w==}
+    engines: {node: '>= 10.0.0'}
+
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
@@ -2930,6 +3018,11 @@ packages:
 
   body@5.1.0:
     resolution: {integrity: sha512-chUsBxGRtuElD6fmw1gHLpvnKdVLK302peeFa9ZqAEk8TyzZ3fygLyUEDDPTJvL9+Bor0dIwn6ePOsRM2y0zQQ==}
+
+  bootstrap@5.3.8:
+    resolution: {integrity: sha512-HP1SZDqaLDPwsNiqRqi5NcP0SSXciX2s9E+RyqJIIqGo+vJeN5AJVM98CXmW/Wux0nQ5L7jeWUdplCEf0Ee+tg==}
+    peerDependencies:
+      '@popperjs/core': ^2.11.8
 
   brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
@@ -4971,6 +5064,9 @@ packages:
     resolution: {integrity: sha512-Hs59xBNfUIunMFgWAbGX5cq6893IbWg4KnrjbYwX3tx0ztorVgTDA6B2sxf8ejHJ4wz8BqGUMYlnzNBer5NvGg==}
     engines: {node: '>= 4'}
 
+  immutable@5.1.9:
+    resolution: {integrity: sha512-m8nVez3rwrgmWxtLMt1ZYXB2Lv7OKYn/disyxAlSDYAlKSlFoPPfIAmAM/M5xqL4m4C/wAPw7S2/CNaUii1Hxg==}
+
   import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -5868,6 +5964,9 @@ packages:
   no-case@3.0.4:
     resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}
 
+  node-addon-api@7.1.1:
+    resolution: {integrity: sha512-5m3bsyrjFWE1xf7nz7YXdN4udnVtXK6/Yfgn5qnahL6bCkf2yKt4k3nuTKAtT4r3IG8JNR2ncsIMdZuAzJjHQQ==}
+
   node-exports-info@1.6.2:
     resolution: {integrity: sha512-kXs9Go0cah0qHVV2v389IXQLdLCeE1xfFtjOAF+iobu0OIoG1pje8At2vMHyaPMiPMnG/LWP50twML21eMcAag==}
     engines: {node: '>= 0.4'}
@@ -6666,6 +6765,11 @@ packages:
   sane@5.0.1:
     resolution: {integrity: sha512-9/0CYoRz0MKKf04OMCO3Qk3RQl1PAwWAhPSQSym4ULiLpTZnrY1JoZU0IEikHu8kdk2HvKT/VwQMq/xFZ8kh1Q==}
     engines: {node: 10.* || >= 12.*}
+    hasBin: true
+
+  sass@1.103.1:
+    resolution: {integrity: sha512-9icZURbP51S6S0QGoyaeqk9uB06GNWxsFYWfH5RgpFgqK5FA8tJcM3AdVxrZEVJ7dz+L87nG95gBKf4VuaMHGw==}
+    engines: {node: '>=20.19.0'}
     hasBin: true
 
   saxes@6.0.0:
@@ -9628,7 +9732,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@embroider/vite@1.7.8(@embroider/core@4.6.2)(vite@7.3.6(lightningcss@1.32.0)(terser@5.36.0)(yaml@2.9.0))':
+  '@embroider/vite@1.7.8(@embroider/core@4.6.2)(vite@7.3.6(lightningcss@1.32.0)(sass@1.103.1)(terser@5.36.0)(yaml@2.9.0))':
     dependencies:
       '@babel/core': 7.29.7
       '@embroider/core': 4.6.2
@@ -9646,7 +9750,7 @@ snapshots:
       send: 1.2.1
       source-map-url: 0.4.1
       terser: 5.36.0
-      vite: 7.3.6(lightningcss@1.32.0)(terser@5.36.0)(yaml@2.9.0)
+      vite: 7.3.6(lightningcss@1.32.0)(sass@1.103.1)(terser@5.36.0)(yaml@2.9.0)
     transitivePeerDependencies:
       - '@glint/template'
       - bufferutil
@@ -9654,7 +9758,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@embroider/vite@1.7.8(@embroider/core@4.6.2)(vite@8.1.3(esbuild@0.28.1)(terser@5.36.0)(yaml@2.9.0))':
+  '@embroider/vite@1.7.8(@embroider/core@4.6.2)(vite@8.1.3(esbuild@0.28.1)(sass@1.103.1)(terser@5.36.0)(yaml@2.9.0))':
     dependencies:
       '@babel/core': 7.29.7
       '@embroider/core': 4.6.2
@@ -9672,7 +9776,7 @@ snapshots:
       send: 1.2.1
       source-map-url: 0.4.1
       terser: 5.36.0
-      vite: 8.1.3(esbuild@0.28.1)(terser@5.36.0)(yaml@2.9.0)
+      vite: 8.1.3(esbuild@0.28.1)(sass@1.103.1)(terser@5.36.0)(yaml@2.9.0)
     transitivePeerDependencies:
       - '@glint/template'
       - bufferutil
@@ -10195,6 +10299,63 @@ snapshots:
       '@octokit/openapi-types': 29.0.1
 
   '@oxc-project/types@0.138.0': {}
+
+  '@parcel/watcher-android-arm64@2.6.0':
+    optional: true
+
+  '@parcel/watcher-darwin-arm64@2.6.0':
+    optional: true
+
+  '@parcel/watcher-darwin-x64@2.6.0':
+    optional: true
+
+  '@parcel/watcher-freebsd-x64@2.6.0':
+    optional: true
+
+  '@parcel/watcher-linux-arm-glibc@2.6.0':
+    optional: true
+
+  '@parcel/watcher-linux-arm-musl@2.6.0':
+    optional: true
+
+  '@parcel/watcher-linux-arm64-glibc@2.6.0':
+    optional: true
+
+  '@parcel/watcher-linux-arm64-musl@2.6.0':
+    optional: true
+
+  '@parcel/watcher-linux-x64-glibc@2.6.0':
+    optional: true
+
+  '@parcel/watcher-linux-x64-musl@2.6.0':
+    optional: true
+
+  '@parcel/watcher-win32-arm64@2.6.0':
+    optional: true
+
+  '@parcel/watcher-win32-x64@2.6.0':
+    optional: true
+
+  '@parcel/watcher@2.6.0':
+    dependencies:
+      detect-libc: 2.1.2
+      is-glob: 4.0.3
+      node-addon-api: 7.1.1
+      picomatch: 4.0.5
+    optionalDependencies:
+      '@parcel/watcher-android-arm64': 2.6.0
+      '@parcel/watcher-darwin-arm64': 2.6.0
+      '@parcel/watcher-darwin-x64': 2.6.0
+      '@parcel/watcher-freebsd-x64': 2.6.0
+      '@parcel/watcher-linux-arm-glibc': 2.6.0
+      '@parcel/watcher-linux-arm-musl': 2.6.0
+      '@parcel/watcher-linux-arm64-glibc': 2.6.0
+      '@parcel/watcher-linux-arm64-musl': 2.6.0
+      '@parcel/watcher-linux-x64-glibc': 2.6.0
+      '@parcel/watcher-linux-x64-musl': 2.6.0
+      '@parcel/watcher-win32-arm64': 2.6.0
+      '@parcel/watcher-win32-x64': 2.6.0
+    optional: true
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -10968,6 +11129,8 @@ snapshots:
       error: 7.2.1
       raw-body: 1.1.7
       safe-json-parse: 1.0.1
+
+  bootstrap@5.3.8: {}
 
   brace-expansion@1.1.11:
     dependencies:
@@ -13635,6 +13798,8 @@ snapshots:
 
   ignore@7.0.5: {}
 
+  immutable@5.1.9: {}
+
   import-fresh@3.3.0:
     dependencies:
       parent-module: 1.0.1
@@ -14494,6 +14659,9 @@ snapshots:
     dependencies:
       lower-case: 2.0.2
       tslib: 2.8.1
+
+  node-addon-api@7.1.1:
+    optional: true
 
   node-exports-info@1.6.2:
     dependencies:
@@ -15368,6 +15536,14 @@ snapshots:
       micromatch: 4.0.8
       minimist: 1.2.8
       walker: 1.0.8
+
+  sass@1.103.1:
+    dependencies:
+      chokidar: 5.0.0
+      immutable: 5.1.9
+      source-map-js: 1.2.1
+    optionalDependencies:
+      '@parcel/watcher': 2.6.0
 
   saxes@6.0.0:
     dependencies:
@@ -16395,7 +16571,7 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite@7.3.6(lightningcss@1.32.0)(terser@5.36.0)(yaml@2.9.0):
+  vite@7.3.6(lightningcss@1.32.0)(sass@1.103.1)(terser@5.36.0)(yaml@2.9.0):
     dependencies:
       esbuild: 0.28.1
       fdir: 6.5.0(picomatch@4.0.5)
@@ -16406,10 +16582,11 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
       lightningcss: 1.32.0
+      sass: 1.103.1
       terser: 5.36.0
       yaml: 2.9.0
 
-  vite@8.1.3(esbuild@0.28.1)(terser@5.36.0)(yaml@2.9.0):
+  vite@8.1.3(esbuild@0.28.1)(sass@1.103.1)(terser@5.36.0)(yaml@2.9.0):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.5
@@ -16419,6 +16596,7 @@ snapshots:
     optionalDependencies:
       esbuild: 0.28.1
       fsevents: 2.3.3
+      sass: 1.103.1
       terser: 5.36.0
       yaml: 2.9.0
 

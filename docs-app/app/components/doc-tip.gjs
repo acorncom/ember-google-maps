@@ -3,7 +3,9 @@ import Component from '@glimmer/component';
 export default class DocTip extends Component {
   defaultBadgeText = 'Tip';
   defaultCardClassNames = 'doc-tip';
-  defaultBadgeClassNames = 'badge-primary';
+  // Bootstrap 5 dropped the `.badge-{color}` variants in favor of pairing
+  // the base `.badge` class with a `.text-bg-{color}` helper.
+  defaultBadgeClassNames = 'text-bg-primary';
 
   get cardClassNames() {
     return this.args.cardClassNames ?? this.defaultCardClassNames;

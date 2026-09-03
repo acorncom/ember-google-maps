@@ -1,0 +1,36 @@
+// Curated subset of Bootstrap 5 partials -- mirrors v1's own curated
+// selection from Bootstrap 4 (see the plan's design doc), updated for
+// Bootstrap 5's reorganized partials:
+//   - `maps` is a new required config file (theme-color maps, moved out of
+//     `variables` in v5).
+//   - `containers` split out of `grid` in v5.
+//   - `helpers` is new in v5 -- included because it's what generates
+//     `.text-bg-{color}` (helpers/_color-bg.scss), the v5 replacement for
+//     v4's removed `.badge-{color}` utility classes.
+//   - `utilities/api` (the generator, not just the `utilities` config map)
+//     is required to actually emit `.d-md-flex` and friends -- v1's own
+//     docs.hbs template uses `.d-md-flex` directly.
+@import "functions";
+@import "variables";
+@import "variables-dark";
+@import "maps";
+@import "mixins";
+@import "utilities";
+
+@import "root";
+@import "reboot";
+@import "type";
+@import "containers";
+@import "grid";
+@import "forms";
+@import "buttons";
+@import "button-group";
+@import "nav";
+@import "navbar";
+@import "card";
+@import "badge";
+@import "alert";
+@import "tables";
+@import "helpers";
+
+@import "utilities/api";
