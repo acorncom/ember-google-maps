@@ -13,6 +13,7 @@
     "@glimmer/component": "^2.1.1",
     "@glimmer/tracking": "^1.1.2",
     "ember-google-maps": "workspace:*",
+    "ember-google-maps-directions": "workspace:*",
     "ember-provide-consume-context": "0.10.0",
     "ember-source": "~6.12.0"
   },
