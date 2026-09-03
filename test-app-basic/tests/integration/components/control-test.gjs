@@ -65,6 +65,29 @@ module('Integration | Component | control', function (hooks) {
     assert.strictEqual(newMapControls.length, 1, 'control now in new position');
   });
 
+  // Regression test for sandydoo/ember-google-maps#11: Google Maps attaches a
+  // pushed control element into the live map DOM asynchronously, with no event
+  // to await. Before the control-attach test waiter, settled() could resolve
+  // while the control was still detached -- this exact assertion (no waitFor,
+  // no extra timeout, just settled() via render()) was the flake. Every other
+  // test in this file works around it with an explicit waitFor(); this one
+  // deliberately does not, so it fails again if the waiter regresses.
+  test('the control element is attached by the time render() settles, with no extra wait', async function (assert) {
+    await render(
+      <template>
+        <GMap @lat={{this.lat}} @lng={{this.lng}} @zoom={{12}}>
+          <Control @position="TOP_CENTER">
+            <div id="no-wait-control">Hi there</div>
+          </Control>
+        </GMap>
+      </template>,
+    );
+
+    assert
+      .dom('#no-wait-control')
+      .exists('control is already attached once render() settles');
+  });
+
   test('it renders a control with a class value', async function (assert) {
     await render(
       <template>

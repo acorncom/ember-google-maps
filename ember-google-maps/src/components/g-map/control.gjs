@@ -4,6 +4,7 @@ import { guidFor } from '@ember/object/internals';
 
 import MapComponent from './map-component.js';
 import didInsert from '../../modifiers/g-map/did-insert.js';
+import { waitForAttach } from '../../utils/wait-for-attach.js';
 
 export default class Control extends MapComponent {
   id = `ember-google-maps-control-${guidFor(this)}`;
@@ -29,6 +30,12 @@ export default class Control extends MapComponent {
     this.controlElement.index = options.index;
 
     this.lastControlPosition = position;
+
+    // A control is only attached once its map is actually laid out and
+    // displayed -- some tests render a map that never displays (e.g. behind
+    // an auth/redirect flow), so its control never attaches. The 5s bound
+    // handles that case; see waitForAttach's own doc comment for the rest.
+    waitForAttach(this, this.controlElement, this.map.getDiv());
 
     return this.controlElement;
   }
