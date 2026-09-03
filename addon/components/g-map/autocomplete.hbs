@@ -1,5 +1,0 @@
-{{#if (has-block)}}
-  {{yield (hash setup=this.getInput)}}
-{{else}}
-  <input id={{this.id}} ...attributes {{g-map/did-insert this.getInput}} />
-{{/if}}
