@@ -11,5 +11,6 @@ Router.map(function () {
   this.route('index', { path: '/' });
   this.route('docs', function () {
     this.route('getting-started');
+    this.route('map');
   });
 });
