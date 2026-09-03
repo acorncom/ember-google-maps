@@ -46,7 +46,7 @@ Hover over any price tag to see the hover effect. It's plain CSS — no
 JavaScript state involved.
 :::
 
-```gjs live
+```gts live
 import Component from '@glimmer/component';
 import { getOwner } from '@ember/owner';
 import { GMap, Overlay } from 'ember-google-maps';
@@ -64,13 +64,13 @@ export default class OverlaysExample extends Component {
   }
 
   get locations() {
-    let { maps } = this.google;
+    const { maps } = this.google;
 
     if (!maps) {
       return [];
     }
 
-    let origin = new maps.LatLng(LONDON.lat, LONDON.lng);
+    const origin = new maps.LatLng(LONDON.lat, LONDON.lng);
 
     return createLocations(this.google, origin);
   }
