@@ -1,4 +1,9 @@
 import DefaultTheme from 'vitepress/theme';
+// Import after 'vitepress/theme' so its :root overrides win the cascade
+// (both custom.css and the default theme's vars.css set --vp-c-brand-*
+// on :root at equal specificity; DOM/module-evaluation order decides,
+// and vitepress/theme's own CSS is a side effect of the import above).
+import './custom.css';
 import { setupEmber } from 'vite-plugin-ember/setup';
 import { getOwner } from '@ember/owner';
 import GoogleMapsApiServiceBase from 'ember-google-maps/services/google-maps-api';

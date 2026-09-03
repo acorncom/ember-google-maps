@@ -46,4 +46,19 @@ export default defineConfig({
       emberFence(md);
     },
   },
+  themeConfig: {
+    nav: [{ text: 'Docs', link: '/getting-started' }],
+    sidebar: [
+      {
+        text: 'Documentation',
+        items: [
+          { text: 'Getting started', link: '/getting-started' },
+          { text: 'Map', link: '/map' },
+        ],
+      },
+    ],
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/acorncom/ember-google-maps' },
+    ],
+  },
 });
