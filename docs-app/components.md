@@ -63,19 +63,18 @@ If it's the map instance itself you're after — to call `panTo`, say — pass
 an `@onReady` handler to `<GMap>`. It fires once, with the `google.maps.Map`
 instance, as soon as the map is ready:
 
-```hbs
-<GMap @lat={{51.5074}} @lng={{-0.1278}} @onReady={{this.onMapReady}} />
-```
-
-```js
+```gts
 import Component from '@glimmer/component';
-import { action } from '@ember/object';
+import { GMap } from 'ember-google-maps';
 
 export default class Example extends Component {
-  @action
-  onMapReady(map) {
+  onMapReady = (map: google.maps.Map) => {
     map.panTo({ lat: 51.5074, lng: -0.1278 });
-  }
+  };
+
+  <template>
+    <GMap @lat={{51.5074}} @lng={{-0.1278}} @onReady={{this.onMapReady}} />
+  </template>
 }
 ```
 

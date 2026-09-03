@@ -10,15 +10,17 @@ To change the URL, override the `buildGoogleMapsUrl` hook on the
 `google-maps-api` service. It receives whatever configuration options you
 set in `environment.js`.
 
-```js
-// app/services/google-maps-api.js
+```ts
+// app/services/google-maps-api.ts
 import GoogleMapsApiService from 'ember-google-maps/services/google-maps-api';
 import { service } from '@ember/service';
 
+// currentUser is a hypothetical service from your own app, not something
+// this addon declares -- left untyped rather than fabricating a shape.
 export default class extends GoogleMapsApiService {
   @service currentUser;
 
-  buildGoogleMapsUrl(config) {
+  buildGoogleMapsUrl(config: Record<string, unknown>) {
     return super.buildGoogleMapsUrl({
       ...config,
       language: this.currentUser.locale,
@@ -32,17 +34,23 @@ with the localisation example, you could fetch the current user's language
 preference from an external database. While you wait for it to respond,
 just return the promise — it'll resolve with the right URL for the API.
 
-```js
-// app/services/google-maps-api.js
+```ts
+// app/services/google-maps-api.ts
 import GoogleMapsApiService from 'ember-google-maps/services/google-maps-api';
 import { service } from '@ember/service';
 
+// store and session are hypothetical services from your own app, not
+// something this addon declares -- left untyped rather than fabricating a
+// shape.
 export default class extends GoogleMapsApiService {
   @service store;
   @service session;
 
-  async buildGoogleMapsUrl(config) {
-    let user = await this.store.findRecord('user', this.session.currentUserId);
+  async buildGoogleMapsUrl(config: Record<string, unknown>) {
+    const user = await this.store.findRecord(
+      'user',
+      this.session.currentUserId,
+    );
 
     return super.buildGoogleMapsUrl({ ...config, language: user.locale });
   }
@@ -62,8 +70,8 @@ Every built-in component is built on two public base classes exported from
 the map context and the async setup/update/teardown lifecycle for free — no
 context or registration code required.
 
-```js
-// app/components/heatmap-layer.gjs
+```gts
+// app/components/heatmap-layer.gts
 import { TypicalMapComponent } from 'ember-google-maps';
 
 export default class HeatmapLayer extends TypicalMapComponent {
@@ -71,7 +79,7 @@ export default class HeatmapLayer extends TypicalMapComponent {
     return 'heatmapLayers';
   }
 
-  newMapComponent(options) {
+  newMapComponent(options: Record<string, unknown>) {
     return new google.maps.visualization.HeatmapLayer(options);
   }
 
@@ -101,8 +109,7 @@ module. You only import the ones you actually use —
 import { GMap, Marker, Circle } from 'ember-google-maps';
 ```
 
-— so your bundler tree-shakes the rest away automatically. There's no more
-build-time `only`/`except` configuration to maintain.
+— so your bundler tree-shakes the rest away automatically.
 
 ## Performance issues
 

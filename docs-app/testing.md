@@ -117,7 +117,7 @@ map to render. Don't forget to wait for it — even if you don't need any of
 the instances it returns, you still need the map to have settled before
 you can assert anything about it.
 
-```js
+```gts
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';

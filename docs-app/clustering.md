@@ -29,7 +29,7 @@ the cluster instead of straight to the map. Don't mix it up with the
 regular `Marker` yielded by the map itself.
 :::
 
-```gjs
+```gts
 import { GMap } from 'ember-google-maps';
 import { MarkerClusterer, ClusterMarker } from 'ember-google-maps-clustering';
 
@@ -62,7 +62,7 @@ clustering-specific events: `@onClusteringbegin` and `@onClusteringend`.
 Keep in mind these can fire more than once during a single render, since
 clustering happens in batches.
 
-```gjs
+```gts
 <MarkerClusterer
   @onClusteringbegin={{this.onClusteringBegin}}
   @onClusteringend={{this.onClusteringEnd}}

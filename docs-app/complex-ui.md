@@ -36,37 +36,38 @@ Here's a walkthrough of the pieces involved:
    rental, which drives the tooltip and list-card animation. `@onClick`
    scrolls the clicked rental's card into view in the list.
 
-```js
+```gts
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
 import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { GMap, Overlay } from 'ember-google-maps';
 
 export default class RentalsMap extends Component {
-  @tracked bounds;
+  @tracked bounds?: google.maps.LatLngBounds;
+  map?: google.maps.Map;
 
   get visibleRentals() {
-    if (!this.bounds) return this.args.rentals;
+    const bounds = this.bounds;
+    if (!bounds) return this.args.rentals;
 
-    return this.args.rentals.filter((rental) => this.bounds.contains(rental));
+    return this.args.rentals.filter((rental) => bounds.contains(rental));
   }
 
-  @action
-  onMapReady(map) {
+  onMapReady = (map: google.maps.Map) => {
     this.map = map;
-  }
+  };
 
-  @action
-  onBoundsChanged() {
-    this.bounds = this.map.getBounds();
-  }
+  onBoundsChanged = () => {
+    this.bounds = this.map!.getBounds();
+  };
 
-  @action
-  toggleActive(rental, active) {
+  // A rental's shape isn't defined by this addon -- it's whatever data your
+  // own app models a rental as, so it's left inferred rather than
+  // fabricating an interface.
+  toggleActive = (rental, active: boolean) => {
     rental.active = active;
-  }
+  };
 
   <template>
     <GMap
