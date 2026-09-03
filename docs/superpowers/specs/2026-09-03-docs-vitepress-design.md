@@ -201,3 +201,24 @@ under `.vitepress/dist`.
   (existing `docs.yml` already references
   `secrets.GOOGLE_MAPS_DOCS_API_KEY` — reused as-is, not part of this
   plan).
+
+## Findings
+
+**2026-09-03 — plain `@service` injection on an ordinary Glimmer
+Component does not work under `vite-plugin-ember`.**
+
+Diagnostic steps (Task 3): a disposable `TestService` was registered
+via `setupEmber(app, { services: { 'test-service': new TestService() }
+})`, and a plain Glimmer Component using `@service testService` was
+rendered at a temporary `/service-check` route. The rendered output was
+`result: ` (blank) — the same failure mode documented for Fix 3
+(`MapComponentManager`), which uses a non-EmberObject class. This means
+the failure is not specific to non-EmberObject classes; it applies to
+`@service` injection broadly under this setup, including on ordinary
+Glimmer Components.
+
+Consequence for Task 5 (the map page): map style data cannot rely on
+plain `@service` injection on Glimmer Components either. It needs the
+same kind of workaround as Fix 3 — a direct `getOwner(this).lookup(...)`
+call — or another mechanism that does not depend on Ember's
+`@service` decorator working under `vite-plugin-ember`'s minimal owner.
