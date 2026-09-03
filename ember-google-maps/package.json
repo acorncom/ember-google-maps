@@ -1,13 +1,26 @@
 {
   "name": "ember-google-maps",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "description": "Add Google Maps to your Ember app declaratively.",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "google-maps",
+    "g-map",
+    "google",
+    "map",
+    "maps"
   ],
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/acorncom/ember-google-maps.git",
+    "directory": "ember-google-maps"
+  },
   "license": "MIT",
   "author": "",
+  "contributors": [
+    "David Baker <acorncom+hey@gmail.com>",
+    "Sander Melnikov <hey@sandydoo.me>"
+  ],
   "imports": {
     "#src/*": "./src/*"
   },
