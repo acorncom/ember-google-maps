@@ -1,0 +1,54 @@
+name: Deploy docs
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs-app/**'
+      - 'ember-google-maps/**'
+      - 'ember-google-maps-directions/**'
+      - '.github/workflows/docs.yml'
+
+concurrency:
+  group: deploy-docs
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: wyvox/action-setup-pnpm@v2
+        with:
+          node-version: '22'
+      - name: Build the addon packages
+        run: >-
+          pnpm
+          --filter ember-google-maps
+          --filter ember-google-maps-directions
+          build
+      - name: Build docs-app
+        run: pnpm --filter docs-app build
+        env:
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_DOCS_API_KEY }}
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs-app/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
