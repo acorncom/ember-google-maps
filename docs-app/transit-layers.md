@@ -39,10 +39,9 @@ doesn't get wrapped in a runloop for free. In a real Ember app you'd just
 write `this.layer = newLayer` — no `run()` needed.
 :::
 
-```gjs live
+```gts live
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
 import { run } from '@ember/runloop';
 import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
@@ -50,16 +49,17 @@ import { GMap, TrafficLayer, TransitLayer, BicyclingLayer } from 'ember-google-m
 
 const LONDON = { lat: 51.507568, lng: -0.127762 };
 
-export default class TransitLayersExample extends Component {
-  @tracked layer = 'traffic';
+type Layer = 'traffic' | 'transit' | 'bicycling';
 
-  @action
-  switchLayer(newLayer) {
+export default class TransitLayersExample extends Component {
+  @tracked layer: Layer = 'traffic';
+
+  switchLayer = (newLayer: Layer) => {
     // run() is only needed in this live docs sandbox (no Ember event
     // dispatcher to wrap the handler in a runloop); a real Ember app
     // doesn't need it.
     run(() => (this.layer = newLayer));
-  }
+  };
 
   get isTraffic() {
     return this.layer === 'traffic';

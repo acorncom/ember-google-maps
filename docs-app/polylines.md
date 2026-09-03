@@ -20,10 +20,9 @@ Use the `Polyline` component to create a new polyline.
 
 Click on the map to append new points to the polyline.
 
-```gjs live
+```gts live
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
 import { GMap, Polyline } from 'ember-google-maps';
 
 const LONDON = { lat: 51.507568, lng: -0.127762 };
@@ -37,12 +36,14 @@ export default class PolylinesExample extends Component {
     { lat: 51.500154286474746, lng: 0.05218505859375 },
   ];
 
-  @action
-  appendPoint(event) {
-    let { latLng } = event.googleEvent;
+  // event is the addon's own MapComponent click payload (routed through its
+  // internal runloop wrapping already), not a raw DOM event — no run()
+  // needed here.
+  appendPoint = (event) => {
+    const { latLng } = event.googleEvent;
 
     this.path = [...this.path, { lat: latLng.lat(), lng: latLng.lng() }];
-  }
+  };
 
   <template>
     <p>Points: {{this.path.length}}</p>
