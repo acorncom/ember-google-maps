@@ -31,5 +31,17 @@ allowBuilds:
 # 2.3.0 then throws "Requires Babel ^7.0.0-0, but was loaded with 8.0.1".
 # Forcing a single decorator-transforms line (2.4.0, which supports both
 # Babel 7 and 8) removes the ambiguity.
+#
+# @babel/plugin-transform-typescript override (same bug, different plugin):
+# ember-live-compiler passes '@babel/plugin-transform-typescript' to Babel as
+# a bare string (for `.gts` compiles), so Babel resolves it itself starting
+# from the file being compiled rather than from ember-live-compiler's own
+# node_modules. Several workspace devDependencies (the addon's own Babel-7
+# build stack) pull in @babel/plugin-transform-typescript@7.29.7, and that
+# copy wins the lookup instead of the 8.0.1 copy ember-live-compiler actually
+# depends on -- throwing the same "Requires Babel ^7.0.0-0, but was loaded
+# with 8.0.1" error, this time for `gts live` docs samples. Forcing a single
+# 8.0.1 line removes the ambiguity.
 overrides:
   decorator-transforms: ^2.4.0
+  '@babel/plugin-transform-typescript': ^8.0.1

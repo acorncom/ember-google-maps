@@ -31,10 +31,9 @@ doesn't get wrapped in a runloop for free. In a real Ember app you'd just
 write `this.radius = value` in the handler — no `run()` needed.
 :::
 
-```gjs live
+```gts live
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
 import { run } from '@ember/runloop';
 import { on } from '@ember/modifier';
 import { GMap, Circle } from 'ember-google-maps';
@@ -45,20 +44,18 @@ export default class CirclesExample extends Component {
   @tracked radius = 1000;
   @tracked fillColor = '#00F900';
 
-  @action
-  updateRadius(event) {
-    let value = event.target.valueAsNumber;
+  updateRadius = (event: Event) => {
+    const input = event.target as HTMLInputElement;
     // run() is only needed in this live docs sandbox (no Ember event
     // dispatcher to wrap the handler in a runloop); a real Ember app
     // doesn't need it.
-    run(() => (this.radius = value));
-  }
+    run(() => (this.radius = input.valueAsNumber));
+  };
 
-  @action
-  updateFillColor(event) {
-    let value = event.target.value;
-    run(() => (this.fillColor = value));
-  }
+  updateFillColor = (event: Event) => {
+    const input = event.target as HTMLInputElement;
+    run(() => (this.fillColor = input.value));
+  };
 
   <template>
     <div>
