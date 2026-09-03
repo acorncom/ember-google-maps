@@ -19,6 +19,7 @@ import prettier from 'eslint-config-prettier';
 import ember from 'eslint-plugin-ember/recommended';
 import importPlugin from 'eslint-plugin-import';
 import n from 'eslint-plugin-n';
+import tseslint from 'typescript-eslint';
 import globals from 'globals';
 
 const esmParserOptions = {
@@ -88,6 +89,15 @@ export default defineConfig([
     rules: {
       // require relative imports use full extensions
       'import/extensions': ['error', 'always', { ignorePackages: true }],
+    },
+  },
+  {
+    files: ['**/*.ts', '**/*.d.ts'],
+    extends: [...tseslint.configs.recommended],
+    rules: {
+      // Hand-written .d.ts files declare ambient shapes without runtime
+      // backing; the whole point is describing values that exist elsewhere.
+      '@typescript-eslint/no-unused-vars': 'off',
     },
   },
   /**

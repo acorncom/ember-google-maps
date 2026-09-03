@@ -4,8 +4,8 @@
 // context/registry code. Extend `TypicalMapComponent` for a standard
 // google.maps object with `setMap(map)` (marker/shape/layer style); extend
 // `MapComponent` directly for anything custom. See spec D3 / §4.3.
-export { default as MapComponent } from './components/g-map/map-component.js';
-export { default as TypicalMapComponent } from './components/g-map/typical-map-component.js';
+export { default as MapComponent } from './components/g-map/map-component.ts';
+export { default as TypicalMapComponent } from './components/g-map/typical-map-component.ts';
 
 export { default as GMap } from './components/g-map.gjs';
 export { default as Canvas } from './components/g-map/canvas.gjs';

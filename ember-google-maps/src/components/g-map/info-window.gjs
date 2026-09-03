@@ -1,4 +1,4 @@
-import MapComponent from './map-component.js';
+import MapComponent from './map-component.ts';
 import { tracked } from '@glimmer/tracking';
 import { toLatLng } from '../../utils/helpers.js';
 

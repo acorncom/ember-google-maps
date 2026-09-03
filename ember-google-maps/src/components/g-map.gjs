@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import { waitFor } from '@ember/test-waiters';
 import { DEBUG } from '@glimmer/env';
 
-import MapComponent from './g-map/map-component.js';
+import MapComponent from './g-map/map-component.ts';
 import Canvas from './g-map/canvas.gjs';
 import { ContextProvider, CONTEXT_KEY } from '../context.js';
 import { toLatLng } from '../utils/helpers.js';

@@ -5,6 +5,7 @@
 # dependencies
 /node_modules/
 /legacy/node_modules/
+/verify-published-types/node_modules/
 
 # misc
 /.env*

@@ -37,6 +37,22 @@ jobs:
       # ship lint configs yet (a cleanup follow-up).
       - run: pnpm --filter ember-google-maps --filter test-app-basic lint
 
+  verify-published-types:
+    name: Verify published types
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: wyvox/action-setup-pnpm@v2
+        with:
+          node-version: '22'
+      # test-app-basic's Glint fixture resolves ember-google-maps through a
+      # pnpm workspace symlink, which never walks package.json's exports
+      # map -- it can't catch exports-map or declarations-build-wiring bugs
+      # by construction. This packs the addon for real and typechecks
+      # against the tarball, the same as any actual consumer would get.
+      - run: pnpm verify:published-types
+
   test:
     name: Tests (real Google)
     runs-on: ubuntu-latest

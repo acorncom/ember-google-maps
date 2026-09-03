@@ -1,4 +1,4 @@
-import TypicalMapComponent from './typical-map-component.js';
+import TypicalMapComponent from './typical-map-component.ts';
 
 export default class BicyclingLayer extends TypicalMapComponent {
   get name() {
