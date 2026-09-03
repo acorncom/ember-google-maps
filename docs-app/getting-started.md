@@ -23,4 +23,4 @@ ENV['ember-google-maps'] = {
 };
 ```
 
-If your requirements are more complex and statically building the URL is too restrictive, you can always override the URL at runtime (the "advanced" page covers this — coming soon).
+If your requirements are more complex and statically building the URL is too restrictive, you can always override the URL at runtime — the [advanced page](/advanced) covers this.

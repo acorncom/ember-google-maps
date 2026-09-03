@@ -19,7 +19,8 @@ wherever you want it in your markup — instead:
 This opt-out path is a known gap in the current v2 rewrite: placing
 `Canvas` yourself doesn't yet receive the "map is ready" handoff that
 `GMap` wires up for its own automatic canvas, so the map never actually
-mounts. Until that's fixed, stick with the automatic canvas.
+mounts. This is tracked in [issue #10](https://github.com/acorncom/ember-google-maps/issues/10).
+Until that's fixed, stick with the automatic canvas.
 
 The good news is you don't need `Canvas` at all for the common reason
 you'd reach for it — positioning other elements above or below the map.

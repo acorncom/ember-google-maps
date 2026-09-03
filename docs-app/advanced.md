@@ -13,7 +13,7 @@ set in `environment.js`.
 ```js
 // app/services/google-maps-api.js
 import GoogleMapsApiService from 'ember-google-maps/services/google-maps-api';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 
 export default class extends GoogleMapsApiService {
   @service currentUser;
@@ -35,7 +35,7 @@ just return the promise — it'll resolve with the right URL for the API.
 ```js
 // app/services/google-maps-api.js
 import GoogleMapsApiService from 'ember-google-maps/services/google-maps-api';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 
 export default class extends GoogleMapsApiService {
   @service store;
