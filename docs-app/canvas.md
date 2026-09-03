@@ -30,7 +30,7 @@ Since `GMap` only ever renders that one canvas `div`, plain HTML around
 
 ## Example
 
-```gjs live
+```gts live
 import { GMap, Marker } from 'ember-google-maps';
 
 <template>

@@ -28,10 +28,9 @@ Remember these are Google Maps events, not Ember events — see
 
 Click on a marker to find out its coordinates.
 
-```gjs live
+```gts live
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
 import { getOwner } from '@ember/owner';
 import { fn } from '@ember/helper';
 import { GMap, Marker } from 'ember-google-maps';
@@ -51,21 +50,22 @@ export default class MarkersExample extends Component {
   }
 
   get locations() {
-    let { maps } = this.google;
+    const { maps } = this.google;
 
     if (!maps) {
       return [];
     }
 
-    let origin = new maps.LatLng(LONDON.lat, LONDON.lng);
+    const origin = new maps.LatLng(LONDON.lat, LONDON.lng);
 
     return createLocations(this.google, origin);
   }
 
-  @action
-  flash(location) {
+  // location comes from the untyped createLocations() helper (plain JS, no
+  // declarations) -- left inferred rather than fabricating a shape.
+  flash = (location) => {
     this.message = `Clicked: ${location.lat}, ${location.lng}`;
-  }
+  };
 
   <template>
     <p><strong>{{this.message}}</strong></p>

@@ -52,10 +52,9 @@ the event right away.
 The map below has five event listeners wired up — see if you can find them
 all by panning, clicking, double-clicking, and zooming.
 
-```gjs live
+```gts live
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
 import { fn } from '@ember/helper';
 import { GMap } from 'ember-google-maps';
 
@@ -63,10 +62,9 @@ export default class EventsExample extends Component {
   @tracked message =
     'Pan, click, double-click, or zoom the map to see events fire here.';
 
-  @action
-  flash(text) {
+  flash = (text: string) => {
     this.message = text;
-  }
+  };
 
   <template>
     <p><strong>{{this.message}}</strong></p>
@@ -103,14 +101,12 @@ handler receives:
 
 ```js
 import Component from '@glimmer/component';
-import { action } from '@ember/object';
 
 export default class Example extends Component {
-  @action
-  onMarkerClick(event) {
+  onMarkerClick = (event) => {
     event.stopPropagation();
 
     // ...
-  }
+  };
 }
 ```
