@@ -1,0 +1,13 @@
+import { LinkTo } from '@ember/routing';
+
+<template>
+  <nav class="sticky-top sticky-top-offset">
+    <ul class="nav flex-md-column justify-content-center">
+      {{#each @links as |l|}}
+        <li class="nav-item">
+          <LinkTo @route={{l.path}} class="nav-link">{{l.title}}</LinkTo>
+        </li>
+      {{/each}}
+    </ul>
+  </nav>
+</template>
