@@ -1,4 +1,4 @@
-// Shared by the `markers` and `overlays` docs pages. Ported from v1's
+// Shared by the `markers`, `advanced-markers`, and `overlays` docs pages. Ported from v1's
 // `app/services/map-data.js#createLocations` — the original read `this.google`
 // off an injected service; this version takes `google` as a plain argument so
 // it has no service dependency at all (services don't work in live fences here,
