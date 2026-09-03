@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ember-google-maps docs</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafgraph/spa-github-pages
+      // MIT License
+      //
+      // This script takes the current url and converts the path and query
+      // string into just a query string, and then redirects the browser to
+      // the new url with only a query string and hash fragment, if any.
+
+      // pathSegmentsToKeep = 0 assumes the site is deployed at a domain root
+      // (custom domain) or a user/org root Pages site, matching this app's
+      // current rootURL: '/' in config/environment.js. If the site ends up
+      // deployed at a project-pages subpath instead (e.g.
+      // https://acorncom.github.io/ember-google-maps/), BOTH this value AND
+      // config/environment.js's rootURL must change together — they encode
+      // the same assumption and will silently drift apart if only one is
+      // updated.
+      var pathSegmentsToKeep = 0;
+
+      var l = window.location;
+      l.replace(
+        l.protocol +
+          '//' +
+          l.hostname +
+          (l.port ? ':' + l.port : '') +
+          l.pathname
+            .split('/')
+            .slice(0, 1 + pathSegmentsToKeep)
+            .join('/') +
+          '/?/' +
+          l.pathname
+            .slice(1)
+            .split('/')
+            .slice(pathSegmentsToKeep)
+            .join('/')
+            .replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash,
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

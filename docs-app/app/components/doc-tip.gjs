@@ -18,7 +18,7 @@ export default class DocTip extends Component {
   }
 
   <template>
-    <div class="doc-card {{this.cardClassNames}}">
+    <div class="doc-card {{this.cardClassNames}}" ...attributes>
       <p class="m-0">
         {{#if this.badgeText}}
           <span class="badge {{this.badgeClassNames}}">{{this.badgeText}}</span>
