@@ -23,7 +23,6 @@ export default {
       {
         runtime: {
           import: fileURLToPath(
-            // eslint-disable-next-line n/no-unsupported-features/node-builtins
             import.meta.resolve('decorator-transforms/runtime-esm'),
           ),
         },
