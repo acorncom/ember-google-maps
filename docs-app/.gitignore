@@ -1,0 +1,18 @@
+# compiled output
+dist/
+dist-tests/
+declarations/
+
+# deps & caches
+node_modules/
+
+# vitepress
+.vitepress/dist/
+.vitepress/cache/
+
+# npm/pnpm/yarn pack output
+*.tgz
+
+# misc
+*.local
+.eslintcache
