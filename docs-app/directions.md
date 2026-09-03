@@ -130,10 +130,9 @@ step markers below all render.
 
 Click a marker to see that step's instructions, once a route is available.
 
-```gjs live
+```gts live
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
 import { fn, hash } from '@ember/helper';
 import { GMap, Marker, InfoWindow } from 'ember-google-maps';
 import { Directions, Route, Waypoint } from 'ember-google-maps-directions';
@@ -143,7 +142,7 @@ const LONDON = { lat: 51.507568, lng: -0.127762 };
 
 export default class DirectionsExample extends Component {
   @tracked directionsResult = null;
-  @tracked openStepIndex = null;
+  @tracked openStepIndex: number | null = null;
 
   get routeSteps() {
     return getRouteSteps(this.directionsResult);
@@ -157,20 +156,20 @@ export default class DirectionsExample extends Component {
     }));
   }
 
-  @action
-  onDirectionsChanged(directionsAPI) {
+  // directionsAPI comes from the untyped ember-google-maps-directions
+  // package (no declarations yet) -- left inferred rather than fabricating
+  // a shape.
+  onDirectionsChanged = (directionsAPI) => {
     this.directionsResult = directionsAPI.directions;
-  }
+  };
 
-  @action
-  toggleStep(index) {
+  toggleStep = (index: number) => {
     this.openStepIndex = this.openStepIndex === index ? null : index;
-  }
+  };
 
-  @action
-  closeStep() {
+  closeStep = () => {
     this.openStepIndex = null;
-  }
+  };
 
   <template>
     <GMap
