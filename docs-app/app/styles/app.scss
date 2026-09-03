@@ -122,6 +122,18 @@ var {
   max-width: 46em;
 }
 
+// Bootstrap 5 only applies column gutter padding to `.row > *` (see
+// mixins/_grid.scss's make-col-ready()); Bootstrap 4 applied it directly to
+// any `.col`/`.col-*` unconditionally. v1's docs layout uses a bare `.col`
+// inside `.d-md-flex` (not `.row`), and relied on that BS4 behavior for the
+// gap between the sidebar and the content column. Reproduce it with
+// Bootstrap's own mixin, scoped to this layout, rather than hand-picking a
+// padding value -- v1's real site has no explicit gap rule either, it's
+// entirely this padding.
+.d-md-flex > .col {
+  @include make-col-ready();
+}
+
 .col-sidebar {
   flex-shrink: 0;
   margin-top: -0.4em;
