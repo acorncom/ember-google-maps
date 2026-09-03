@@ -34,7 +34,7 @@ jobs:
           node-version: '22'
       # The packages with lint configs. The directions/clusterer packages don't
       # ship lint configs yet (a cleanup follow-up).
-      - run: pnpm --filter ember-google-maps --filter test-app-basic lint
+      - run: pnpm --filter ember-google-maps --filter test-app-basic --filter docs-app lint
 
   test:
     name: Tests (real Google)

@@ -1,6 +1,7 @@
 packages:
   - ember-google-maps
   - ember-google-maps-directions
+  - docs-app
   - test-app-*
   - test-addon-*
 
