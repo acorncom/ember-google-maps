@@ -2,7 +2,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
 
-import MapComponent from './map-component.js';
+import MapComponent from './map-component.ts';
 import didInsert from '../../modifiers/g-map/did-insert.js';
 import { waitForAttach } from '../../utils/wait-for-attach.js';
 

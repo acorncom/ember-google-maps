@@ -3,7 +3,7 @@ import { guidFor } from '@ember/object/internals';
 import { assert } from '@ember/debug';
 import { hash } from '@ember/helper';
 
-import MapComponent from './map-component.js';
+import MapComponent from './map-component.ts';
 import didInsert from '../../modifiers/g-map/did-insert.js';
 
 export default class Autocomplete extends MapComponent {

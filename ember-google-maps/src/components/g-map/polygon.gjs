@@ -1,4 +1,4 @@
-import TypicalMapComponent from './typical-map-component.js';
+import TypicalMapComponent from './typical-map-component.ts';
 
 // (v1 legacy had this class misnamed `Polyline` — fixed to `Polygon`, which also
 // corrects the `<${constructor.name}>` dev assert message.)

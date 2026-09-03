@@ -1,4 +1,4 @@
-import TypicalMapComponent from './typical-map-component.js';
+import TypicalMapComponent from './typical-map-component.ts';
 import { toLatLng } from '../../utils/helpers.js';
 
 export default class AdvancedMarker extends TypicalMapComponent {
