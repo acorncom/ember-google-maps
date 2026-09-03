@@ -50,6 +50,7 @@ import { tracked } from '@glimmer/tracking';
 import { getOwner } from '@ember/owner';
 import { fn } from '@ember/helper';
 import { GMap, AdvancedMarker } from 'ember-google-maps';
+import type GoogleMapsApiService from 'ember-google-maps/services/google-maps-api';
 import { createLocations } from './lib/create-locations.js';
 
 const LONDON = { lat: 51.507568, lng: -0.127762 };
@@ -58,7 +59,12 @@ export default class AdvancedMarkersExample extends Component {
   @tracked message = 'Click on a marker to find out its coordinates.';
 
   get googleMapsApi() {
-    return getOwner(this).lookup('service:google-maps-api');
+    // getOwner(this) is always defined once a component instance exists;
+    // the non-null assertion just tells TypeScript what Ember already
+    // guarantees at runtime.
+    return getOwner(this)!.lookup(
+      'service:google-maps-api',
+    ) as GoogleMapsApiService;
   }
 
   get google() {

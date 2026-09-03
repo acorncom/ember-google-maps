@@ -50,13 +50,19 @@ JavaScript state involved.
 import Component from '@glimmer/component';
 import { getOwner } from '@ember/owner';
 import { GMap, Overlay } from 'ember-google-maps';
+import type GoogleMapsApiService from 'ember-google-maps/services/google-maps-api';
 import { createLocations } from './lib/create-locations.js';
 
 const LONDON = { lat: 51.507568, lng: -0.127762 };
 
 export default class OverlaysExample extends Component {
   get googleMapsApi() {
-    return getOwner(this).lookup('service:google-maps-api');
+    // getOwner(this) is always defined once a component instance exists;
+    // the non-null assertion just tells TypeScript what Ember already
+    // guarantees at runtime.
+    return getOwner(this)!.lookup(
+      'service:google-maps-api',
+    ) as GoogleMapsApiService;
   }
 
   get google() {

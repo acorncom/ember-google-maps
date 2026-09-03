@@ -43,7 +43,25 @@ import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { GMap, Overlay } from 'ember-google-maps';
 
-export default class RentalsMap extends Component {
+// A rental's full shape isn't defined by this addon -- it's whatever data
+// your own app models a rental as. This interface only names the fields the
+// demo itself touches (lat/lng for the map, price for the tooltip, active
+// for the hover state); your app's real rental model will have more.
+interface Rental {
+  lat: number;
+  lng: number;
+  price: number;
+  active?: boolean;
+}
+
+interface RentalsMapSignature {
+  Args: {
+    rentals: Rental[];
+    mapStyle?: google.maps.MapTypeStyle[];
+  };
+}
+
+export default class RentalsMap extends Component<RentalsMapSignature> {
   @tracked bounds?: google.maps.LatLngBounds;
   map?: google.maps.Map;
 
@@ -62,10 +80,7 @@ export default class RentalsMap extends Component {
     this.bounds = this.map!.getBounds();
   };
 
-  // A rental's shape isn't defined by this addon -- it's whatever data your
-  // own app models a rental as, so it's left inferred rather than
-  // fabricating an interface.
-  toggleActive = (rental, active: boolean) => {
+  toggleActive = (rental: Rental, active: boolean) => {
     rental.active = active;
   };
 
