@@ -28,10 +28,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: wyvox/action-setup-pnpm@v2
+      - uses: actions/checkout@v7
+      - uses: acorncom/action-setup-pnpm@v4.0.1
         with:
           node-version: '22'
+          node-version-file: ''
       # The packages with lint configs. The directions/clusterer packages don't
       # ship lint configs yet (a cleanup follow-up).
       - run: pnpm --filter ember-google-maps --filter test-app-basic lint
@@ -41,10 +42,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: wyvox/action-setup-pnpm@v2
+      - uses: actions/checkout@v7
+      - uses: acorncom/action-setup-pnpm@v4.0.1
         with:
           node-version: '22'
+          node-version-file: ''
       # Build the addon packages (topological order: core first) so the test
       # app resolves their built dist through the workspace.
       - name: Build addons
@@ -104,10 +106,10 @@ jobs:
   #         - try-scenario: embroider-optimized
   #           allow-failure: true
   #   steps:
-  #     - uses: actions/checkout@v3
+  #     - uses: actions/checkout@v7
   #     - name: Prepare
   #       run: ./.github/scripts/setup-ci.sh
-  #     - uses: wyvox/action-setup-pnpm@v2
+  #     - uses: acorncom/action-setup-pnpm@v4.0.1
   #       with:
   #         node-version: ${{ env.node-version }}
   #     - name: Run Tests
