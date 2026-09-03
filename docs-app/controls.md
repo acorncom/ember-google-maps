@@ -28,7 +28,7 @@ plain integers under the hood. You don't normally have access to the
 `google` global in a template, so the safe way to reach it is through the
 `google-maps-api` service, looked up via `getOwner`:
 
-```js
+```ts
 import { getOwner } from '@ember/owner';
 
 get google() {
@@ -58,35 +58,39 @@ position.
 Grab the underlying `google.maps.Map` instance with `@onReady` on `GMap`,
 then use it in your button's click handler:
 
-```hbs
-<GMap
-  @lat={{51.5074}}
-  @lng={{-0.1278}}
-  @zoom={{12}}
-  @onReady={{this.onMapReady}}
->
-  <Marker @lat={{51.5074}} @lng={{-0.1278}} />
+```gts
+import Component from '@glimmer/component';
+import { on } from '@ember/modifier';
+import { GMap, Marker, Control } from 'ember-google-maps';
 
-  <Control @position="TOP_CENTER">
-    <button type="button" {{on "click" this.recenterMap}}>
-      Recenter map
-    </button>
-  </Control>
-</GMap>
-```
+export default class MapWithControls extends Component {
+  map?: google.maps.Map;
 
-```js
-import { action } from '@ember/object';
+  onMapReady = (map: google.maps.Map) => {
+    this.map = map;
+  };
 
-@action
-onMapReady(map) {
-  this.map = map;
-}
+  recenterMap = () => {
+    this.map!.setZoom(12);
+    this.map!.panTo({ lat: 51.5074, lng: -0.1278 });
+  };
 
-@action
-recenterMap() {
-  this.map.setZoom(12);
-  this.map.panTo({ lat: 51.5074, lng: -0.1278 });
+  <template>
+    <GMap
+      @lat={{51.5074}}
+      @lng={{-0.1278}}
+      @zoom={{12}}
+      @onReady={{this.onMapReady}}
+    >
+      <Marker @lat={{51.5074}} @lng={{-0.1278}} />
+
+      <Control @position="TOP_CENTER">
+        <button type="button" {{on "click" this.recenterMap}}>
+          Recenter map
+        </button>
+      </Control>
+    </GMap>
+  </template>
 }
 ```
 
@@ -94,25 +98,24 @@ recenterMap() {
 
 Pan or zoom the map around, then click the button to snap it back.
 
-```gjs live
+```gts live
 import Component from '@glimmer/component';
-import { action } from '@ember/object';
 import { on } from '@ember/modifier';
 import { GMap, Marker, Control } from 'ember-google-maps';
 
 const LONDON = { lat: 51.507568, lng: -0.127762 };
 
 export default class ControlsExample extends Component {
-  @action
-  onMapReady(map) {
-    this.map = map;
-  }
+  map?: google.maps.Map;
 
-  @action
-  recenterMap() {
-    this.map.setZoom(12);
-    this.map.panTo(LONDON);
-  }
+  onMapReady = (map: google.maps.Map) => {
+    this.map = map;
+  };
+
+  recenterMap = () => {
+    this.map!.setZoom(12);
+    this.map!.panTo(LONDON);
+  };
 
   <template>
     <GMap

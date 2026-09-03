@@ -67,10 +67,9 @@ Maps events routed through the addon's own event system, so they don't
 need it either — only the plain DOM checkboxes do.
 :::
 
-```gjs live
+```gts live
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
 import { run } from '@ember/runloop';
 import { on } from '@ember/modifier';
 import { GMap, Marker, InfoWindow } from 'ember-google-maps';
@@ -88,35 +87,30 @@ export default class InfoWindowsExample extends Component {
   @tracked markerTooltipOpen = false;
 
   // Toggled from the plain DOM checkboxes below.
-  @action
-  toggleMapTooltipCheckbox() {
+  toggleMapTooltipCheckbox = () => {
     // run() is only needed in this live docs sandbox (no Ember event
     // dispatcher to wrap the handler in a runloop); a real Ember app
     // doesn't need it.
     run(() => (this.mapTooltipOpen = !this.mapTooltipOpen));
-  }
+  };
 
-  @action
-  toggleMarkerTooltipCheckbox() {
+  toggleMarkerTooltipCheckbox = () => {
     run(() => (this.markerTooltipOpen = !this.markerTooltipOpen));
-  }
+  };
 
   // Google Maps events, routed through the addon's own event system — no
   // run() needed here.
-  @action
-  markerClicked() {
+  markerClicked = () => {
     this.markerTooltipOpen = !this.markerTooltipOpen;
-  }
+  };
 
-  @action
-  closeMapTooltip() {
+  closeMapTooltip = () => {
     this.mapTooltipOpen = false;
-  }
+  };
 
-  @action
-  closeMarkerTooltip() {
+  closeMarkerTooltip = () => {
     this.markerTooltipOpen = false;
-  }
+  };
 
   <template>
     <p>
