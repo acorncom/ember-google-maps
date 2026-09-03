@@ -20,3 +20,16 @@ allowBuilds:
 # OPEN ITEM: keeping the addon and each test-app on the SAME ember-source per
 # matrix scenario (mismatched versions -> duplicate Glimmer runtimes -> context
 # silently breaks) still needs a wiring decision.
+
+# decorator-transforms override (unrelated to the ember-source policy above):
+# several workspace devDependencies (e.g. ember-strict-application-resolver)
+# pull in decorator-transforms@2.3.0, which only supports Babel 7. docs-app's
+# vite-plugin-ember pipeline runs on @babel/core@8.0.1 (via ember-live-compiler),
+# and Babel's own plugin-name resolution for decorator-transforms's
+# `module:decorator-transforms` string plugin can pick up that older 2.3.0
+# copy instead of the 2.4.0 one vite-plugin-ember actually depends on --
+# 2.3.0 then throws "Requires Babel ^7.0.0-0, but was loaded with 8.0.1".
+# Forcing a single decorator-transforms line (2.4.0, which supports both
+# Babel 7 and 8) removes the ambiguity.
+overrides:
+  decorator-transforms: ^2.4.0

@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: false
   excludeLinksFromLockfile: false
 
+overrides:
+  decorator-transforms: ^2.4.0
+
 importers:
 
   .: {}
@@ -48,8 +51,8 @@ importers:
         specifier: ^1.20.5
         version: 1.20.5(@babel/core@7.26.0)(@glint/template@1.9.0)
       decorator-transforms:
-        specifier: ^2.2.2
-        version: 2.3.0(@babel/core@7.26.0)
+        specifier: ^2.4.0
+        version: 2.4.0(@babel/core@7.26.0)
       ember-modifier:
         specifier: ^4.3.0
         version: 4.3.0(@babel/core@7.26.0)
@@ -193,7 +196,7 @@ importers:
         specifier: ^1.20.5
         version: 1.20.5(@babel/core@7.29.7)(@glint/template@1.9.0)
       decorator-transforms:
-        specifier: ^2.2.2
+        specifier: ^2.4.0
         version: 2.4.0(@babel/core@7.29.7)
       ember-concurrency:
         specifier: ^5.0.0
@@ -317,7 +320,7 @@ importers:
         specifier: ^2.6.2
         version: 2.6.2
       decorator-transforms:
-        specifier: ^2.2.2
+        specifier: ^2.4.0
         version: 2.4.0(@babel/core@7.29.7)
       ember-google-maps:
         specifier: workspace:*
@@ -529,7 +532,7 @@ importers:
         specifier: ^9.2.3
         version: 9.2.3
       decorator-transforms:
-        specifier: ^2.3.2
+        specifier: ^2.4.0
         version: 2.4.0(@babel/core@7.29.7)
       dotenv-cli:
         specifier: ^11.0.0
@@ -4264,12 +4267,6 @@ packages:
 
   decimal.js@10.6.0:
     resolution: {integrity: sha512-YpgQiITW3JXGntzdUmyUR1V812Hn8T1YVXhCu+wO3OpS4eU9l4YdD3qjyiKdV6mvV29zapkMeD390UVEf2lkUg==}
-
-  decorator-transforms@1.2.1:
-    resolution: {integrity: sha512-UUtmyfdlHvYoX3VSG1w5rbvBQ2r5TX1JsE4hmKU9snleFymadA3VACjl6SRfi9YgBCSjBbfQvR1bs9PRW9yBKw==}
-
-  decorator-transforms@2.3.0:
-    resolution: {integrity: sha512-jo8c1ss9yFPudHuYYcrJ9jpkDZIoi+lOGvt+Uyp9B+dz32i50icRMx9Bfa8hEt7TnX1FyKWKkjV+cUdT/ep2kA==}
 
   decorator-transforms@2.4.0:
     resolution: {integrity: sha512-IB+0RqnJpuS7ndH4dVY5dfWTZsrCzN3avWFdjSiET0uT2U24jKywjpVEK97TflnZkZgiSRfmeqc1WfS+1CI23w==}
@@ -9143,11 +9140,6 @@ snapshots:
       '@babel/core': 7.26.0
       '@babel/helper-plugin-utils': 7.29.7
 
-  '@babel/plugin-syntax-decorators@7.25.9(@babel/core@7.29.7)':
-    dependencies:
-      '@babel/core': 7.29.7
-      '@babel/helper-plugin-utils': 7.29.7
-
   '@babel/plugin-syntax-decorators@7.29.7(@babel/core@7.26.0)':
     dependencies:
       '@babel/core': 7.26.0
@@ -11558,7 +11550,7 @@ snapshots:
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
-      '@jridgewell/sourcemap-codec': 1.5.0
+      '@jridgewell/sourcemap-codec': 1.6.0
       '@jridgewell/trace-mapping': 0.3.31
 
   '@jridgewell/gen-mapping@0.3.5':
@@ -11593,7 +11585,7 @@ snapshots:
   '@jridgewell/trace-mapping@0.3.31':
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
-      '@jridgewell/sourcemap-codec': 1.5.0
+      '@jridgewell/sourcemap-codec': 1.6.0
 
   '@keyv/bigmap@1.3.1(keyv@5.6.0)':
     dependencies:
@@ -13461,27 +13453,6 @@ snapshots:
 
   decimal.js@10.6.0: {}
 
-  decorator-transforms@1.2.1(@babel/core@7.29.7):
-    dependencies:
-      '@babel/plugin-syntax-decorators': 7.29.7(@babel/core@7.29.7)
-      babel-import-util: 2.1.1
-    transitivePeerDependencies:
-      - '@babel/core'
-
-  decorator-transforms@2.3.0(@babel/core@7.26.0):
-    dependencies:
-      '@babel/plugin-syntax-decorators': 7.25.9(@babel/core@7.26.0)
-      babel-import-util: 3.0.1
-    transitivePeerDependencies:
-      - '@babel/core'
-
-  decorator-transforms@2.3.0(@babel/core@7.29.7):
-    dependencies:
-      '@babel/plugin-syntax-decorators': 7.25.9(@babel/core@7.29.7)
-      babel-import-util: 3.0.1
-    transitivePeerDependencies:
-      - '@babel/core'
-
   decorator-transforms@2.4.0(@babel/core@7.26.0):
     dependencies:
       '@babel/core': 7.26.0
@@ -13951,9 +13922,7 @@ snapshots:
       '@babel/helper-plugin-utils': 7.29.7
       '@babel/types': 7.29.7
       '@embroider/addon-shim': 1.10.3
-      decorator-transforms: 1.2.1(@babel/core@7.29.7)
-    optionalDependencies:
-      '@glint/template': 1.9.0
+      decorator-transforms: 2.4.0(@babel/core@7.29.7)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
@@ -14117,7 +14086,7 @@ snapshots:
   ember-strict-application-resolver@0.1.1(@babel/core@7.26.0):
     dependencies:
       '@embroider/addon-shim': 1.9.0
-      decorator-transforms: 2.3.0(@babel/core@7.26.0)
+      decorator-transforms: 2.4.0(@babel/core@7.26.0)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
@@ -14125,7 +14094,7 @@ snapshots:
   ember-strict-application-resolver@0.1.1(@babel/core@7.29.7):
     dependencies:
       '@embroider/addon-shim': 1.9.0
-      decorator-transforms: 2.3.0(@babel/core@7.29.7)
+      decorator-transforms: 2.4.0(@babel/core@7.29.7)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
@@ -18346,7 +18315,7 @@ snapshots:
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.5
-      postcss: 8.5.16
+      postcss: 8.5.26
       rolldown: 1.1.4
       tinyglobby: 0.2.17
     optionalDependencies:
