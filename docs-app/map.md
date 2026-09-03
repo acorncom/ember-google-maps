@@ -21,12 +21,10 @@ Most of the components in this addon accept `lat` and `lng` parameters for conve
 
 The `GMap` component accepts all of the [MapOptions](https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions) options you would pass to a Google Map instance. These are automatically watched for changes.
 
-## Accessing the map instance
-
-If you need to access the map instance — to call `panTo` for example — you can use the `onceOnIdle` hook. It returns the map instance once the map has been initialized.
+## Example
 
 ```gjs live
-import { GMap, Marker } from 'ember-google-maps';
+import { GMap } from 'ember-google-maps';
 import { dark } from './map-styles/dark.js';
 
 <template>
@@ -42,3 +40,7 @@ import { dark } from './map-styles/dark.js';
   />
 </template>
 ```
+
+## Accessing the map instance
+
+If you need to access the map instance — to call `panTo` for example — you can use the `onceOnIdle` hook. It returns the map instance once the map has been initialized.

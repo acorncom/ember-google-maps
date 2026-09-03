@@ -32,6 +32,7 @@ function patchImportSync() {
 export default defineConfig({
   title: 'ember-google-maps',
   description: 'Documentation for ember-google-maps',
+  base: '/ember-google-maps/',
   vite: {
     plugins: [patchImportSync(), vitePluginEmber()],
     optimizeDeps: {
