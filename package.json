@@ -3,5 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "packageManager": "pnpm@11.10.0",
-  "engines": { "node": ">= 18" }
+  "engines": {
+    "node": ">= 18"
+  },
+  "scripts": {
+    "verify:published-types": "node scripts/verify-published-types.mjs"
+  }
 }

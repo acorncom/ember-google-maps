@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    // ember-source/types + @glint/ember-tsc/types: the public API re-exports
+    // hand-written types straight off the real .ts source (map-component.ts,
+    // typical-map-component.ts), which itself imports @ember/*/@glimmer/*
+    // and @glint/template -- exactly what any real Ember app consuming this
+    // package already has. allowImportingTsExtensions: that source imports
+    // its sibling with an explicit `.ts` extension (required for rollup's
+    // native ESM resolution), which TS only allows under this flag.
+    "types": ["ember-source/types", "@glint/ember-tsc/types", "google.maps"],
+    "allowImportingTsExtensions": true,
+    // map-component.ts uses @tracked -- Ember's decorators need this even
+    // though skipLibCheck otherwise keeps this fixture's own tsconfig light.
+    "experimentalDecorators": true
+  },
+  "include": ["*.probe.ts"]
+}
