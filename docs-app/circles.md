@@ -24,6 +24,13 @@ to create one.
 
 Modify the radius and fill color below and watch the circle update live.
 
+::: tip
+The `run()` calls below are only there because this live example runs in a
+sandbox with no Ember event dispatcher, so a plain `on "input"` handler
+doesn't get wrapped in a runloop for free. In a real Ember app you'd just
+write `this.radius = value` in the handler — no `run()` needed.
+:::
+
 ```gjs live
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -41,6 +48,9 @@ export default class CirclesExample extends Component {
   @action
   updateRadius(event) {
     let value = event.target.valueAsNumber;
+    // run() is only needed in this live docs sandbox (no Ember event
+    // dispatcher to wrap the handler in a runloop); a real Ember app
+    // doesn't need it.
     run(() => (this.radius = value));
   }
 
