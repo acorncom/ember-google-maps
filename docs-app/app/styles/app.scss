@@ -107,10 +107,15 @@ var {
   padding-left: 3rem;
   padding-right: 3rem;
   max-width: 1440px;
-  @include media-breakpoint-down(xs) {
-    padding-left: inherit;
-    padding-right: inherit;
-  }
+  // v1 had an `@include media-breakpoint-down(xs) { padding-left/right:
+  // inherit; }` block here, meant to relax padding on the smallest
+  // screens. Under Bootstrap 5, media-breakpoint-down(xs) has no max-width
+  // to guard against (xs has no breakpoint below it) and its mixin falls
+  // back to emitting the content completely UNGUARDED -- so it silently
+  // overrode the 3rem padding at every viewport size, not just small ones.
+  // Bootstrap 4 apparently handled that edge case differently (v1's real
+  // site renders with real padding at all sizes). Dropped rather than kept
+  // "verbatim" -- it's a version-behavior bug, not a style choice.
 }
 
 .container-body {
