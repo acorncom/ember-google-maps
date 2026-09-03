@@ -1,0 +1,10 @@
+{
+  "extends": "@ember/app-tsconfig",
+  "include": ["app/**/*.ts", "app/**/*.gts"],
+  "glint": {
+    "environment": []
+  },
+  "compilerOptions": {
+    "types": ["ember-source/types", "@glint/ember-tsc/types", "google.maps"]
+  }
+}

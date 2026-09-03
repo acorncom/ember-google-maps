@@ -24,7 +24,12 @@ export default {
     // up your addon's public API. Also make sure your package.json#exports
     // is aligned to the config here.
     // See https://github.com/embroider-build/embroider/blob/main/docs/v2-faq.md#how-can-i-define-the-public-exports-of-my-addon
-    addon.publicEntrypoints(['**/*.js', '**/*.gjs', 'index.js']),
+    addon.publicEntrypoints(
+      ['**/*.js', '**/*.gjs', '**/*.ts', '**/*.gts', 'index.js'],
+      {
+        exclude: ['**/*.d.ts'],
+      },
+    ),
 
     // These are the modules that should get reexported into the traditional
     // "app" tree. Things in here should also be in publicEntrypoints above, but
@@ -32,6 +37,8 @@ export default {
     addon.appReexports([
       'components/**/*.js',
       'components/**/*.gjs',
+      'components/**/*.ts',
+      'components/**/*.gts',
       'helpers/**/*.js',
       'helpers/**/*.gjs',
       'modifiers/**/*.js',
@@ -45,6 +52,29 @@ export default {
     // package names.
     addon.dependencies(),
 
+    // Emit .d.ts files for the real .ts/.gts source (map-component.ts,
+    // typical-map-component.ts today) via `ember-tsc --declaration`, then
+    // copy the hand-written types from unpublished-development-types/ on
+    // top of the generated output.
+    //
+    // The command is explicit (rather than the plugin's auto-detected
+    // `ember-tsc --declaration` with no -p flag) because that default
+    // resolves tsconfig.json — the dev config, which sets `noEmit: true`
+    // and has no `declarationDir` — not tsconfig.publish.json. Confirmed by
+    // running both directly: the auto-detected form exits 0 and logs
+    // "succeeded" but writes nothing; only `-p tsconfig.publish.json`
+    // actually emits declarations/.
+    //
+    // A second step is required because tsc/ember-tsc's declaration emit
+    // only relocates files under its rootDir (./src) into declarationDir;
+    // .d.ts files are exempt from that rootDir check (so they don't error)
+    // but are also not auto-copied anywhere — they're pure type inputs,
+    // consumed in place. `build:types` (a package.json script, since the
+    // declarations plugin's execa.command() call does not invoke a shell
+    // and can't run a `&&` chain directly) runs ember-tsc and then copies
+    // unpublished-development-types/ into declarations/.
+    addon.declarations('declarations', 'pnpm build:types'),
+
     // This babel config should *not* apply presets or compile away ES modules.
     // It exists only to provide development niceties for you, like automatic
     // template colocation.
@@ -52,7 +82,7 @@ export default {
     // By default, this will load the actual babel config from the file
     // babel.config.json.
     babel({
-      extensions: ['.js', '.gjs'],
+      extensions: ['.js', '.gjs', '.ts', '.gts'],
       babelHelpers: 'bundled',
       configFile: babelConfig,
     }),
