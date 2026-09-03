@@ -32,16 +32,52 @@ allowBuilds:
 # Forcing a single decorator-transforms line (2.4.0, which supports both
 # Babel 7 and 8) removes the ambiguity.
 #
-# @babel/plugin-transform-typescript override (same bug, different plugin):
-# ember-live-compiler passes '@babel/plugin-transform-typescript' to Babel as
-# a bare string (for `.gts` compiles), so Babel resolves it itself starting
-# from the file being compiled rather than from ember-live-compiler's own
-# node_modules. Several workspace devDependencies (the addon's own Babel-7
-# build stack) pull in @babel/plugin-transform-typescript@7.29.7, and that
-# copy wins the lookup instead of the 8.0.1 copy ember-live-compiler actually
-# depends on -- throwing the same "Requires Babel ^7.0.0-0, but was loaded
-# with 8.0.1" error, this time for `gts live` docs samples. Forcing a single
-# 8.0.1 line removes the ambiguity.
+# @babel/plugin-transform-typescript patch (same bug shape, different plugin,
+# fixed a different way): ember-live-compiler used to pass
+# '@babel/plugin-transform-typescript' to Babel as a bare string (for `.gts`
+# compiles). Babel resolves bare plugin-name strings itself via
+# `require.resolve`/`import-meta-resolve`, and in this workspace that lookup
+# is NOT scoped to ember-live-compiler's own dependency graph at all -- it
+# reliably lands on whichever @babel/plugin-transform-typescript copy the
+# addon's Babel-7 build stack (ember-cli-babel) pulls in, throwing
+# "Requires Babel ^7.0.0-0, but was loaded with 8.0.1" for `.gts` compiles
+# that must run on Babel 8.
+#
+# A workspace-wide `overrides` entry "fixes" this but breaks the opposite
+# direction: `ember-google-maps`'s own rollup/ember-tsc build needs the
+# Babel-7 copy of this same plugin to parse generic class `extends` clauses
+# (`typical-map-component.ts`'s `class TypicalMapComponent<S, MapInstance>
+# extends MapComponent<S>`); forcing Babel 8's copy onto it breaks
+# `pnpm --filter ember-google-maps build` with
+# `RollupError: Expected '{', got '<'`.
+#
+# A `pnpm overrides` "parent>child" selector
+# (`ember-live-compiler>@babel/plugin-transform-typescript: ^8.0.1`) looked
+# like the right scoping tool -- it does correctly pin ember-live-compiler's
+# own lockfile edge -- but does NOT control the actual runtime lookup:
+# verified empirically with `DEBUG=babel:config:loading:files:plugins` and a
+# `Module._resolveFilename` trace hook that even with that selector in
+# place, the docs build still resolved
+# `@babel+plugin-transform-typescript@7.29.7_@babel+core@7.26.0` and threw
+# the same error. A `packageExtensions` entry pinning the plugin onto
+# `@babel/core@8.0.1` specifically was also tried and also didn't change the
+# runtime lookup. Both were dead ends -- the ambiguity lives entirely inside
+# Babel's own bare-string plugin resolution, which pnpm overrides/extensions
+# can't reach.
+#
+# The fix that actually works: `patches/ember-live-compiler@0.2.4.patch`
+# (via `patchedDependencies` below) changes ember-live-compiler's compiled
+# output to `import pluginTransformTypescript from
+# '@babel/plugin-transform-typescript'` and pass the imported plugin object
+# to Babel directly, instead of the bare string. This resolves through
+# Node's normal ESM import resolution -- which IS scoped to
+# ember-live-compiler's own package.json dependency (`^8.0.1`) -- and
+# sidesteps Babel's ambiguous string-based plugin lookup entirely. No
+# workspace-wide override or extension needed: the addon's own Babel-7
+# build stack is untouched, so `pnpm --filter ember-google-maps build`
+# keeps working exactly as before this task.
 overrides:
   decorator-transforms: ^2.4.0
-  '@babel/plugin-transform-typescript': ^8.0.1
+
+patchedDependencies:
+  ember-live-compiler@0.2.4: patches/ember-live-compiler@0.2.4.patch
