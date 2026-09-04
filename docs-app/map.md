@@ -23,7 +23,7 @@ The `GMap` component accepts all of the [MapOptions](https://developers.google.c
 
 ## Example
 
-```gjs live
+```gts live
 import { GMap } from 'ember-google-maps';
 import { dark } from './map-styles/dark.js';
 

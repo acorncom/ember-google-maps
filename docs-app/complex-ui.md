@@ -77,7 +77,7 @@ export default class RentalsMap extends Component<RentalsMapSignature> {
   };
 
   onBoundsChanged = () => {
-    this.bounds = this.map!.getBounds();
+    this.bounds = this.map?.getBounds();
   };
 
   toggleActive = (rental: Rental, active: boolean) => {

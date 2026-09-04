@@ -30,9 +30,12 @@ plain integers under the hood. You don't normally have access to the
 
 ```ts
 import { getOwner } from '@ember/owner';
+import type GoogleMapsApiService from 'ember-google-maps/services/google-maps-api';
 
 get google() {
-  return getOwner(this).lookup('service:google-maps-api').google;
+  return (
+    getOwner(this)!.lookup('service:google-maps-api') as GoogleMapsApiService
+  ).google;
 }
 ```
 
