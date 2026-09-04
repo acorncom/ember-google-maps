@@ -1,0 +1,27 @@
+{
+  "name": "docs-app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Documentation site for ember-google-maps.",
+  "license": "MIT",
+  "scripts": {
+    "start": "vitepress dev .",
+    "build": "vitepress build ."
+  },
+  "dependencies": {
+    "@glimmer/component": "^2.1.1",
+    "@glimmer/tracking": "^1.1.2",
+    "ember-google-maps": "workspace:*",
+    "ember-google-maps-directions": "workspace:*",
+    "ember-provide-consume-context": "0.10.0",
+    "ember-source": "~6.12.0"
+  },
+  "devDependencies": {
+    "vite-plugin-ember": "^0.8.1",
+    "vitepress": "^1.5.0"
+  },
+  "engines": {
+    "node": ">= 20.19.0"
+  }
+}
