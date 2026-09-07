@@ -66,9 +66,6 @@ importers:
       ember-modifier:
         specifier: ^4.3.0
         version: 4.3.0(@babel/core@7.26.0)
-      ember-provide-consume-context:
-        specifier: 0.10.0
-        version: 0.10.0(@babel/core@7.26.0)(@ember/test-helpers@5.4.3(@babel/core@7.26.0))(@glimmer/component@2.1.1)(@glint/template@1.9.0)(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5))
       rsvp:
         specifier: ^4.8.5
         version: 4.8.5
@@ -136,6 +133,9 @@ importers:
       ember-page-title:
         specifier: ^9.0.3
         version: 9.0.3
+      ember-provide-consume-context:
+        specifier: ^0.10.0
+        version: 0.10.0(@babel/core@7.26.0)(@ember/test-helpers@5.4.3(@babel/core@7.26.0))(@glimmer/component@2.1.1)(@glint/template@1.9.0)(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5))
       ember-qunit:
         specifier: ^9.0.2
         version: 9.1.0(@ember/test-helpers@5.4.3(@babel/core@7.26.0))(qunit@2.26.0)
