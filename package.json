@@ -2,12 +2,19 @@
   "name": "ember-google-maps-monorepo",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@11.10.0",
-  "engines": {
-    "node": ">= 18"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/acorncom/ember-google-maps.git"
   },
   "scripts": {
     "verify:published-types": "node scripts/verify-published-types.mjs",
     "verify:doc-samples": "node docs-app/scripts/typecheck-samples.mjs"
+  },
+  "devDependencies": {
+    "release-plan": "^0.20.0"
+  },
+  "packageManager": "pnpm@11.10.0",
+  "engines": {
+    "node": ">= 18"
   }
 }

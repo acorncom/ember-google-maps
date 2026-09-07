@@ -66,9 +66,15 @@ export default defineConfig({
     nav: [{ text: 'Docs', link: '/getting-started' }],
     sidebar: [
       {
-        text: 'Documentation',
+        text: 'Intro',
         items: [
           { text: 'Getting started', link: '/getting-started' },
+          { text: 'Upgrading to v8', link: '/upgrading' },
+        ],
+      },
+      {
+        text: 'Components',
+        items: [
           { text: 'Map', link: '/map' },
           { text: 'Events', link: '/events' },
           { text: 'Components', link: '/components' },

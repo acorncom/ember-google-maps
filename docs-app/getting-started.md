@@ -1,5 +1,9 @@
 # Getting started
 
+::: tip Upgrading to v8?
+v8 is a big change (a v2 addon rebuild). See the [Upgrading to v8 guide](/upgrading) for what changed and what to do.
+:::
+
 ## Installation
 
 ```sh

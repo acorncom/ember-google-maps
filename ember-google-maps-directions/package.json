@@ -1,6 +1,7 @@
 {
   "name": "ember-google-maps-directions",
   "version": "8.0.0",
+  "private": true,
   "description": "Directions/route/waypoint components for ember-google-maps (uses ember-concurrency).",
   "keywords": [
     "ember-addon",

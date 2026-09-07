@@ -70,12 +70,12 @@
     "@embroider/macros": "^1.20.5",
     "decorator-transforms": "^2.2.2",
     "ember-modifier": "^4.3.0",
-    "ember-provide-consume-context": "0.10.0",
     "rsvp": "^4.8.5"
   },
   "peerDependencies": {
     "@ember/test-helpers": ">= 3.0.0",
     "@types/google.maps": "^3.66.1",
+    "ember-provide-consume-context": ">= 0.10.0",
     "ember-source": ">= 5.12.0"
   },
   "peerDependenciesMeta": {
@@ -108,6 +108,7 @@
     "babel-plugin-ember-template-compilation": "^4.0.0",
     "concurrently": "^9.0.1",
     "ember-page-title": "^9.0.3",
+    "ember-provide-consume-context": "^0.10.0",
     "ember-qunit": "^9.0.2",
     "ember-source": "~6.12.0",
     "ember-strict-application-resolver": "^0.1.0",
