@@ -1,8 +1,7 @@
 import type { ComponentLike } from '@glint/template';
-import type { MapComponentEventArgs } from '../../../src/components/g-map/map-component.ts';
 
 export interface TrafficLayerSignature {
-  Args: google.maps.TrafficLayerOptions & MapComponentEventArgs;
+  Args: google.maps.TrafficLayerOptions;
   Blocks: { default: [] };
   Element: null;
 }
