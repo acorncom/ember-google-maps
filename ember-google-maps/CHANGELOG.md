@@ -18,6 +18,36 @@
 
 
 
+## v8.0.0 (2026-09-07)
+
+v8 is a ground-up rebuild. The addon is now a v2 (Embroider/Vite) addon built from template-tag (`.gjs`) source, it ships prebuilt and typed, and it uses `ember-provide-consume-context` to pass map state to child components. Most maps and components work as before, but a few things change when you upgrade.
+
+**[Full upgrade guide: v7 → v8 →](https://acorncom.github.io/ember-google-maps/upgrading)**
+
+#### :boom: Breaking changes
+
+* Now a v2 addon. Needs Ember 5.12+, Node 18+, and an Embroider- or Vite-based build.
+* The `<GMap as |g|>` yielded API is deprecated (it still works until v9). Render components as direct children of `<GMap>` instead, and read the map with `@onReady`. A temporary `ember-google-maps/deprecated` entry point keeps the old style working while you migrate.
+* Build-time options `only`, `except`, `customComponents`, and `mergeCustomComponents` are gone. Unused components are now dropped automatically through ES module imports.
+* The `g-map-addons/*` auto-discovery convention is gone. Third-party components now extend the exported `MapComponent` / `TypicalMapComponent` classes.
+* Directions moved to a separate `ember-google-maps-directions` package.
+* Apps on the strict resolver (Vite/Polaris) must add `import 'ember-google-maps/setup';` once in `app.js`. Classic and `@embroider/compat` apps must not.
+
+#### :rocket: New
+
+* New `<AdvancedMarker>` component for Google's Advanced Markers (needs a Map ID).
+* Custom components get map context and register/tear down on their own — no wiring code needed.
+
+#### :memo: Notes
+
+* The Google Maps URL is now built at runtime from your `config/environment.js` settings. The options are unchanged.
+* `google.maps.Marker` is soft-deprecated by Google. `<Marker>` / `<GmapMarker>` still work, but prefer `<AdvancedMarker>` for new work.
+
+#### Thanks
+
+Rebuilt and now maintained by [@acorncom](https://github.com/acorncom), on top of years of work by [@sandydoo](https://github.com/sandydoo).
+
+
 ## v7.3.0 (2024-12-04)
 
 #### :bug: Bug fixes
