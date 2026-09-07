@@ -1,4 +1,4 @@
-# Upgrading from v7 to v8
+# Upgrading to v8
 
 v8 is a big change under the hood, but for most apps the day-to-day code stays the same. This guide walks through what changed, what you need to do, and the one or two things that might trip you up.
 
@@ -31,42 +31,24 @@ Two more peers are optional — add them only if you use that part of the addon:
 
 ## The context setup
 
-One of the biggest changes in this upgrade is moving from a yield-based api to a context-based api:
+The biggest change in v8 is how a map shares its state with the components inside it. In v7, `<GMap>` yielded a `g` block and you hung children off it (`<g.marker/>`). In v8, those children read the map from *context*, so you render them as plain children of `<GMap>`. The next section shows that template change in full.
 
-```hbs
-<!-- v7 -->
-<GMap @lat={{this.lat}} @lng={{this.lng}} as |g|>
-  <g.marker @lat={{this.lat}} @lng={{this.lng}} />
-</GMap>
-```
+Why the move? Two reasons: better tree-shaking under Embroider, and routed-map scenarios — where child components render in different routes but still need to hook into their parent map. It's built on `ember-provide-consume-context`, and structured so we can switch to Ember's own context API once that lands.
 
-In v8 you render them as **direct children** of the map instead:
-
-```hbs
-<!-- v8, classic .hbs -->
-<GMap @lat={{this.lat}} @lng={{this.lng}}>
-  <GmapMarker @lat={{this.lat}} @lng={{this.lng}} />
-</GMap>
-```
-
-We moved this direction for better tree-shaking with Embroider. It also then noticeably helps
-in routed-map scenarios where children components are rendered in different routes and need to hook into their parent map.
-
-To accomplish those things, we're using `ember-provide-consume-context` but building in such a way that
-we can switch over to Ember's new context apis when those finalize and land.
+Setup is quick once the context peer is installed:
 
 ::: tip Classic and @embroider/compat apps
-An initializer handles setup automatically for you, no further work needed after installing the context addon
+Nothing to do — an initializer wires up context for you automatically.
 :::
 
-::: tip strict resolver apps 
+::: tip Strict-resolver apps (Vite / Polaris)
 Add this line once in your `app.js`:
 
 ```js
 import 'ember-google-maps/setup';
 ```
 
-Without it, child components like `<Marker>` silently read no map context and don't render. In development you'll get a loud assertion telling you exactly this; in production it just fails quietly. If your markers vanish after upgrading, this is probably why.
+Without it, child components like `<Marker>` silently read no map context and don't render. In development you'll get a loud assertion saying exactly this; in production it just fails quietly. If your markers vanish after upgrading, this is probably why.
 :::
 
 

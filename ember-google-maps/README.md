@@ -26,7 +26,7 @@ A friendly [Ember][ember-url] addon for working with [Google Maps][google-maps-u
 
 - [Documentation](#-documentation)
   - [Quick start](#-quick-start-for-the-impatient)
-- [Upgrading from v7](#-upgrading-from-v7)
+- [Upgrading to v8](#-upgrading-to-v8)
 - [Compatibility](#-compatibility)
 - [Examples](#-examples)
 - [Companion packages](#-companion-packages)
@@ -79,12 +79,12 @@ ember install ember-google-maps
    **[Now keep reading the docs →][docs-url]**
 
 
-🚀 Upgrading from v7
+🚀 Upgrading to v8
 --------------------------------------------------------------------------------
 
 v8 is a big change: the addon is now a [v2 (Embroider/Vite) addon](https://github.com/embroider-build/embroider), and the old `<GMap as |g|>` yielded API is deprecated in favour of rendering components as direct children (shown below).
 
-**[Read the v7 → v8 upgrade guide →][upgrade-url]**
+**[Read the Upgrading to v8 guide →][upgrade-url]**
 
 
 🔗 Compatibility

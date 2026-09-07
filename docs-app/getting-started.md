@@ -1,7 +1,7 @@
 # Getting started
 
-::: tip Upgrading from v7?
-v8 is a big change (a v2 addon rebuild). See the [v7 → v8 upgrade guide](/upgrading) for what changed and what to do.
+::: tip Upgrading to v8?
+v8 is a big change (a v2 addon rebuild). See the [Upgrading to v8 guide](/upgrading) for what changed and what to do.
 :::
 
 ## Installation
