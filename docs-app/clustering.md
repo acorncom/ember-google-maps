@@ -29,23 +29,37 @@ the cluster instead of straight to the map. Don't mix it up with the
 regular `Marker` yielded by the map itself.
 :::
 
+::: warning
+The snippet below is illustrative pseudocode showing the planned API. The
+`ember-google-maps-clustering` package is not yet published or runnable.
+:::
+
 ```gts
+import Component from '@glimmer/component';
 import { GMap } from 'ember-google-maps';
 import { MarkerClusterer, ClusterMarker } from 'ember-google-maps-clustering';
 
-<template>
-  <GMap @lat={{51.507568}} @lng={{-0.127762}} @zoom={{12}}>
-    <MarkerClusterer as |cluster|>
-      {{#each this.locations key="id" as |location|}}
-        <ClusterMarker
-          @lat={{location.lat}}
-          @lng={{location.lng}}
-          @cluster={{cluster}}
-        />
-      {{/each}}
-    </MarkerClusterer>
-  </GMap>
-</template>
+export default class ClusteringExample extends Component {
+  locations = [
+    { id: '1', lat: 51.508, lng: -0.128 },
+    { id: '2', lat: 51.503, lng: -0.12 },
+    { id: '3', lat: 51.515, lng: -0.141 },
+  ];
+
+  <template>
+    <GMap @lat={{51.507568}} @lng={{-0.127762}} @zoom={{12}}>
+      <MarkerClusterer as |cluster|>
+        {{#each this.locations key="id" as |location|}}
+          <ClusterMarker
+            @lat={{location.lat}}
+            @lng={{location.lng}}
+            @cluster={{cluster}}
+          />
+        {{/each}}
+      </MarkerClusterer>
+    </GMap>
+  </template>
+}
 ```
 
 ## Default cluster icons

@@ -38,9 +38,10 @@ export default class PolylinesExample extends Component {
 
   // event is the addon's own MapComponent click payload (routed through its
   // internal runloop wrapping already), not a raw DOM event — no run()
-  // needed here.
-  appendPoint = (event) => {
+  // needed here. googleEvent carries the underlying Google Maps event.
+  appendPoint = (event: { googleEvent: google.maps.MapMouseEvent }) => {
     const { latLng } = event.googleEvent;
+    if (!latLng) return;
 
     this.path = [...this.path, { lat: latLng.lat(), lng: latLng.lng() }];
   };

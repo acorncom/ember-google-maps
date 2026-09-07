@@ -53,6 +53,24 @@ jobs:
       # against the tarball, the same as any actual consumer would get.
       - run: pnpm verify:published-types
 
+  typecheck-doc-samples:
+    name: Typecheck doc samples
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: acorncom/action-setup-pnpm@v4.0.1
+        with:
+          node-version: '22'
+          node-version-file: ''
+      # The harness checks the docs code samples against ember-google-maps's
+      # real types, which live in its gitignored declarations/ dir -- build the
+      # addon first so those exist. No real Google key needed: this only
+      # type-checks the samples, it never loads a map.
+      - name: Build ember-google-maps
+        run: pnpm --filter ember-google-maps build
+      - run: pnpm verify:doc-samples
+
   test:
     name: Tests (real Google)
     runs-on: ubuntu-latest

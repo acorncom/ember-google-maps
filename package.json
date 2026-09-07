@@ -7,7 +7,8 @@
     "url": "https://github.com/acorncom/ember-google-maps.git"
   },
   "scripts": {
-    "verify:published-types": "node scripts/verify-published-types.mjs"
+    "verify:published-types": "node scripts/verify-published-types.mjs",
+    "verify:doc-samples": "node docs-app/scripts/typecheck-samples.mjs"
   },
   "devDependencies": {
     "release-plan": "^0.20.0"

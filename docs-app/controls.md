@@ -88,7 +88,7 @@ export default class MapWithControls extends Component {
       <Marker @lat={{51.5074}} @lng={{-0.1278}} />
 
       <Control @position="TOP_CENTER">
-        <button type="button" {{on "click" this.recenterMap}}>
+        <button type="button" class="gmap-control-button" {{on "click" this.recenterMap}}>
           Recenter map
         </button>
       </Control>
@@ -131,7 +131,7 @@ export default class ControlsExample extends Component {
       <Marker @lat={{LONDON.lat}} @lng={{LONDON.lng}} />
 
       <Control @position="TOP_CENTER">
-        <button type="button" {{on "click" this.recenterMap}}>
+        <button type="button" class="gmap-control-button" {{on "click" this.recenterMap}}>
           Recenter map
         </button>
       </Control>
