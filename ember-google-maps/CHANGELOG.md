@@ -31,6 +31,7 @@ v8 is a ground-up rebuild. The addon is now a v2 (Embroider/Vite) addon built fr
 * Build-time options `only`, `except`, `customComponents`, and `mergeCustomComponents` are gone. Unused components are now dropped automatically through ES module imports.
 * The `g-map-addons/*` auto-discovery convention is gone. Third-party components now extend the exported `MapComponent` / `TypicalMapComponent` classes.
 * Directions moved to a separate `ember-google-maps-directions` package.
+* `ember-provide-consume-context` is now a peer dependency instead of bundled. Add it to your app (`pnpm add ember-provide-consume-context`), so every app owns a single shared copy.
 * Apps on the strict resolver (Vite/Polaris) must add `import 'ember-google-maps/setup';` once in `app.js`. Classic and `@embroider/compat` apps must not.
 
 #### :rocket: New
