@@ -29,6 +29,11 @@ the cluster instead of straight to the map. Don't mix it up with the
 regular `Marker` yielded by the map itself.
 :::
 
+::: warning
+The snippet below is illustrative pseudocode showing the planned API. The
+`ember-google-maps-clustering` package is not yet published or runnable.
+:::
+
 ```gts
 import { GMap } from 'ember-google-maps';
 import { MarkerClusterer, ClusterMarker } from 'ember-google-maps-clustering';
