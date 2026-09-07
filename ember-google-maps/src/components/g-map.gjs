@@ -9,6 +9,13 @@ import { ContextProvider, CONTEXT_KEY } from '../context.js';
 import { toLatLng } from '../utils/helpers.js';
 import { registerMapInstance } from '../component-managers/map-component-manager.js';
 
+// Fallback ceiling for `pauseTestForIdle` (DEBUG-only). A real map reaches
+// `idle` in well under this; the bound only matters when `idle` never fires
+// (a map torn down before it settles), converting an otherwise-permanent
+// `settled()` hang into a bounded wait. High enough not to pre-empt a slow but
+// legitimate idle.
+const IDLE_FALLBACK_MS = 3000;
+
 // The value provided to context and read by child map components. A thin
 // delegating wrapper over the live GMap instance: `map` (the google.maps.Map)
 // and `getComponent` (child registration).
@@ -89,10 +96,28 @@ export default class GMap extends MapComponent {
   }
 
   // Pause tests until the map is idle.
+  //
+  // The `idle` event only fires once the map actually settles. When a map is
+  // created (or updated) and then torn down before it settles — e.g. a fast
+  // route transition that mounts a map and immediately redirects away — `idle`
+  // never fires. Without a fallback this @waitFor promise stays pending forever,
+  // holding `settled()` open until the test hits its timeout instead of failing
+  // (or passing) promptly. Race the `idle` listener against a fallback timeout
+  // and always clean up both, so the promise settles either way. This runs only
+  // in DEBUG/test builds, so the fallback has no production effect.
   @waitFor
   async pauseTestForIdle(map) {
     await new Promise((resolve) => {
-      google.maps.event.addListenerOnce(map, 'idle', () => resolve(map));
+      let settled = false;
+      let finish = () => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        google.maps.event.removeListener(listener);
+        resolve(map);
+      };
+      let listener = google.maps.event.addListenerOnce(map, 'idle', finish);
+      let timer = setTimeout(finish, IDLE_FALLBACK_MS);
     });
   }
 
