@@ -447,6 +447,9 @@ importers:
       ember-google-maps-directions:
         specifier: workspace:*
         version: link:../ember-google-maps-directions
+      ember-provide-consume-context:
+        specifier: ^0.10.0
+        version: 0.10.0(@babel/core@7.29.7)(@ember/test-helpers@5.4.3(@babel/core@7.29.7))(@glimmer/component@2.1.1)(@glint/template@1.9.0)(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5))
       test-addon-clusterer:
         specifier: workspace:*
         version: link:../test-addon-clusterer
@@ -525,7 +528,7 @@ importers:
         version: 5.8.2(@babel/core@7.29.7)(@glint/template@1.9.0)
       '@warp-drive/ember':
         specifier: ~5.8.2
-        version: 5.8.2(@babel/core@7.29.7)(@ember/test-waiters@4.1.2)(@glint/template@1.9.0)
+        version: 5.8.2(@babel/core@7.29.7)(@ember/test-waiters@4.1.2)(@glint/template@1.9.0)(ember-provide-consume-context@0.10.0(@babel/core@7.29.7)(@ember/test-helpers@5.4.3(@babel/core@7.29.7))(@glimmer/component@2.1.1)(@glint/template@1.9.0)(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5)))
       '@warp-drive/json-api':
         specifier: ~5.8.2
         version: 5.8.2(@babel/core@7.29.7)(@glint/template@1.9.0)(@warp-drive/core@5.8.2(@babel/core@7.29.7)(@glint/template@1.9.0))
@@ -12966,11 +12969,13 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  '@warp-drive/ember@5.8.2(@babel/core@7.29.7)(@ember/test-waiters@4.1.2)(@glint/template@1.9.0)':
+  '@warp-drive/ember@5.8.2(@babel/core@7.29.7)(@ember/test-waiters@4.1.2)(@glint/template@1.9.0)(ember-provide-consume-context@0.10.0(@babel/core@7.29.7)(@ember/test-helpers@5.4.3(@babel/core@7.29.7))(@glimmer/component@2.1.1)(@glint/template@1.9.0)(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5)))':
     dependencies:
       '@ember/test-waiters': 4.1.2
       '@embroider/macros': 1.20.5(@babel/core@7.29.7)(@glint/template@1.9.0)
       '@warp-drive/core': 5.8.2(@babel/core@7.29.7)(@glint/template@1.9.0)
+    optionalDependencies:
+      ember-provide-consume-context: 0.10.0(@babel/core@7.29.7)(@ember/test-helpers@5.4.3(@babel/core@7.29.7))(@glimmer/component@2.1.1)(@glint/template@1.9.0)(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5))
     transitivePeerDependencies:
       - '@babel/core'
       - '@glint/template'
@@ -14891,6 +14896,18 @@ snapshots:
       '@ember/test-helpers': 5.4.3(@babel/core@7.26.0)
       '@embroider/addon-shim': 1.10.3
       '@embroider/macros': 1.20.5(@babel/core@7.26.0)(@glint/template@1.9.0)
+      '@glimmer/component': 2.1.1
+      ember-source: 6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@glint/template'
+      - supports-color
+
+  ember-provide-consume-context@0.10.0(@babel/core@7.29.7)(@ember/test-helpers@5.4.3(@babel/core@7.29.7))(@glimmer/component@2.1.1)(@glint/template@1.9.0)(ember-source@6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5)):
+    dependencies:
+      '@ember/test-helpers': 5.4.3(@babel/core@7.29.7)
+      '@embroider/addon-shim': 1.10.3
+      '@embroider/macros': 1.20.5(@babel/core@7.29.7)(@glint/template@1.9.0)
       '@glimmer/component': 2.1.1
       ember-source: 6.12.0(@glimmer/component@2.1.1)(rsvp@4.8.5)
     transitivePeerDependencies:

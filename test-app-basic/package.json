@@ -33,6 +33,7 @@
   "dependencies": {
     "ember-google-maps": "workspace:*",
     "ember-google-maps-directions": "workspace:*",
+    "ember-provide-consume-context": "^0.10.0",
     "test-addon-clusterer": "workspace:*"
   },
   "devDependencies": {
