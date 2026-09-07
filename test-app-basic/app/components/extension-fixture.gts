@@ -8,7 +8,11 @@
 import { assert } from '@ember/debug';
 
 import { TypicalMapComponent } from 'ember-google-maps';
-import type { MapComponentSignature } from 'ember-google-maps';
+import type {
+  MapComponentSignature,
+  MapEvent,
+  MapEvents,
+} from 'ember-google-maps';
 
 // AdvancedMarkerElement has no setMap() -- it attaches via a `.map`
 // property instead -- so this subclass overrides setup() entirely, the
@@ -48,3 +52,53 @@ export class CustomDataLayer extends TypicalMapComponent<
     return new google.maps.Data({ ...options, map });
   }
 }
+
+// The addon ships event maps for its own built-in leaves, but a downstream
+// author subclassing TypicalMapComponent wraps their own google object -- here
+// google.maps.Data, which the addon has no component for. They get real,
+// typo-safe event args by composing the exported `MapEvents` builder over their
+// object's events, exactly the way the built-in leaves do.
+//
+// This map is AI-derived from google.maps.Data's documented events and
+// hand-maintained: verify against Google's docs and update it when Google
+// changes Data's events. (Same discipline as the addon's built-in maps.)
+type DataEvents = MapEvents<
+  google.maps.Data,
+  {
+    addfeature: google.maps.Data.AddFeatureEvent;
+    setgeometry: google.maps.Data.SetGeometryEvent;
+    setproperty: google.maps.Data.SetPropertyEvent;
+    click: google.maps.Data.MouseEvent;
+    dblclick: google.maps.Data.MouseEvent;
+    mouseover: google.maps.Data.MouseEvent;
+    mouseout: google.maps.Data.MouseEvent;
+  }
+>;
+
+interface CustomDataWithEventsSignature {
+  Args: { style?: google.maps.Data.StylingFunction } & DataEvents;
+  Blocks: { default: [] };
+  Element: null;
+}
+
+export class CustomDataLayerWithEvents extends TypicalMapComponent<
+  CustomDataWithEventsSignature,
+  google.maps.Data
+> {
+  newMapComponent(options: Record<string, unknown>): google.maps.Data {
+    let { map } = this;
+    assert('CustomDataLayerWithEvents must be rendered inside <GMap>', map);
+
+    return new google.maps.Data({ ...options, map });
+  }
+}
+
+// type-level proof the composed handler is real: onClick's arg is a MapEvent
+// carrying a google.maps.Data.MouseEvent, so its `feature` is reachable.
+type DataOnClick = NonNullable<
+  CustomDataWithEventsSignature['Args']['onClick']
+>;
+const _dataClick: DataOnClick = (
+  event: MapEvent<google.maps.Data.MouseEvent, google.maps.Data>,
+) => void event.googleEvent.feature;
+void _dataClick;

@@ -1,5 +1,20 @@
 import type { ComponentLike } from '@glint/template';
-import type { MapComponentEventArgs } from '../../../src/components/g-map/map-component.ts';
+import type { MapEvents } from '../../../src/components/g-map/map-component.ts';
+
+// AI-derived from google.maps.InfoWindow's documented events and
+// hand-maintained (verify against Google's docs). InfoWindow events all fire
+// with no payload.
+export type InfoWindowEvents = MapEvents<
+  google.maps.InfoWindow,
+  {
+    closeclick: void;
+    content_changed: void;
+    domready: void;
+    position_changed: void;
+    visible: void;
+    zindex_changed: void;
+  }
+>;
 
 export interface InfoWindowSignature {
   Args: {
@@ -9,7 +24,7 @@ export interface InfoWindowSignature {
     target?:
       google.maps.MVCObject | google.maps.marker.AdvancedMarkerElement | null;
   } & google.maps.InfoWindowOptions &
-    MapComponentEventArgs;
+    InfoWindowEvents;
   Blocks: {
     default: [
       publicAPI: {

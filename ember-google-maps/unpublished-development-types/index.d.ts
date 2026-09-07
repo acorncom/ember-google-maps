@@ -10,32 +10,52 @@ import './glimmer-env.d.ts';
 export {
   default as MapComponent,
   type MapComponentSignature,
+  type MapComponentEventArgs,
+  type MapEvent,
+  type MapEvents,
 } from '../src/components/g-map/map-component.ts';
 export { default as TypicalMapComponent } from '../src/components/g-map/typical-map-component.ts';
 
-export { GMap, type GMapSignature } from './components/g-map.d.ts';
+export {
+  GMap,
+  type GMapSignature,
+  type GMapEvents,
+} from './components/g-map.d.ts';
 export { Canvas, type CanvasSignature } from './components/g-map/canvas.d.ts';
-export { Marker, type MarkerSignature } from './components/g-map/marker.d.ts';
+export {
+  Marker,
+  type MarkerSignature,
+  type MarkerEvents,
+} from './components/g-map/marker.d.ts';
 export {
   AdvancedMarker,
   type AdvancedMarkerSignature,
+  type AdvancedMarkerEvents,
 } from './components/g-map/advanced-marker.d.ts';
 export {
   InfoWindow,
   type InfoWindowSignature,
+  type InfoWindowEvents,
 } from './components/g-map/info-window.d.ts';
-export { Circle, type CircleSignature } from './components/g-map/circle.d.ts';
+export {
+  Circle,
+  type CircleSignature,
+  type CircleEvents,
+} from './components/g-map/circle.d.ts';
 export {
   Rectangle,
   type RectangleSignature,
+  type RectangleEvents,
 } from './components/g-map/rectangle.d.ts';
 export {
   Polygon,
   type PolygonSignature,
+  type PolygonEvents,
 } from './components/g-map/polygon.d.ts';
 export {
   Polyline,
   type PolylineSignature,
+  type PolylineEvents,
 } from './components/g-map/polyline.d.ts';
 export {
   TrafficLayer,
@@ -56,10 +76,12 @@ export {
 export {
   Overlay,
   type OverlaySignature,
+  type OverlayEvents,
 } from './components/g-map/overlay.d.ts';
 export {
   Autocomplete,
   type AutocompleteSignature,
+  type AutocompleteEvents,
 } from './components/g-map/autocomplete.d.ts';
 
 // Flat <Gmap*> compat components (permanent classic API): name-resolvable

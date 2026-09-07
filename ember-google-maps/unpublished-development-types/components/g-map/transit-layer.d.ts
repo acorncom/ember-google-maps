@@ -1,9 +1,9 @@
 import type { ComponentLike } from '@glint/template';
-import type { MapComponentEventArgs } from '../../../src/components/g-map/map-component.ts';
 
-// google.maps.TransitLayer's real constructor takes no options at all.
+// google.maps.TransitLayer's real constructor takes no options at all, and it
+// fires no events -- so it accepts no args.
 export interface TransitLayerSignature {
-  Args: MapComponentEventArgs;
+  Args: Record<string, never>;
   Blocks: { default: [] };
   Element: null;
 }

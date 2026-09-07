@@ -69,6 +69,58 @@ export type MapComponentEventArgs = {
   [key: `on${string}`]: ((...args: any[]) => void) | undefined;
 };
 
+// The single object every map-event handler is called with. Built by
+// `addEventListener` (utils/options-and-events.js): the raw google event, the
+// decamelized event name, the google object the listener attached to, and the
+// component's `publicAPI` (`map`, `mapComponent`) spread on top. `GoogleEvent`
+// is the per-event payload (e.g. `google.maps.MapMouseEvent` for `click`,
+// `void` for `bounds_changed`); `MapComponentInstance` is the wrapped google
+// object (e.g. `google.maps.Marker`).
+export type MapEvent<GoogleEvent = unknown, MapComponentInstance = unknown> = {
+  event: Event | undefined;
+  googleEvent: GoogleEvent;
+  eventName: string;
+  target: MapComponentInstance;
+  map: google.maps.Map;
+  mapComponent: MapComponentInstance;
+};
+
+// snake_case -> PascalCase at the type level (`bounds_changed` ->
+// `BoundsChanged`). Lets a per-object event map be authored once in google's
+// own snake_case event vocabulary, with the `on*` handler-arg names derived
+// from it rather than hand-listed a second time. Module-exported so the emitted
+// declaration for `MapEvents` can name it; not surfaced from the package root.
+export type PascalCase<S extends string> =
+  S extends `${infer Head}_${infer Tail}`
+    ? `${Capitalize<Head>}${PascalCase<Tail>}`
+    : Capitalize<S>;
+
+// Builds a component's event-handler Args from a `{ googleEventName: payload }`
+// map keyed by google's snake_case event names. Each entry becomes an optional
+// `on<PascalCase>` handler receiving the `MapEvent` envelope typed to that
+// event's payload -- e.g. `{ click: google.maps.MapMouseEvent }` yields
+// `onClick?: (event: MapEvent<google.maps.MapMouseEvent, C>) => void`.
+//
+// A closed map (vs the open `MapComponentEventArgs` index signature) is what
+// makes a typo'd handler name a compile error instead of a silently-dead
+// listener. Reuse this in a downstream `TypicalMapComponent` subclass to type
+// events for a google object the addon doesn't ship a map for.
+export type MapEvents<
+  MapComponentInstance,
+  EventMap extends Record<string, unknown>,
+> = {
+  [Name in keyof EventMap & string as `on${PascalCase<Name>}`]?: (
+    event: MapEvent<EventMap[Name], MapComponentInstance>,
+  ) => void;
+} & {
+  // `onceOn<Event>` binds a one-time listener (utils/options-and-events.js
+  // routes any `onceOn`-prefixed arg through addListenerOnce); same payload,
+  // fires once. Every event gets both an `on*` and an `onceOn*` form.
+  [Name in keyof EventMap & string as `onceOn${PascalCase<Name>}`]?: (
+    event: MapEvent<EventMap[Name], MapComponentInstance>,
+  ) => void;
+};
+
 type ComponentContext<This, S> = TemplateContext<
   This,
   ComponentSignatureArgs<S>['Named'],
