@@ -16,9 +16,9 @@ import GoogleMapsApiService from 'ember-google-maps/services/google-maps-api';
 import { service } from '@ember/service';
 
 // currentUser is a hypothetical service from your own app, not something
-// this addon declares -- left untyped rather than fabricating a shape.
+// this addon declares -- type it to match your app's own service.
 export default class extends GoogleMapsApiService {
-  @service currentUser;
+  @service declare currentUser: { locale: string };
 
   buildGoogleMapsUrl(config: Record<string, unknown>) {
     return super.buildGoogleMapsUrl({
@@ -40,11 +40,13 @@ import GoogleMapsApiService from 'ember-google-maps/services/google-maps-api';
 import { service } from '@ember/service';
 
 // store and session are hypothetical services from your own app, not
-// something this addon declares -- left untyped rather than fabricating a
-// shape.
+// something this addon declares -- type them to match your app's own
+// services.
 export default class extends GoogleMapsApiService {
-  @service store;
-  @service session;
+  @service declare store: {
+    findRecord(type: string, id: string): Promise<{ locale: string }>;
+  };
+  @service declare session: { currentUserId: string };
 
   async buildGoogleMapsUrl(config: Record<string, unknown>) {
     const user = await this.store.findRecord(
@@ -71,16 +73,24 @@ the map context and the async setup/update/teardown lifecycle for free — no
 context or registration code required.
 
 ```gts
-// app/components/heatmap-layer.gts
+// app/components/ground-overlay.gts
 import { TypicalMapComponent } from 'ember-google-maps';
 
-export default class HeatmapLayer extends TypicalMapComponent {
+// newMapComponent receives the map component's options as a loose bag
+// (the base signature is Record<string, unknown>), so extend that with the
+// concrete fields this component expects.
+interface GroundOverlayOptions extends Record<string, unknown> {
+  url: string;
+  bounds: google.maps.LatLngBoundsLiteral;
+}
+
+export default class GroundOverlay extends TypicalMapComponent {
   get name() {
-    return 'heatmapLayers';
+    return 'groundOverlays';
   }
 
-  newMapComponent(options: Record<string, unknown>) {
-    return new google.maps.visualization.HeatmapLayer(options);
+  newMapComponent(options: GroundOverlayOptions) {
+    return new google.maps.GroundOverlay(options.url, options.bounds);
   }
 
   <template></template>
@@ -89,7 +99,7 @@ export default class HeatmapLayer extends TypicalMapComponent {
 
 ```hbs
 <GMap @lat={{51.5}} @lng={{-0.1}} @zoom={{12}}>
-  <HeatmapLayer @data={{this.points}} />
+  <GroundOverlay @url="/floorplan.png" @bounds={{this.bounds}} />
 </GMap>
 ```
 

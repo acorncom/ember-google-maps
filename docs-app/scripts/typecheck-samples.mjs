@@ -253,10 +253,11 @@ if (skipped.length > 0) {
 // this script -- each of these reproduces in isolation regardless of sample
 // content, and none of them reflect something wrong with the sample itself:
 //
-//  - TS2307 for a relative `./lib/*.js` import: several live samples import a
-//    small local helper (create-locations.js, get-route-steps.js) that lives
-//    alongside the .md file in docs-app/lib/. This script only extracts the
-//    fenced code block, not sibling files, so the import can't resolve here.
+//  - TS2307 for a relative `./lib/*.js` or `./map-styles/*.js` import: several
+//    live samples import a small local file that lives alongside the .md in
+//    docs-app/ (helpers in lib/create-locations.js, lib/get-route-steps.js;
+//    map styles in map-styles/dark.js). This script only extracts the fenced
+//    code block, not sibling files, so the import can't resolve here.
 //  - TS2307/TS7016 for the UNTYPED_PACKAGES shimmed above.
 //  - TS7016/TS7006/TS2683 in testing.md's qunit sample: this harness doesn't
 //    install @types/qunit (docs-app doesn't depend on qunit at all -- these
@@ -278,7 +279,7 @@ if (skipped.length > 0) {
 //    app's generated template registry provides that this stripped-down
 //    project doesn't), not a bug in the samples.
 const HARNESS_LIMITATION_PATTERNS = [
-  /Cannot find module '\.\/lib\//,
+  /Cannot find module '\.\/(lib|map-styles)\//,
   /Property 'env' does not exist on type 'ImportMeta'/,
   /Argument of type 'unknown' is not assignable to parameter of type 'Element'/,
   /Could not find a declaration file for module 'qunit'/,
@@ -290,7 +291,9 @@ const HARNESS_LIMITATION_PATTERNS = [
 // have flowed from the unresolved helper's return type), not an independent
 // finding.
 const labelsWithMissingLocalHelper = new Set(
-  diagnosticLines.filter((d) => /Cannot find module '\.\/lib\//.test(d.raw)).map((d) => d.label),
+  diagnosticLines
+    .filter((d) => /Cannot find module '\.\/(lib|map-styles)\//.test(d.raw))
+    .map((d) => d.label),
 );
 
 function isHarnessLimitation(d) {
