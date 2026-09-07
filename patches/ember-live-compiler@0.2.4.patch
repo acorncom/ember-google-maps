@@ -1,0 +1,29 @@
+diff --git a/dist/compile.node.js b/dist/compile.node.js
+index a058bd53c3003f0b3932959863beefc602a1c2eb..85253c12b904736cab01f17cebdd14b0fc9e43c3 100644
+--- a/dist/compile.node.js
++++ b/dist/compile.node.js
+@@ -27,6 +27,15 @@
+ import templateCompilation from 'babel-plugin-ember-template-compilation';
+ import { transformAsync } from '@babel/core';
+ import { Preprocessor } from 'content-tag';
++// Import the plugin directly (rather than passing the bare string
++// '@babel/plugin-transform-typescript' to Babel) so it resolves through this
++// package's own dependency graph. Babel resolves bare plugin-name strings
++// itself and, in this workspace, that lookup can land on a Babel-7-only copy
++// pulled in by unrelated Babel-7 build tooling elsewhere in the monorepo --
++// throwing "Requires Babel ^7.0.0-0, but was loaded with 8.0.1" for `.gts`
++// compiles that must run on Babel 8. Importing the plugin module directly
++// sidesteps that ambiguous string resolution entirely.
++import pluginTransformTypescript from '@babel/plugin-transform-typescript';
+ // In Babel 8 the class-features parser plugins (`classProperties`,
+ // `classPrivateProperties`, `classPrivateMethods`) are enabled by default and
+ // were removed from the parser, so `typescript` (for `.gts`) is now the only
+@@ -79,7 +88,7 @@ export function createNodeCompiler(options = {}) {
+         plugins: [
+             ...basePlugins,
+             [
+-                '@babel/plugin-transform-typescript',
++                pluginTransformTypescript,
+                 {
+                     allExtensions: true,
+                     onlyRemoveTypeImports: true,
