@@ -15,6 +15,7 @@ export {
   type MapEvents,
 } from '../src/components/g-map/map-component.ts';
 export { default as TypicalMapComponent } from '../src/components/g-map/typical-map-component.ts';
+export type { AsyncProxy } from './utils/async-data.d.ts';
 
 export {
   GMap,
