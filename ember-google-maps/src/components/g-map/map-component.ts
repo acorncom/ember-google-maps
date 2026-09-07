@@ -112,6 +112,13 @@ export type MapEvents<
   [Name in keyof EventMap & string as `on${PascalCase<Name>}`]?: (
     event: MapEvent<EventMap[Name], MapComponentInstance>,
   ) => void;
+} & {
+  // `onceOn<Event>` binds a one-time listener (utils/options-and-events.js
+  // routes any `onceOn`-prefixed arg through addListenerOnce); same payload,
+  // fires once. Every event gets both an `on*` and an `onceOn*` form.
+  [Name in keyof EventMap & string as `onceOn${PascalCase<Name>}`]?: (
+    event: MapEvent<EventMap[Name], MapComponentInstance>,
+  ) => void;
 };
 
 type ComponentContext<This, S> = TemplateContext<

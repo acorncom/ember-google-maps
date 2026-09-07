@@ -92,6 +92,15 @@ const overlayArgs: OverlaySignature['Args'] = {
   onClick: (e) => void (e.googleEvent.clientX ?? 0),
 };
 
+// Every event also has an `onceOn<Event>` one-time-listener form, with the same
+// typed payload (the addon routes `onceOn*` through addListenerOnce).
+const gmapOnce: GMapSignature['Args'] = {
+  onceOnIdle: (e) => void e.map,
+  onceOnClick: (e) => void e.googleEvent,
+};
+// @ts-expect-error a typo'd onceOn name is rejected too
+const gmapOnceTypo: GMapSignature['Args'] = { onceOnIdel: () => {} };
+
 console.log(
   payload,
   latLng,
@@ -104,4 +113,6 @@ console.log(
   gmapArgs,
   infoWindowArgs,
   overlayArgs,
+  gmapOnce,
+  gmapOnceTypo,
 );
