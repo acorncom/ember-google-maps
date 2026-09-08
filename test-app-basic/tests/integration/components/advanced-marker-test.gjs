@@ -2,9 +2,9 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { setupMapTest, trigger } from 'ember-google-maps/test-support';
 import { setupLocations } from 'test-app-basic/tests/helpers/locations';
-import { render } from '@ember/test-helpers';
+import { render, waitFor, waitUntil } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import { GMap, AdvancedMarker } from 'ember-google-maps';
+import { GMap, AdvancedMarker, InfoWindow } from 'ember-google-maps';
 import { toLatLng } from 'ember-google-maps/utils/helpers';
 
 // Ported from legacy/tests/integration/components/g-map/advanced-marker-test.js
@@ -153,6 +153,147 @@ module('Integration | Component | advanced-marker', function (hooks) {
     assert.ok(
       newLatLng.equals(newPosition),
       'advanced marker position updated',
+    );
+  });
+
+  test('it renders content from a :content block', async function (assert) {
+    await render(
+      <template>
+        <GMap @lat={{this.lat}} @lng={{this.lng}} @mapId={{mapId}}>
+          <AdvancedMarker @lat={{this.lat}} @lng={{this.lng}}>
+            <:content>
+              <div id="advanced-marker-content">Custom marker!</div>
+            </:content>
+          </AdvancedMarker>
+        </GMap>
+      </template>,
+    );
+
+    let {
+      components: { advancedMarkers },
+    } = await this.waitForMap();
+
+    let contentEl = await waitFor('#advanced-marker-content');
+
+    assert.ok(contentEl, 'rendered the block content');
+    assert.ok(
+      advancedMarkers[0].mapComponent.content.contains(contentEl),
+      'the block is used as the advanced marker content',
+    );
+  });
+
+  test('it applies @anchorLeft/@anchorTop as a transform on the content wrapper', async function (assert) {
+    await render(
+      <template>
+        <GMap @lat={{this.lat}} @lng={{this.lng}} @mapId={{mapId}}>
+          <AdvancedMarker
+            @lat={{this.lat}}
+            @lng={{this.lng}}
+            @anchorLeft="-50%"
+            @anchorTop="-50%"
+          >
+            <:content>
+              <div id="anchored-content">x</div>
+            </:content>
+          </AdvancedMarker>
+        </GMap>
+      </template>,
+    );
+
+    let {
+      components: { advancedMarkers },
+    } = await this.waitForMap();
+
+    await waitFor('#anchored-content');
+
+    let { transform } = advancedMarkers[0].mapComponent.content.style;
+
+    assert.true(
+      transform.includes('-50%'),
+      'anchor offsets are applied as a translate transform',
+    );
+  });
+
+  test('it forwards ...attributes to the content wrapper', async function (assert) {
+    await render(
+      <template>
+        <GMap @lat={{this.lat}} @lng={{this.lng}} @mapId={{mapId}}>
+          <AdvancedMarker @lat={{this.lat}} @lng={{this.lng}} class="my-marker">
+            <:content>
+              <div id="attr-content">x</div>
+            </:content>
+          </AdvancedMarker>
+        </GMap>
+      </template>,
+    );
+
+    let {
+      components: { advancedMarkers },
+    } = await this.waitForMap();
+
+    await waitFor('#attr-content');
+
+    assert.true(
+      advancedMarkers[0].mapComponent.content.classList.contains('my-marker'),
+      'class is forwarded to the content wrapper',
+    );
+  });
+
+  test('it uses a pre-built @content element as the marker content', async function (assert) {
+    let element = document.createElement('div');
+    element.id = 'prebuilt-content';
+    this.contentEl = element;
+
+    await render(
+      <template>
+        <GMap @lat={{this.lat}} @lng={{this.lng}} @mapId={{mapId}}>
+          <AdvancedMarker
+            @lat={{this.lat}}
+            @lng={{this.lng}}
+            @content={{this.contentEl}}
+          />
+        </GMap>
+      </template>,
+    );
+
+    let {
+      components: { advancedMarkers },
+    } = await this.waitForMap();
+
+    assert.strictEqual(
+      advancedMarkers[0].mapComponent.content,
+      element,
+      'the @content element is used as the marker content',
+    );
+  });
+
+  test('an info window can be attached to an advanced marker via @target', async function (assert) {
+    await render(
+      <template>
+        <GMap @lat={{this.lat}} @lng={{this.lng}} @mapId={{mapId}} @zoom={{6}}>
+          <AdvancedMarker @lat={{55}} @lng={{2}} as |m|>
+            <InfoWindow
+              @target={{m.mapComponent}}
+              @isOpen={{true}}
+              @content="Attached to an advanced marker"
+            />
+          </AdvancedMarker>
+        </GMap>
+      </template>,
+    );
+
+    let {
+      components: { infoWindows },
+    } = await this.waitForMap();
+
+    let infoWindow = infoWindows[0].mapComponent;
+
+    await waitUntil(() => infoWindow.getMap() && infoWindow.getPosition());
+
+    assert.deepEqual(
+      infoWindow.getPosition().toJSON(),
+      { lat: 55, lng: 2 },
+      'the info window opens anchored to the advanced marker',
     );
   });
 });
