@@ -20,12 +20,12 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v7
-      - uses: acorncom/action-setup-pnpm@v4.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: acorncom/action-setup-pnpm@91a687c228fac4111cd1be8801ab4c0402752d04 # v4.0.1
         with:
           node-version: '22'
           node-version-file: ''
-      - uses: kategengler/put-built-npm-package-contents-on-branch@v2.0.0
+      - uses: kategengler/put-built-npm-package-contents-on-branch@5b33924ea713bcde29273ef55bac7e4142a7b917 # v2.0.0
         with:
           working-directory: ember-google-maps
           pack-command: pnpm pack

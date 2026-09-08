@@ -25,8 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: wyvox/action-setup-pnpm@v2
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: wyvox/action-setup-pnpm@c7fb83d1769e0f8f343604b4adc07a010156096d # v2
         with:
           node-version: '22'
       - name: Build the addon packages
@@ -39,7 +39,7 @@ jobs:
         run: pnpm --filter docs-app build
         env:
           GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_DOCS_API_KEY }}
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
         with:
           path: docs-app/.vitepress/dist
 
@@ -50,5 +50,5 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
         id: deployment
