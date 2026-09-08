@@ -53,6 +53,17 @@ jobs:
           GITHUB_AUTH: ${{ secrets.GITHUB_TOKEN }}
         id: explanation
 
+      # release-plan rewrites ember-google-maps/package.json for the version
+      # bump but drops the file's trailing newline, so the CI Lint job's
+      # `prettier --check` fails on the release PR. Run the addon's own
+      # formatter over the release changes so the PR is already Prettier-clean.
+      - uses: acorncom/action-setup-pnpm@v4.0.1
+        with:
+          node-version: '22'
+          node-version-file: ''
+      - name: Format release changes
+        run: pnpm --filter ember-google-maps run format
+
       - uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
         name: Create Prepare Release PR
         with:
