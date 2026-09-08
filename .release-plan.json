@@ -1,0 +1,18 @@
+{
+  "solution": {
+    "ember-google-maps": {
+      "impact": "minor",
+      "oldVersion": "8.0.0",
+      "newVersion": "8.1.0",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        }
+      ],
+      "pkgJSONPath": "./ember-google-maps/package.json"
+    }
+  },
+  "description": "## Release (2026-09-08)\n\n* ember-google-maps 8.1.0 (minor)\n\n#### :rocket: Enhancement\n* `ember-google-maps`\n  * [#50](https://github.com/acorncom/ember-google-maps/pull/50) AdvancedMarker: custom content, anchoring, and attribute forwarding ([@acorncom](https://github.com/acorncom))\n\n#### :house: Internal\n* [#51](https://github.com/acorncom/ember-google-maps/pull/51) Format release-plan's changes so release PRs pass lint ([@acorncom](https://github.com/acorncom))\n* [#49](https://github.com/acorncom/ember-google-maps/pull/49) Harden CI/CD workflows ([@acorncom](https://github.com/acorncom))\n\n#### Committers: 1\n- David Baker ([@acorncom](https://github.com/acorncom))\n"
+}

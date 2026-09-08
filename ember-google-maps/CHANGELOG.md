@@ -1,5 +1,20 @@
 # Changelog
 
+## Release (2026-09-08)
+
+* ember-google-maps 8.1.0 (minor)
+
+#### :rocket: Enhancement
+* `ember-google-maps`
+  * [#50](https://github.com/acorncom/ember-google-maps/pull/50) AdvancedMarker: custom content, anchoring, and attribute forwarding ([@acorncom](https://github.com/acorncom))
+
+#### :house: Internal
+* [#51](https://github.com/acorncom/ember-google-maps/pull/51) Format release-plan's changes so release PRs pass lint ([@acorncom](https://github.com/acorncom))
+* [#49](https://github.com/acorncom/ember-google-maps/pull/49) Harden CI/CD workflows ([@acorncom](https://github.com/acorncom))
+
+#### Committers: 1
+- David Baker ([@acorncom](https://github.com/acorncom))
+
 
 
 
