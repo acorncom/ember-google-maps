@@ -6,6 +6,7 @@ import {
   destroy,
   isDestroyed,
   isDestroying,
+  registerDestructor,
 } from '@ember/destroyable';
 import { assert } from '@ember/debug';
 
@@ -111,7 +112,20 @@ export class MapComponentManager {
       component.setup,
     );
 
+    // Open a test waiter so `settled()` waits for this component's setup. It
+    // must be closed on EVERY path -- including when `setup()` throws, or the
+    // component is destroyed before the effect ever runs -- or the token leaks
+    // and `settled()` hangs until the test times out (rather than surfacing the
+    // real error). `endToken` is idempotent because the effect re-runs on every
+    // update: setup happens once, but the effect is pulled again on each change,
+    // so we must not double-end the same token.
     let token = testWaiter.beginAsync();
+    let tokenEnded = false;
+    let endToken = () => {
+      if (tokenEnded) return;
+      tokenEnded = true;
+      testWaiter.endAsync(token);
+    };
 
     let hasUpdate = typeof component.update === 'function';
 
@@ -119,38 +133,46 @@ export class MapComponentManager {
 
     if (hasUpdate) {
       effect = setupEffect(() => {
-        if (mapComponent === undefined) {
-          mapComponent = component.setup(component.options, component.events);
+        try {
+          if (mapComponent === undefined) {
+            mapComponent = component.setup(component.options, component.events);
 
-          if (mapComponent.length) {
-            [mapComponent, trackThisInstead] = mapComponent;
+            if (mapComponent.length) {
+              [mapComponent, trackThisInstead] = mapComponent;
+            }
+
+            component.mapComponent = mapComponent;
+          } else {
+            component.update(mapComponent, component.options);
           }
 
-          component.mapComponent = mapComponent;
-        } else {
-          component.update(mapComponent, component.options);
+          return trackThisInstead ?? mapComponent;
+        } finally {
+          endToken();
         }
-
-        testWaiter.endAsync(token);
-
-        return trackThisInstead ?? mapComponent;
       });
     } else {
       effect = setupEffect(() => {
-        // Teardown the previous map component if it exists
-        if (mapComponent) {
-          component.teardown(mapComponent);
+        try {
+          // Teardown the previous map component if it exists
+          if (mapComponent) {
+            component.teardown(mapComponent);
+          }
+
+          mapComponent = component.setup(component.options, component.events);
+
+          component.mapComponent = mapComponent;
+
+          return mapComponent;
+        } finally {
+          endToken();
         }
-
-        mapComponent = component.setup(component.options, component.events);
-
-        component.mapComponent = mapComponent;
-
-        testWaiter.endAsync(token);
-
-        return mapComponent;
       });
     }
+
+    // If the component is torn down before the effect ever runs (e.g. a
+    // re-render during setup), close the waiter rather than leaking it to a hang.
+    registerDestructor(effect, endToken);
 
     // Destroy effects when the component is destroyed.
     if (!isDestroyed(component) && !isDestroying(component)) {
