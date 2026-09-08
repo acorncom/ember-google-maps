@@ -1,0 +1,16 @@
+# Require maintainer review for security-sensitive files.
+#
+# This only enforces review once branch protection on the target branch has
+# "Require review from Code Owners" turned on. Pair it with "Require approval
+# for all outside collaborators" so fork PRs can't run CI until a maintainer
+# has looked at the diff below.
+
+# CI/CD — anything that runs with the repo token or secrets
+/.github/                        @acorncom
+
+# Publish surface and dependency / build wiring
+/package.json                    @acorncom
+/pnpm-workspace.yaml             @acorncom
+/.npmrc                          @acorncom
+/patches/                        @acorncom
+/ember-google-maps/package.json  @acorncom

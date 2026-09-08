@@ -116,6 +116,28 @@ import { GMap } from 'ember-google-maps/deprecated';
 This is a bridge, not a long-term solution. Plan to move off it before v9.
 :::
 
+::: warning Nested per-marker yields are gone
+Separately from the top-level `g` hash, v7 let you nest a component **inside a
+marker's block** — most commonly an info window:
+<code v-pre>&lt;g.marker as |marker|&gt;&lt;marker.infoWindow/&gt;&lt;/g.marker&gt;</code>.
+In v8 a marker yields only its public API (`{ map, mapComponent }`), not child
+components, and the deprecated bridge does **not** shim these nested yields.
+Point the child at the marker with `@target` instead — the same pattern works
+for `<Marker>` and `<AdvancedMarker>`:
+
+```hbs
+{{! v7 }}
+<g.marker as |marker|>
+  <marker.infoWindow @isOpen={{true}} @content="Hi" />
+</g.marker>
+
+{{! v8 }}
+<Marker as |m|>
+  <InfoWindow @target={{m.mapComponent}} @isOpen={{true}} @content="Hi" />
+</Marker>
+```
+:::
+
 ### Two styles going forward — and both are fine
 
 Once you're off the `g` hash, there are two supported ways to render components, and neither is deprecated:

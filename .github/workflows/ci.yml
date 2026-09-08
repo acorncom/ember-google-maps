@@ -22,14 +22,20 @@ concurrency:
   group: ci-${{ github.head_ref || github.ref }}
   cancel-in-progress: true
 
+# Least privilege: every job here only reads the repo. Fork pull requests
+# already get a read-only token and no secrets from GitHub; this makes the
+# same limit explicit for pushes too, so a compromised step can't write.
+permissions:
+  contents: read
+
 jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v7
-      - uses: acorncom/action-setup-pnpm@v4.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: acorncom/action-setup-pnpm@91a687c228fac4111cd1be8801ab4c0402752d04 # v4.0.1
         with:
           node-version: '22'
           node-version-file: ''
@@ -42,8 +48,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: wyvox/action-setup-pnpm@v2
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: wyvox/action-setup-pnpm@c7fb83d1769e0f8f343604b4adc07a010156096d # v2
         with:
           node-version: '22'
       # test-app-basic's Glint fixture resolves ember-google-maps through a
@@ -58,8 +64,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v7
-      - uses: acorncom/action-setup-pnpm@v4.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: acorncom/action-setup-pnpm@91a687c228fac4111cd1be8801ab4c0402752d04 # v4.0.1
         with:
           node-version: '22'
           node-version-file: ''
@@ -76,8 +82,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v7
-      - uses: acorncom/action-setup-pnpm@v4.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: acorncom/action-setup-pnpm@91a687c228fac4111cd1be8801ab4c0402752d04 # v4.0.1
         with:
           node-version: '22'
           node-version-file: ''
@@ -140,10 +146,10 @@ jobs:
   #         - try-scenario: embroider-optimized
   #           allow-failure: true
   #   steps:
-  #     - uses: actions/checkout@v7
+  #     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
   #     - name: Prepare
   #       run: ./.github/scripts/setup-ci.sh
-  #     - uses: acorncom/action-setup-pnpm@v4.0.1
+  #     - uses: acorncom/action-setup-pnpm@91a687c228fac4111cd1be8801ab4c0402752d04 # v4.0.1
   #       with:
   #         node-version: ${{ env.node-version }}
   #     - name: Run Tests
