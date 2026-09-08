@@ -1,0 +1,6 @@
+# Unlabeled Changes
+
+* [#52](https://github.com/acorncom/ember-google-maps/pull/52) Drop the unused NPM_TOKEN from the publish workflow ([@acorncom](https://github.com/acorncom))
+
+
+*Cannot plan release until the above changes are labeled*.
