@@ -34,7 +34,10 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - name: Publish to NPM
+        # Auth is npm trusted publishing (OIDC): the id-token permission above
+        # lets pnpm exchange a short-lived credential with npm, so there's no
+        # NODE_AUTH_TOKEN/NPM_TOKEN. The publisher must be registered on npm
+        # (package Settings -> Trusted Publisher: this repo + publish.yml).
         run: NPM_CONFIG_PROVENANCE=true pnpm release-plan publish
         env:
           GITHUB_AUTH: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
