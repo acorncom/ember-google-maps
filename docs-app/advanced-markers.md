@@ -40,6 +40,68 @@ project to use that.
 </GMap>
 ```
 
+## Custom content
+
+An advanced marker can render your own DOM instead of the default pin. Pass a
+`<:content>` block:
+
+```hbs
+<AdvancedMarker @lat={{51.5074}} @lng={{-0.1278}}>
+  <:content>
+    <div class="my-pin">📍</div>
+  </:content>
+</AdvancedMarker>
+```
+
+`...attributes` are forwarded to the content wrapper, so `class` and modifiers
+work as usual:
+
+```hbs
+<AdvancedMarker @lat={{51.5074}} @lng={{-0.1278}} class="my-pin">
+  <:content>
+    <MyIcon />
+  </:content>
+</AdvancedMarker>
+```
+
+If you already have a built element, pass it as `@content` instead (a
+`<:content>` block takes precedence over `@content`):
+
+```hbs
+<AdvancedMarker @lat={{51.5074}} @lng={{-0.1278}} @content={{this.iconElement}} />
+```
+
+### Anchoring
+
+By default an advanced marker anchors its content's bottom-center at the
+position (like a pin). Use `@anchorLeft`/`@anchorTop` — CSS offsets applied as a
+`translate` on the content wrapper — to re-anchor. For example, to center the
+content on the point:
+
+```hbs
+<AdvancedMarker
+  @lat={{51.5074}}
+  @lng={{-0.1278}}
+  @anchorLeft="-50%"
+  @anchorTop="-50%"
+>
+  <:content>
+    <div class="dot"></div>
+  </:content>
+</AdvancedMarker>
+```
+
+## Info windows
+
+Attach an info window to an advanced marker by pointing the info window's
+`@target` at the marker (see [Info windows](/info-windows)):
+
+```hbs
+<AdvancedMarker @lat={{51.5074}} @lng={{-0.1278}} as |m|>
+  <InfoWindow @target={{m.mapComponent}} @isOpen={{true}} @content="Hello!" />
+</AdvancedMarker>
+```
+
 ## Example
 
 Click on a marker to find out its coordinates.

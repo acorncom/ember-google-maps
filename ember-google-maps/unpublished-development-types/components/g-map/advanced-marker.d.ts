@@ -22,6 +22,10 @@ export interface AdvancedMarkerSignature {
   Args: {
     lat?: number;
     lng?: number;
+    // CSS offsets applied to the `<:content>` wrapper as a translate
+    // transform, e.g. "-50%"/"-50%" to center content on the position.
+    anchorLeft?: string;
+    anchorTop?: string;
   } & google.maps.marker.AdvancedMarkerElementOptions &
     AdvancedMarkerEvents;
   Blocks: {
@@ -31,8 +35,11 @@ export interface AdvancedMarkerSignature {
         mapComponent: google.maps.marker.AdvancedMarkerElement;
       },
     ];
+    // Rendered as the marker's DOM content. `...attributes` (and
+    // `@anchorLeft`/`@anchorTop`) apply to this block's wrapper element.
+    content: [];
   };
-  Element: null;
+  Element: HTMLDivElement;
 }
 
 export declare const AdvancedMarker: ComponentLike<AdvancedMarkerSignature>;
