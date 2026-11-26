@@ -1,6 +1,6 @@
 import { capabilities } from '@ember/component';
 import { setOwner } from '@ember/application';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import {
   associateDestroyableChild,
   destroy,
