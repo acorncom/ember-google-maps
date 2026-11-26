@@ -1,18 +1,18 @@
 {
   "solution": {
     "ember-google-maps": {
-      "impact": "minor",
-      "oldVersion": "8.0.0",
-      "newVersion": "8.1.0",
+      "impact": "patch",
+      "oldVersion": "8.1.0",
+      "newVersion": "8.1.1",
       "tagName": "latest",
       "constraints": [
         {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./ember-google-maps/package.json"
     }
   },
-  "description": "## Release (2026-09-08)\n\n* ember-google-maps 8.1.0 (minor)\n\n#### :rocket: Enhancement\n* `ember-google-maps`\n  * [#50](https://github.com/acorncom/ember-google-maps/pull/50) AdvancedMarker: custom content, anchoring, and attribute forwarding ([@acorncom](https://github.com/acorncom))\n\n#### :house: Internal\n* [#51](https://github.com/acorncom/ember-google-maps/pull/51) Format release-plan's changes so release PRs pass lint ([@acorncom](https://github.com/acorncom))\n* [#49](https://github.com/acorncom/ember-google-maps/pull/49) Harden CI/CD workflows ([@acorncom](https://github.com/acorncom))\n\n#### Committers: 1\n- David Baker ([@acorncom](https://github.com/acorncom))\n"
+  "description": "## Release (2026-11-26)\n\n* ember-google-maps 8.1.1 (patch)\n\n#### :bug: Bug Fix\n* `ember-google-maps`\n  * [#45](https://github.com/acorncom/ember-google-maps/pull/45) Close the map-component test waiter when setup() throws ([@acorncom](https://github.com/acorncom))\n  * [#54](https://github.com/acorncom/ember-google-maps/pull/54) Import `service` instead of `inject` from @ember/service ([@acorncom](https://github.com/acorncom))\n\n#### :house: Internal\n* [#52](https://github.com/acorncom/ember-google-maps/pull/52) Drop the unused NPM_TOKEN from the publish workflow ([@acorncom](https://github.com/acorncom))\n\n#### Committers: 1\n- David Baker ([@acorncom](https://github.com/acorncom))\n"
 }

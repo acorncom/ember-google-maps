@@ -1,5 +1,20 @@
 # Changelog
 
+## Release (2026-11-26)
+
+* ember-google-maps 8.1.1 (patch)
+
+#### :bug: Bug Fix
+* `ember-google-maps`
+  * [#45](https://github.com/acorncom/ember-google-maps/pull/45) Close the map-component test waiter when setup() throws ([@acorncom](https://github.com/acorncom))
+  * [#54](https://github.com/acorncom/ember-google-maps/pull/54) Import `service` instead of `inject` from @ember/service ([@acorncom](https://github.com/acorncom))
+
+#### :house: Internal
+* [#52](https://github.com/acorncom/ember-google-maps/pull/52) Drop the unused NPM_TOKEN from the publish workflow ([@acorncom](https://github.com/acorncom))
+
+#### Committers: 1
+- David Baker ([@acorncom](https://github.com/acorncom))
+
 ## Release (2026-09-08)
 
 * ember-google-maps 8.1.0 (minor)
