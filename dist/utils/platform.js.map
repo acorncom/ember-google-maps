@@ -1,0 +1,1 @@
+{"version":3,"file":"platform.js","sources":["../../src/utils/platform.js"],"sourcesContent":["export const HAS_NATIVE_PROXY = typeof Proxy === 'function';\n"],"names":["HAS_NATIVE_PROXY","Proxy"],"mappings":"MAAaA,gBAAgB,GAAG,OAAOC,KAAK,KAAK;;;;"}
